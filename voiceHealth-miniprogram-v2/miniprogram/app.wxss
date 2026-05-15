@@ -1,0 +1,90 @@
+/* app.wxss - VoiceHealth Global Styles */
+page {
+  background: #0a0a0f;
+  color: #e2e2e8;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  padding: 0 32rpx;
+}
+
+/* Colors */
+.text-primary { color: #3b82f6; }
+.text-green { color: #22c55e; }
+.text-yellow { color: #eab308; }
+.text-red { color: #ef4444; }
+.text-dim { color: rgba(255,255,255,0.45); }
+.text-muted { color: rgba(255,255,255,0.25); }
+.bg-card { background: rgba(255,255,255,0.04); }
+
+/* Cards */
+.card {
+  background: rgba(255,255,255,0.04);
+  border: 1rpx solid rgba(255,255,255,0.06);
+  border-radius: 28rpx;
+  padding: 32rpx;
+  margin-bottom: 20rpx;
+}
+
+/* Buttons */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 96rpx;
+  border-radius: 20rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  border: none;
+}
+
+.btn-primary {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.btn-primary:active {
+  background: #2563eb;
+}
+
+.btn-ghost {
+  background: rgba(255,255,255,0.04);
+  color: #e2e2e8;
+  border: 1rpx solid rgba(255,255,255,0.06);
+}
+
+.btn-pay {
+  background: linear-gradient(135deg, #3b82f6, #22c55e);
+  color: #fff;
+}
+
+/* Section */
+.section-title {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 2rpx;
+  margin: 40rpx 0 20rpx;
+}
+
+/* Disclaimer */
+.disclaimer {
+  font-size: 22rpx;
+  color: rgba(255,255,255,0.25);
+  text-align: center;
+  padding: 20rpx 40rpx;
+  line-height: 1.6;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16rpx); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}

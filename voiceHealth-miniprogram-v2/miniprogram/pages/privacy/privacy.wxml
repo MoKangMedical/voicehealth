@@ -1,0 +1,48 @@
+<view class="container">
+  <view class="header">
+    <text class="title">隐私政策</text>
+    <text class="update-date">最后更新：{{lastUpdated}}</text>
+  </view>
+  
+  <view class="section">
+    <text class="section-title">一、信息收集</text>
+    <text class="section-content">在您授权后，我们为提供健康参考服务收集必要信息：</text>
+    <view class="list-item"><text class="dot">•</text><text>声纹数据：用于声学特征分析</text></view>
+    <view class="list-item"><text class="dot">•</text><text>面部图像：用于面部状态评估</text></view>
+    <view class="list-item"><text class="dot">•</text><text>视频数据：用于皮肤/眼睛/头发分析</text></view>
+    <view class="list-item"><text class="dot">•</text><text>用户信息：昵称、头像、会员与报告记录</text></view>
+  </view>
+  
+  <view class="section">
+    <text class="section-title">二、信息使用</text>
+    <text class="section-content">您的数据仅用于：</text>
+    <view class="list-item"><text class="dot">•</text><text>生成个人健康参考报告</text></view>
+    <view class="list-item"><text class="dot">•</text><text>展示历史记录、趋势和复测提醒</text></view>
+    <view class="list-item"><text class="dot">•</text><text>处理会员、订单和客服请求</text></view>
+  </view>
+  
+  <view class="section">
+    <text class="section-title">三、数据安全</text>
+    <text class="section-content">我们采取以下措施保护您的数据：</text>
+    <view class="list-item"><text class="dot">•</text><text>数据加密存储和传输</text></view>
+    <view class="list-item"><text class="dot">•</text><text>严格的访问控制</text></view>
+    <view class="list-item"><text class="dot">•</text><text>定期安全审计</text></view>
+  </view>
+  
+  <view class="section">
+    <text class="section-title">四、数据删除</text>
+    <text class="section-content">您可以通过客服请求删除账号、报告和本地缓存数据。我们会在核验身份后处理。</text>
+  </view>
+  
+  <view class="section">
+    <text class="section-title">五、免责声明</text>
+    <text class="section-content">本服务提供的健康分析仅供参考，不构成医学诊断。如有健康问题，请咨询专业医生。</text>
+  </view>
+  
+  <view class="section">
+    <text class="section-title">六、联系我们</text>
+    <text class="section-content">如有隐私相关问题，请联系：support@voicehealth.ai</text>
+  </view>
+  
+  <button class="btn btn-primary" bindtap="goBack" style="margin-top:40rpx">返回</button>
+</view>

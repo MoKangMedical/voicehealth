@@ -1,0 +1,97 @@
+/* pages/science/science.wxss */
+.container { padding: 32rpx; min-height: 100vh; }
+.header { text-align: center; margin-bottom: 40rpx; }
+.title { font-size: 40rpx; font-weight: 700; display: block; }
+.subtitle { font-size: 26rpx; color: rgba(255,255,255,0.45); }
+
+/* Tabs */
+.tabs { display: flex; gap: 12rpx; margin-bottom: 32rpx; white-space: nowrap; }
+.tab { padding: 16rpx 24rpx; border-radius: 20rpx; font-size: 24rpx; background: rgba(255,255,255,0.04); display: inline-block; }
+.tab.active { background: #3b82f6; color: #fff; }
+
+/* 理论基础 */
+.theory-card { background: rgba(255,255,255,0.04); border-radius: 20rpx; padding: 32rpx; margin-bottom: 24rpx; }
+.theory-header { display: flex; align-items: center; gap: 16rpx; margin-bottom: 16rpx; }
+.theory-icon { font-size: 40rpx; }
+.theory-title { font-size: 30rpx; font-weight: 600; }
+.theory-desc { font-size: 26rpx; color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 20rpx; }
+
+.mechanisms { border-top: 1rpx solid rgba(255,255,255,0.06); padding-top: 20rpx; }
+.mechanism { display: flex; align-items: center; justify-content: space-between; padding: 16rpx 0; border-bottom: 1rpx solid rgba(255,255,255,0.04); }
+.mechanism:last-child { border-bottom: none; }
+.mech-name { font-size: 26rpx; color: rgba(255,255,255,0.8); }
+.mech-arrow { font-size: 28rpx; color: rgba(255,255,255,0.3); }
+
+/* 学术文献 */
+.paper-card { background: rgba(255,255,255,0.04); border-radius: 20rpx; padding: 24rpx; margin-bottom: 20rpx; }
+.paper-header { display: flex; justify-content: space-between; margin-bottom: 12rpx; }
+.paper-category { font-size: 22rpx; padding: 4rpx 12rpx; background: rgba(59,130,246,0.2); color: #3b82f6; border-radius: 8rpx; }
+.paper-year { font-size: 22rpx; color: rgba(255,255,255,0.45); }
+.paper-title { font-size: 28rpx; font-weight: 600; display: block; margin-bottom: 8rpx; }
+.paper-authors { font-size: 24rpx; color: rgba(255,255,255,0.65); display: block; margin-bottom: 4rpx; }
+.paper-journal { font-size: 22rpx; color: #3b82f6; display: block; margin-bottom: 12rpx; }
+.paper-finding { font-size: 24rpx; color: rgba(255,255,255,0.8); line-height: 1.6; display: block; margin-bottom: 16rpx; }
+.paper-doi { display: flex; align-items: center; justify-content: space-between; background: rgba(0,0,0,0.3); padding: 12rpx 16rpx; border-radius: 8rpx; }
+.doi-text { font-size: 22rpx; color: rgba(255,255,255,0.65); overflow: hidden; text-overflow: ellipsis; flex: 1; }
+.doi-copy { font-size: 22rpx; color: #3b82f6; padding: 4rpx 12rpx; background: rgba(59,130,246,0.2); border-radius: 8rpx; margin-left: 12rpx; }
+
+/* 技术原理 */
+.tech-flow { padding: 0 16rpx; margin-bottom: 40rpx; }
+.tech-step { display: flex; gap: 20rpx; margin-bottom: 24rpx; position: relative; }
+.step-number { width: 64rpx; height: 64rpx; border-radius: 50%; background: #3b82f6; display: flex; align-items: center; justify-content: center; font-size: 28rpx; font-weight: 700; flex-shrink: 0; }
+.step-line { position: absolute; left: 32rpx; top: 64rpx; bottom: -24rpx; width: 2rpx; background: rgba(59,130,246,0.3); }
+.tech-step:last-child .step-line { display: none; }
+.step-content { flex: 1; }
+.step-title { font-size: 28rpx; font-weight: 600; display: block; margin-bottom: 8rpx; }
+.step-desc { font-size: 24rpx; color: rgba(255,255,255,0.8); display: block; margin-bottom: 4rpx; }
+.step-detail { font-size: 22rpx; color: rgba(255,255,255,0.45); }
+
+.feature-table { background: rgba(255,255,255,0.04); border-radius: 20rpx; padding: 24rpx; }
+.table-title { font-size: 28rpx; font-weight: 600; display: block; margin-bottom: 20rpx; }
+.table-row { display: flex; padding: 12rpx 0; border-bottom: 1rpx solid rgba(255,255,255,0.06); }
+.table-row.header { font-size: 22rpx; color: rgba(255,255,255,0.45); font-weight: 600; }
+.col-name { width: 160rpx; font-size: 24rpx; }
+.col-dim { width: 80rpx; font-size: 24rpx; text-align: center; }
+.col-relevance { flex: 1; font-size: 22rpx; color: rgba(255,255,255,0.65); }
+
+/* 临床验证 */
+.validation-card { display: flex; justify-content: space-around; background: rgba(255,255,255,0.04); border-radius: 20rpx; padding: 32rpx 16rpx; margin-bottom: 24rpx; }
+.metric { text-align: center; }
+.metric-value { font-size: 36rpx; font-weight: 700; color: #22c55e; display: block; }
+.metric-label { font-size: 22rpx; color: rgba(255,255,255,0.45); }
+
+.stats-card { display: flex; gap: 20rpx; margin-bottom: 24rpx; }
+.stat { flex: 1; background: rgba(255,255,255,0.04); border-radius: 16rpx; padding: 24rpx; text-align: center; }
+.stat-value { font-size: 32rpx; font-weight: 700; display: block; }
+.stat-label { font-size: 22rpx; color: rgba(255,255,255,0.45); }
+
+.studies-card, .diseases-card { background: rgba(255,255,255,0.04); border-radius: 20rpx; padding: 24rpx; margin-bottom: 24rpx; }
+.card-title { font-size: 28rpx; font-weight: 600; display: block; margin-bottom: 20rpx; }
+
+.study { padding: 16rpx 0; border-bottom: 1rpx solid rgba(255,255,255,0.06); }
+.study:last-child { border-bottom: none; }
+.study-header { display: flex; justify-content: space-between; margin-bottom: 8rpx; }
+.study-name { font-size: 26rpx; font-weight: 500; }
+.study-accuracy { font-size: 26rpx; font-weight: 700; color: #22c55e; }
+.study-reference { font-size: 22rpx; color: rgba(255,255,255,0.45); }
+
+.disease { padding: 20rpx 0; border-bottom: 1rpx solid rgba(255,255,255,0.06); }
+.disease:last-child { border-bottom: none; }
+.disease-name { font-size: 28rpx; font-weight: 600; display: block; margin-bottom: 8rpx; }
+.disease-mechanism { font-size: 24rpx; color: rgba(255,255,255,0.65); display: block; margin-bottom: 12rpx; }
+.disease-features { display: flex; flex-wrap: wrap; gap: 8rpx; margin-bottom: 12rpx; }
+.feature-tag { font-size: 20rpx; padding: 4rpx 12rpx; background: rgba(59,130,246,0.15); color: #3b82f6; border-radius: 8rpx; }
+.disease-accuracy { font-size: 22rpx; color: rgba(255,255,255,0.45); }
+
+/* 局限性 */
+.limitation-section { margin-bottom: 32rpx; }
+.section-title { font-size: 28rpx; font-weight: 600; display: block; margin-bottom: 16rpx; }
+.limitation-list { background: rgba(255,255,255,0.04); border-radius: 16rpx; padding: 24rpx; }
+.limitation { display: flex; align-items: flex-start; gap: 12rpx; margin-bottom: 12rpx; }
+.limitation:last-child { margin-bottom: 0; }
+.limitation-dot { color: #eab308; flex-shrink: 0; }
+.limitation-text { font-size: 24rpx; color: rgba(255,255,255,0.65); line-height: 1.6; }
+
+.disclaimer-card { background: rgba(239,68,68,0.1); border: 1rpx solid rgba(239,68,68,0.2); border-radius: 16rpx; padding: 24rpx; margin-top: 40rpx; }
+.disclaimer-title { font-size: 28rpx; font-weight: 600; color: #ef4444; display: block; margin-bottom: 12rpx; }
+.disclaimer-text { font-size: 24rpx; color: rgba(255,255,255,0.65); line-height: 1.8; }

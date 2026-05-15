@@ -1,0 +1,88 @@
+<view class="container">
+  <view class="user-card">
+    <button class="avatar-btn" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+      <image class="avatar" wx:if="{{userInfo && userInfo.avatarUrl}}" src="{{userInfo.avatarUrl}}" mode="aspectFill"/>
+      <view class="avatar-placeholder" wx:else>👤</view>
+    </button>
+
+    <view class="user-main">
+      <input class="nickname-input"
+             type="nickname"
+             value="{{userInfo && userInfo.nickName ? userInfo.nickName : ''}}"
+             placeholder="点击设置昵称"
+             bindchange="onNickNameInput"/>
+      <text class="user-id" wx:if="{{user}}">ID {{user.id}}</text>
+      <button class="login-btn" wx:if="{{!userInfo}}" bindtap="login">微信授权登录</button>
+      <view class="vip-tag {{isVip ? 'active' : ''}}" bindtap="goVip">
+        <text>{{isVip ? 'VIP会员' : '普通用户 · 开通会员'}}</text>
+      </view>
+      <text class="vip-expire" wx:if="{{isVip && vipExpire}}">有效期至 {{vipExpire}}</text>
+    </view>
+  </view>
+
+  <view class="stats-grid">
+    <view class="stat-card">
+      <text class="stat-value">{{stats.total_reports}}</text>
+      <text class="stat-label">检测次数</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-value">{{stats.avg_score || '--'}}</text>
+      <text class="stat-label">平均评分</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-value">{{stats.best_score || '--'}}</text>
+      <text class="stat-label">最佳评分</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-value">{{isVip ? '不限' : stats.free_remaining}}</text>
+      <text class="stat-label">今日剩余</text>
+    </view>
+  </view>
+
+  <view class="type-stats">
+    <view class="type-item">
+      <text class="type-icon">🎤</text>
+      <text class="type-name">语音</text>
+      <text class="type-count">{{stats.voice_count}}</text>
+    </view>
+    <view class="type-item">
+      <text class="type-icon">📸</text>
+      <text class="type-name">面部</text>
+      <text class="type-count">{{stats.face_count}}</text>
+    </view>
+    <view class="type-item">
+      <text class="type-icon">🎬</text>
+      <text class="type-name">视频</text>
+      <text class="type-count">{{stats.video_count}}</text>
+    </view>
+    <view class="type-item">
+      <text class="type-icon">📊</text>
+      <text class="type-name">综合</text>
+      <text class="type-count">{{stats.combined_count}}</text>
+    </view>
+  </view>
+
+  <view class="menu-section">
+    <text class="section-title">功能服务</text>
+    <view class="menu-list">
+      <view class="menu-item"
+            wx:for="{{menuItems}}"
+            wx:key="title"
+            data-url="{{item.url}}"
+            data-type="{{item.type}}"
+            bindtap="onMenuTap">
+        <view class="menu-left">
+          <text class="menu-icon">{{item.icon}}</text>
+          <text class="menu-title">{{item.title}}</text>
+        </view>
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <button class="share-btn" open-type="share">推荐给好友</button>
+
+  <view class="version-info">
+    <text>VoiceHealth v1.0.0</text>
+  </view>
+</view>

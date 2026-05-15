@@ -1,0 +1,146 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- Header -->
+  <view class="header">
+    <view class="logo">
+      <text class="logo-icon">🎤</text>
+      <text class="logo-text">VoiceHealth</text>
+    </view>
+    <view class="user-info" wx:if="{{userInfo}}">
+      <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"/>
+    </view>
+  </view>
+
+  <!-- Main Card -->
+  <view class="main-card">
+    <view class="card-title">AI声纹健康参考</view>
+    <view class="card-subtitle">30秒语音，生成25项声音大健康参考</view>
+
+    <!-- Reading Text Section -->
+    <view class="reading-section" wx:if="{{showReadingText && readingText}}">
+      <view class="reading-header">
+        <text class="reading-label">请朗读以下文字</text>
+        <view class="refresh-btn" bindtap="refreshReadingText">
+          <text class="refresh-icon">🔄</text>
+          <text class="refresh-text">换一段</text>
+        </view>
+      </view>
+      <view class="reading-text-box">
+        <text class="reading-text">{{readingText.text}}</text>
+      </view>
+    </view>
+
+    <!-- Recording Button -->
+    <view class="record-area">
+      <view class="record-btn {{isRecording ? 'recording' : ''}}" bindtap="toggleRecording">
+        <view class="record-btn-inner">
+          <text class="record-icon">{{isRecording ? '⏹' : '🎙️'}}</text>
+        </view>
+        <view class="record-ripple" wx:if="{{isRecording}}"></view>
+      </view>
+      <view class="record-time">{{recordingTimeText}}</view>
+      <view class="record-hint">{{isRecording ? '点击停止' : '点击开始录音'}}</view>
+    </view>
+
+    <!-- Analyze Button -->
+    <button class="btn btn-primary btn-analyze" 
+            disabled="{{!canAnalyze || isAnalyzing}}" 
+            bindtap="startAnalysis">
+      {{isAnalyzing ? '分析中...' : '生成健康参考报告'}}
+    </button>
+
+    <!-- Free Count -->
+    <view class="free-info" wx:if="{{!isVip}}">
+      <text class="text-dim">今日免费次数：{{freeCount}}/{{maxFree}}</text>
+    </view>
+    <view class="free-info" wx:else>
+      <text class="text-green">会员无限次使用</text>
+    </view>
+  </view>
+
+  <!-- Core Features -->
+  <view class="section-title">核心能力</view>
+  <view class="features-grid">
+    <view class="feature-item" bindtap="goScience">
+      <text class="feature-icon">🔬</text>
+      <text class="feature-name">平台依据</text>
+      <text class="feature-desc">理论/文献/指南</text>
+    </view>
+    <view class="feature-item" bindtap="goFace">
+      <text class="feature-icon">📸</text>
+      <text class="feature-name">面部衰老</text>
+      <text class="feature-desc">AI面部识别分析</text>
+    </view>
+    <view class="feature-item">
+      <text class="feature-icon">🎯</text>
+      <text class="feature-name">声音大健康</text>
+      <text class="feature-desc">25项风险参考</text>
+    </view>
+    <view class="feature-item" bindtap="goCombined">
+      <text class="feature-icon">📊</text>
+      <text class="feature-name">综合评估</text>
+      <text class="feature-desc">声纹+面部双维度</text>
+    </view>
+    <view class="feature-item" bindtap="goVideo">
+      <text class="feature-icon">🎬</text>
+      <text class="feature-name">视频分析</text>
+      <text class="feature-desc">皮肤/眼睛/头发</text>
+    </view>
+    <view class="feature-item" bindtap="goTrends">
+      <text class="feature-icon">📈</text>
+      <text class="feature-name">趋势分析</text>
+      <text class="feature-desc">长期健康变化</text>
+    </view>
+  </view>
+
+  <!-- Platform Tools -->
+  <view class="section-title">平台工具</view>
+  <view class="tools-grid">
+    <view class="tool-item" bindtap="goImprovement">
+      <text class="tool-icon">🔁</text>
+      <text class="tool-name">改善闭环</text>
+    </view>
+    <view class="tool-item" bindtap="goPlans">
+      <text class="tool-icon">📌</text>
+      <text class="tool-name">循证方案</text>
+    </view>
+    <view class="tool-item" bindtap="goCheckin">
+      <text class="tool-icon">📅</text>
+      <text class="tool-name">健康打卡</text>
+    </view>
+    <view class="tool-item" bindtap="goArticles">
+      <text class="tool-icon">📚</text>
+      <text class="tool-name">知识库</text>
+    </view>
+    <view class="tool-item" bindtap="goAchievements">
+      <text class="tool-icon">🏅</text>
+      <text class="tool-name">成就</text>
+    </view>
+    <view class="tool-item" bindtap="goFamily">
+      <text class="tool-icon">👨‍👩‍👧</text>
+      <text class="tool-name">家庭</text>
+    </view>
+    <view class="tool-item" bindtap="goOrders">
+      <text class="tool-icon">🧾</text>
+      <text class="tool-name">订单</text>
+    </view>
+    <view class="tool-item" bindtap="goPrivacy">
+      <text class="tool-icon">🔒</text>
+      <text class="tool-name">隐私</text>
+    </view>
+  </view>
+
+  <!-- Tips -->
+  <view class="section-title">录音建议</view>
+  <view class="tips-card">
+    <view class="tip-item" wx:for="{{tips}}" wx:key="index">
+      <text class="tip-dot">•</text>
+      <text class="tip-text">{{item}}</text>
+    </view>
+  </view>
+
+  <!-- Disclaimer -->
+  <view class="disclaimer">
+    * 本服务生成的报告仅供参考，不构成医疗建议。如有健康问题，请咨询专业医生。
+  </view>
+</view>

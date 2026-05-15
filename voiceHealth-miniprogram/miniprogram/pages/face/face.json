@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "disclaimer": "/components/disclaimer/disclaimer"
+  },
+  "navigationBarTitleText": "面部衰老分析",
+  "navigationBarBackgroundColor": "#0a0a0f",
+  "navigationBarTextStyle": "white"
+}

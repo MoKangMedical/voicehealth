@@ -1,0 +1,15 @@
+<!--components/disclaimer/disclaimer.wxml-->
+<view class="disclaimer-container">
+  <view class="disclaimer-header">
+    <text class="disclaimer-icon">⚠️</text>
+    <text class="disclaimer-title">免责声明</text>
+  </view>
+  <view class="disclaimer-content">
+    <text class="disclaimer-text">本服务基于人工智能技术，提供健康参考信息。检测结果仅供参考，不构成医学诊断或医疗建议。</text>
+    <view class="disclaimer-points">
+      <text class="point">• 检测结果可能受到多种因素影响</text>
+      <text class="point">• 不能替代专业医学检查和诊断</text>
+      <text class="point">• 如有健康问题，请咨询专业医生</text>
+    </view>
+  </view>
+</view>

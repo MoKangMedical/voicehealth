@@ -1,0 +1,136 @@
+<view class="container">
+  <!-- Camera Section -->
+  <view wx:if="{{!photoPath}}" class="camera-section">
+    <view class="section-header">
+      <text class="section-title">面部扫描</text>
+      <text class="section-desc">请正对摄像头，保持光线充足</text>
+    </view>
+
+    <view class="camera-wrapper">
+      <camera
+        class="camera"
+        device-position="{{cameraMode}}"
+        style="width:100%;height:600rpx"
+      >
+        <view class="camera-overlay">
+          <view class="face-guide">
+            <view class="guide-corner top-left"></view>
+            <view class="guide-corner top-right"></view>
+            <view class="guide-corner bottom-left"></view>
+            <view class="guide-corner bottom-right"></view>
+          </view>
+        </view>
+      </camera>
+    </view>
+
+    <view class="camera-controls">
+      <view class="control-btn" bindtap="switchCamera">
+        <text class="control-icon">🔄</text>
+        <text class="control-label">翻转</text>
+      </view>
+      <view class="shutter-btn" bindtap="takePhoto">
+        <view class="shutter-inner"></view>
+      </view>
+      <view class="control-btn" bindtap="choosePhoto">
+        <text class="control-icon">🖼️</text>
+        <text class="control-label">相册</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Photo Preview Section -->
+  <view wx:if="{{photoPath && !showResult}}" class="preview-section">
+    <view class="section-header">
+      <text class="section-title">照片预览</text>
+      <text class="section-desc">确认照片清晰后开始分析</text>
+    </view>
+
+    <view class="preview-wrapper">
+      <image
+        src="{{photoPath}}"
+        mode="aspectFill"
+        class="preview-image"
+      />
+      <view class="preview-badge">
+        <text>已拍摄</text>
+      </view>
+    </view>
+
+    <view class="preview-actions">
+      <button class="btn btn-ghost" bindtap="retake">
+        <text class="btn-icon">↩️</text>
+        <text>重拍</text>
+      </button>
+      <button class="btn btn-primary" bindtap="analyze" disabled="{{isAnalyzing}}">
+        <text wx:if="{{!isAnalyzing}}" class="btn-icon">🔍</text>
+        <text>{{isAnalyzing ? '分析中...' : '开始分析'}}</text>
+      </button>
+    </view>
+  </view>
+
+  <!-- Analysis Result Section -->
+  <view wx:if="{{showResult && result}}" class="result-section">
+    <!-- Overall Score -->
+    <view class="score-card">
+      <view class="score-ring">
+        <view class="score-number" style="color:{{result.overall_score >= 80 ? '#22c55e' : result.overall_score >= 60 ? '#3b82f6' : '#eab308'}}">
+          {{result.overall_score}}
+        </view>
+        <text class="score-label">综合评分</text>
+      </view>
+      <view class="score-divider"></view>
+      <view class="age-info">
+        <text class="age-number">{{result.predicted_age}}</text>
+        <text class="age-label">预测年龄</text>
+      </view>
+    </view>
+
+    <!-- Dimension Scores -->
+    <view class="dimensions-card">
+      <text class="card-title">六维评分</text>
+      <view class="dimension-item" wx:for="{{result.dimensions}}" wx:key="name">
+        <view class="dim-left">
+          <text class="dim-icon">{{item.icon}}</text>
+          <text class="dim-name">{{item.name}}</text>
+        </view>
+        <view class="dim-right">
+          <view class="dim-bar-bg">
+            <view
+              class="dim-bar-fill"
+              style="width:{{item.score}}%;background:{{item.score >= 80 ? '#22c55e' : item.score >= 60 ? '#3b82f6' : '#eab308'}}"
+            ></view>
+          </view>
+          <text class="dim-score">{{item.score}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- Summary -->
+    <view class="summary-card">
+      <text class="card-title">分析总结</text>
+      <text class="summary-text">{{result.summary}}</text>
+    </view>
+
+    <!-- Suggestions -->
+    <view class="suggestions-card">
+      <text class="card-title">改善建议</text>
+      <view class="suggestion-item" wx:for="{{result.suggestions}}" wx:key="index">
+        <view class="suggestion-dot"></view>
+        <text class="suggestion-text">{{item}}</text>
+      </view>
+    </view>
+
+    <!-- Action Buttons -->
+    <view class="result-actions">
+      <button class="btn btn-ghost" bindtap="retake">
+        <text class="btn-icon">📸</text>
+        <text>重新拍摄</text>
+      </button>
+      <button class="btn btn-primary" bindtap="saveResult">
+        <text class="btn-icon">💾</text>
+        <text>保存结果</text>
+      </button>
+    </view>
+  </view>
+<disclaimer compact="{{true}}"/>
+</view>

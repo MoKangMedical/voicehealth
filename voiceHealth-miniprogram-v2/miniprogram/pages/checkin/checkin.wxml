@@ -1,0 +1,184 @@
+<view class="container">
+  <view class="header">
+    <text class="title">每日健康打卡</text>
+    <text class="subtitle">记录饮食、运动、睡眠与压力，解释声音趋势变化</text>
+  </view>
+
+  <view class="loading-wrap" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text>加载今日记录...</text>
+  </view>
+
+  <block wx:if="{{!loading}}">
+    <view class="streak-card">
+      <view class="streak-main">
+        <text class="streak-num">{{streak}}</text>
+        <text class="streak-label">连续打卡天数</text>
+      </view>
+      <view class="streak-stats">
+        <view class="stat">
+          <text class="stat-value">{{totalDays}}</text>
+          <text class="stat-label">累计天数</text>
+        </view>
+        <view class="stat">
+          <text class="stat-value">{{summary.checkinDays || 0}}</text>
+          <text class="stat-label">近30天</text>
+        </view>
+        <view class="stat">
+          <text class="stat-value">{{summary.exerciseDays || 0}}</text>
+          <text class="stat-label">运动天数</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="week-card">
+      <text class="section-title">本周记录</text>
+      <view class="week-days">
+        <view class="week-day {{item.isChecked ? 'checked' : ''}} {{item.isToday ? 'today' : ''}}"
+              wx:for="{{currentWeek}}" wx:key="index">
+          <text class="day-label">{{weekDays[index]}}</text>
+          <text class="day-num">{{item.date}}</text>
+          <text class="day-check">{{item.isChecked ? '✓' : ''}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="form-section">
+      <view class="section-head">
+        <text class="section-name">饮食记录</text>
+        <text class="section-desc">三餐越具体，越利于解释嗓音、反流和疲劳波动</text>
+      </view>
+
+      <view class="field">
+        <text class="field-label">早餐</text>
+        <input class="field-input" value="{{form.breakfast}}" data-field="breakfast" bindinput="onFieldInput" placeholder="例如：鸡蛋、燕麦、牛奶" placeholder-class="placeholder" />
+      </view>
+      <view class="field">
+        <text class="field-label">午餐</text>
+        <input class="field-input" value="{{form.lunch}}" data-field="lunch" bindinput="onFieldInput" placeholder="例如：米饭、鸡胸肉、青菜" placeholder-class="placeholder" />
+      </view>
+      <view class="field">
+        <text class="field-label">晚餐</text>
+        <input class="field-input" value="{{form.dinner}}" data-field="dinner" bindinput="onFieldInput" placeholder="例如：面条、蔬菜、鱼" placeholder-class="placeholder" />
+      </view>
+      <view class="field">
+        <text class="field-label">加餐/饮品</text>
+        <input class="field-input" value="{{form.snack}}" data-field="snack" bindinput="onFieldInput" placeholder="例如：咖啡、水果、零食" placeholder-class="placeholder" />
+      </view>
+
+      <view class="chip-group">
+        <view class="chip {{item.selected ? 'selected' : ''}}" wx:for="{{dietTagOptions}}" wx:key="label" data-index="{{index}}" bindtap="toggleDietTag">
+          <text>{{item.label}}</text>
+        </view>
+      </view>
+
+      <view class="inline-grid">
+        <view class="field compact">
+          <text class="field-label">饮水 ml</text>
+          <input class="field-input" type="number" value="{{form.waterMl}}" data-field="waterMl" bindinput="onFieldInput" />
+        </view>
+        <view class="field compact">
+          <text class="field-label">咖啡/茶 杯</text>
+          <input class="field-input" type="digit" value="{{form.caffeineCups}}" data-field="caffeineCups" bindinput="onFieldInput" />
+        </view>
+      </view>
+
+      <view class="switch-row">
+        <text>饮酒</text>
+        <switch checked="{{form.alcohol}}" data-field="alcohol" bindchange="onSwitchChange" color="#3b82f6" />
+      </view>
+      <view class="switch-row">
+        <text>辛辣油腻</text>
+        <switch checked="{{form.spicyOily}}" data-field="spicyOily" bindchange="onSwitchChange" color="#3b82f6" />
+      </view>
+      <view class="switch-row">
+        <text>睡前进食</text>
+        <switch checked="{{form.lateMeal}}" data-field="lateMeal" bindchange="onSwitchChange" color="#3b82f6" />
+      </view>
+    </view>
+
+    <view class="form-section">
+      <view class="section-head">
+        <text class="section-name">运动与恢复</text>
+        <text class="section-desc">记录运动负荷、睡眠和压力，帮助判断声音疲劳来源</text>
+      </view>
+
+      <view class="field picker-field">
+        <text class="field-label">运动类型</text>
+        <picker mode="selector" range="{{exerciseTypes}}" value="{{exerciseTypeIndex}}" bindchange="onExerciseTypeChange">
+          <view class="picker-value">{{form.exerciseType}}</view>
+        </picker>
+      </view>
+
+      <view class="inline-grid">
+        <view class="field compact">
+          <text class="field-label">运动分钟</text>
+          <input class="field-input" type="number" value="{{form.exerciseMinutes}}" data-field="exerciseMinutes" bindinput="onFieldInput" />
+        </view>
+        <view class="field compact">
+          <text class="field-label">步数</text>
+          <input class="field-input" type="number" value="{{form.steps}}" data-field="steps" bindinput="onFieldInput" />
+        </view>
+      </view>
+
+      <view class="field picker-field">
+        <text class="field-label">运动强度</text>
+        <picker mode="selector" range="{{intensityOptions}}" value="{{intensityIndex}}" bindchange="onIntensityChange">
+          <view class="picker-value">{{form.exerciseIntensity}}</view>
+        </picker>
+      </view>
+
+      <view class="inline-grid">
+        <view class="field compact">
+          <text class="field-label">睡眠小时</text>
+          <input class="field-input" type="digit" value="{{form.sleepHours}}" data-field="sleepHours" bindinput="onFieldInput" />
+        </view>
+        <view class="field compact">
+          <text class="field-label">压力 0-5</text>
+          <input class="field-input" type="number" value="{{form.stressLevel}}" data-field="stressLevel" bindinput="onFieldInput" />
+        </view>
+      </view>
+
+      <view class="field picker-field">
+        <text class="field-label">今日状态</text>
+        <picker mode="selector" range="{{moodOptions}}" value="{{moodIndex}}" bindchange="onMoodChange">
+          <view class="picker-value">{{form.mood}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="form-section">
+      <view class="section-head">
+        <text class="section-name">症状与备注</text>
+        <text class="section-desc">如有不适，记录变化即可；明显症状应优先线下就医</text>
+      </view>
+
+      <view class="chip-group">
+        <view class="chip symptom {{item.selected ? 'selected' : ''}}" wx:for="{{symptomOptions}}" wx:key="label" data-index="{{index}}" bindtap="toggleSymptom">
+          <text>{{item.label}}</text>
+        </view>
+      </view>
+
+      <textarea class="notes" value="{{form.notes}}" data-field="notes" bindinput="onFieldInput" placeholder="可记录今天的特殊情况，例如熬夜、感冒、长时间讲话、训练强度变化" placeholder-class="placeholder" />
+    </view>
+
+    <button class="submit-btn {{isCheckedIn ? 'saved' : ''}}" loading="{{saving}}" disabled="{{saving}}" bindtap="submitCheckin">
+      {{isCheckedIn ? '更新今日记录' : '保存今日打卡'}}
+    </button>
+
+    <view class="rewards-card">
+      <text class="section-title">打卡里程碑</text>
+      <view class="reward-item {{item.unlocked ? 'unlocked' : ''}}" wx:for="{{rewards}}" wx:key="days">
+        <view class="reward-dot">{{item.unlocked ? '✓' : ''}}</view>
+        <view class="reward-info">
+          <text class="reward-name">{{item.reward}}</text>
+          <text class="reward-req">{{item.days}}天解锁</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="disclaimer">
+      <text>打卡用于健康趋势记录和生活方式回顾，不构成医学建议。</text>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - VoiceHealth V2 | Next-Gen Voice Health Screening</title>
+<meta name="description" content="Learn about VoiceHealth V2 - the next-generation voice health screening platform with enhanced AI models, multi-language support, and telemedicine integration.">
+<meta property="og:title" content="About VoiceHealth V2">
+<meta property="og:description" content="Next-gen voice health screening with enhanced AI and telemedicine.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1f3a4;</text></svg>">
+<link rel="stylesheet" href="https://mokangmedical.github.io/opc-homepage/shared-design-system.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#10b981;--primary-light:#34d399;--bg:#0a0a0f;--bg2:#0e0e15;--surface:#12121a;--surface2:#1a1a25;--text:#e2e8f0;--muted:#94a3b8;--border:rgba(255,255,255,.06);--accent:#10b981}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+a{color:var(--primary);text-decoration:none;transition:color .2s}
+a:hover{color:var(--primary-light)}
+
+.nav{position:fixed;top:0;left:0;right:0;background:rgba(10,10,15,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);z-index:1000;padding:.75rem 2rem;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-size:1.15rem;font-weight:700;color:var(--primary);display:flex;align-items:center;gap:.5rem}
+.nav-brand span{font-size:1.3rem}
+.nav-links{display:flex;gap:1.5rem;align-items:center}
+.nav-links a{color:var(--muted);font-size:.85rem;transition:color .2s;font-weight:500}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+
+.hero{min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(16,185,129,.12),transparent 50%)}
+.hero-content{position:relative;max-width:800px}
+.hero .badge{display:inline-block;padding:.4rem 1.2rem;background:#10b98118;border:1px solid #10b98133;border-radius:999px;font-size:.8rem;color:var(--accent);margin-bottom:1.5rem;letter-spacing:.05rem;text-transform:uppercase}
+.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;letter-spacing:-.03em;background:linear-gradient(135deg,#fff,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem;line-height:1.2}
+.hero p{font-size:1.15rem;color:var(--muted);max-width:650px;margin:0 auto}
+
+.section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
+.section-title{font-size:2rem;font-weight:700;text-align:center;margin-bottom:.5rem}
+.section-desc{text-align:center;color:var(--muted);max-width:600px;margin:0 auto 3rem}
+
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin:3rem 0}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;text-align:center;transition:all .3s}
+.stat-card:hover{border-color:#10b98140;transform:translateY(-3px)}
+.stat-num{font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,#fff,var(--primary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{color:var(--muted);font-size:.9rem;margin-top:.3rem}
+
+.timeline{position:relative;padding-left:2.5rem;margin:2rem 0}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--primary),transparent)}
+.timeline-item{position:relative;margin-bottom:2.5rem}
+.timeline-item::before{content:'';position:absolute;left:-2.15rem;top:.4rem;width:14px;height:14px;border-radius:50%;background:var(--primary);box-shadow:0 0 12px #10b98160}
+.timeline-item h3{font-size:1.1rem;font-weight:600;margin-bottom:.3rem}
+.timeline-item p{color:var(--muted);font-size:.95rem}
+.timeline-item .year{font-size:.8rem;color:var(--accent);font-weight:600;margin-bottom:.3rem}
+
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;transition:all .3s}
+.card:hover{border-color:#10b98140;transform:translateY(-3px)}
+.card .icon{font-size:2rem;margin-bottom:1rem}
+.card h3{font-size:1.15rem;font-weight:600;margin-bottom:.5rem}
+.card p{color:var(--muted);font-size:.9rem}
+
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
+.team-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;text-align:center;transition:all .3s}
+.team-card:hover{border-color:#10b98140;transform:translateY(-3px)}
+.team-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#10b98140,#10b98110);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1rem;border:2px solid #10b98130}
+.team-card h3{font-size:1.05rem;margin-bottom:.2rem}
+.team-card .role{color:var(--accent);font-size:.85rem;margin-bottom:.5rem}
+.team-card p{color:var(--muted);font-size:.85rem}
+
+.values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.value-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;transition:all .3s}
+.value-card:hover{border-color:#10b98140}
+.value-icon{font-size:1.8rem;margin-bottom:.8rem}
+.value-card h3{font-size:1.05rem;margin-bottom:.5rem}
+.value-card p{color:var(--muted);font-size:.9rem}
+
+.cta{text-align:center;padding:5rem 2rem;background:linear-gradient(180deg,transparent,#10b98108,transparent)}
+.cta h2{font-size:2rem;font-weight:700;margin-bottom:.8rem}
+.cta p{color:var(--muted);margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
+.btn{display:inline-block;padding:.85rem 2.2rem;background:var(--primary);color:#fff;border-radius:10px;font-weight:600;transition:all .25s;border:none;cursor:pointer;font-size:.95rem}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px #10b98140;color:#fff}
+.btn-outline{display:inline-block;padding:.7rem 1.8rem;border:1px solid #10b98166;color:var(--primary);border-radius:10px;font-weight:500;transition:all .25s}
+.btn-outline:hover{background:var(--primary);color:#fff}
+
+footer{text-align:center;padding:2.5rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border)}
+footer a{color:var(--muted)}
+
+.eco-nav{position:fixed;bottom:20px;right:20px;z-index:99;background:rgba(17,24,39,.95);backdrop-filter:blur(12px);border:1px solid #1e293b;border-radius:14px;padding:14px;box-shadow:0 12px 40px rgba(0,0,0,.5);max-width:200px}
+.eco-title{font-size:.7rem;color:#94a3b8;text-transform:uppercase;letter-spacing:.06rem;padding:4px 8px;border-bottom:1px solid #1e293b;margin-bottom:8px}
+.eco-link{display:block;padding:4px 8px;color:#94a3b8;font-size:.78rem;text-decoration:none;border-radius:6px;transition:all .2s}
+.eco-link:hover{background:#1e293b;color:#e2e8f0}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(10,10,15,.98);padding:1rem 2rem;gap:1rem;border-bottom:1px solid var(--border)}
+  .nav-toggle{display:block}
+  .hero{min-height:60vh;padding:6rem 1.5rem 3rem}
+  .section{padding:3rem 1.5rem}
+  .grid-2{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .eco-nav{bottom:10px;right:10px;padding:10px}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-brand"><span>🎤</span> VoiceHealth V2</a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="active">About</a>
+    <a href="https://github.com/VoiceHealth V2/voiceHealth-miniprogram-v2">GitHub</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <span class="badge">About VoiceHealth V2</span>
+    <h1>Next-Generation Voice Health Intelligence</h1>
+    <p>We evolved VoiceHealth into a comprehensive platform with transformer-based AI models, 20+ language support, telemedicine integration, and longitudinal health tracking — making voice-based health screening truly global.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-num">99.5%</div><div class="stat-label">Uptime SLA</div></div>
+    <div class="stat-card"><div class="stat-num">50ms</div><div class="stat-label">Response Time</div></div>
+    <div class="stat-card"><div class="stat-num">20+</div><div class="stat-label">Languages Supported</div></div>
+    <div class="stat-card"><div class="stat-num">HIPAA</div><div class="stat-label">Compliant</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Our Story</h2>
+  <p class="section-desc">From V1 success to a global, AI-powered health platform</p>
+  <div class="grid-2">
+    <div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="year">2023</div>
+          <h3>V1 Lessons Learned</h3>
+          <p>VoiceHealth v1 proved the concept — thousands of users screened daily via WeChat. But we identified key needs: multi-language support, deeper clinical integration, and telemedicine capabilities.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="year">2024 Q1</div>
+          <h3>Transformer Architecture</h3>
+          <p>Rebuilt the voice analysis engine on transformer-based models, achieving 15% higher accuracy across all condition categories and enabling cross-linguistic voice biomarker extraction.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="year">2024 Q2</div>
+          <h3>Multi-Language Expansion</h3>
+          <p>Added support for 20+ languages and dialects, making VoiceHealth accessible to users worldwide. Developed language-agnostic voice biomarker features that work across linguistic boundaries.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="year">2024 Q4</div>
+          <h3>Telemedicine Integration</h3>
+          <p>Launched integrated video consultation with specialists, enabling seamless referral from AI screening to professional clinical assessment within a single platform.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="year">2025</div>
+          <h3>Global Platform Launch</h3>
+          <p>VoiceHealth V2 launched as a comprehensive health screening platform with EHR integration, longitudinal tracking, blockchain audit trail, and enterprise API access for healthcare organizations.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:1.5rem">
+        <div class="icon">🎯</div>
+        <h3>Our Mission</h3>
+        <p>To make AI-powered voice health screening universally accessible across languages and healthcare systems, enabling early detection and continuous health monitoring for everyone, everywhere.</p>
+      </div>
+      <div class="card" style="margin-bottom:1.5rem">
+        <div class="icon">🔭</div>
+        <h3>Our Vision</h3>
+        <p>A world where your voice is a continuous health indicator — where longitudinal voice tracking detects changes early, telemedicine bridges diagnosis gaps, and AI empowers preventive care globally.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🤝</div>
+        <h3>Our Approach</h3>
+        <p>We combine breakthrough AI research with clinical expertise and cultural sensitivity, building a platform that works across languages, healthcare systems, and care delivery models worldwide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--surface);border-radius:20px;padding:4rem 2rem;max-width:1100px;margin:0 auto 3rem">
+  <h2 class="section-title">Core Values</h2>
+  <p class="section-desc">The principles that guide everything we build</p>
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="value-icon">🌍</div>
+      <h3>Global Accessibility</h3>
+      <p>20+ language support with language-agnostic biomarker extraction. Voice health screening that works regardless of the language you speak or where you live.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🧠</div>
+      <h3>AI Excellence</h3>
+      <p>Transformer-based models deliver state-of-the-art accuracy in voice biomarker detection. Continuous learning from global screening data improves models across all demographics.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">💊</div>
+      <h3>Integrated Care</h3>
+      <p>Seamless pathway from AI screening to telemedicine consultation to EHR integration — closing the loop from detection to diagnosis to treatment.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">📊</div>
+      <h3>Longitudinal Insight</h3>
+      <p>Track voice health changes over months and years, detecting gradual shifts that may indicate developing conditions long before symptoms become clinically apparent.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">📈</div>
+      <h3>Continuous Innovation</h3>
+      <p>Every screening enriches our models. We continuously expand condition coverage, improve accuracy, and add new biomarkers based on the latest clinical research.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🔐</div>
+      <h3>Trust & Transparency</h3>
+      <p>Blockchain-powered immutable audit trail for clinical compliance. Every screening decision is transparent, traceable, and verifiable for regulatory requirements.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">V1 vs V2: What's New</h2>
+  <p class="section-desc">Significant upgrades across every dimension of the platform</p>
+  <div class="grid-2">
+    <div class="card">
+      <div class="icon">🎙️</div>
+      <h3>Enhanced Voice AI</h3>
+      <p>Transformer-based models replace the original CNN architecture, delivering 15% higher accuracy and enabling cross-linguistic voice biomarker extraction for global deployment.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🌍</div>
+      <h3>Multi-Language Support</h3>
+      <p>Expanded from Chinese-only to 20+ languages and dialects. Language-agnostic biomarker features ensure consistent detection accuracy across linguistic boundaries.</p>
+    </div>
+    <div class="card">
+      <div class="icon">💊</div>
+      <h3>Telemedicine Integration</h3>
+      <p>Integrated video consultation with specialists. Users can seamlessly transition from AI screening to professional clinical assessment within a single platform experience.</p>
+    </div>
+    <div class="card">
+      <div class="icon">📊</div>
+      <h3>Longitudinal Tracking</h3>
+      <p>Track voice health changes over months and years. Detect gradual shifts that may indicate developing conditions before symptoms become clinically apparent.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🏥</div>
+      <h3>Clinical Integration</h3>
+      <p>Direct EHR integration for seamless clinical workflows. Screening results automatically populate patient records for provider review and follow-up.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🔐</div>
+      <h3>Blockchain Audit</h3>
+      <p>Immutable audit trail for clinical compliance. Every screening, referral, and clinical decision is cryptographically recorded for regulatory transparency.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Leadership Team</h2>
+  <p class="section-desc">Building on V1 success with expanded expertise</p>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar">👩‍⚕️</div>
+      <h3>Dr. Lin Wei</h3>
+      <div class="role">CEO & Co-Founder</div>
+      <p>Former digital health lead at Tencent. 12+ years in healthcare technology and mobile health platform development.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">👨‍💻</div>
+      <h3>Dr. Hao Chen</h3>
+      <div class="role">CTO & Co-Founder</div>
+      <p>Ex-Baidu AI researcher specializing in voice and speech processing. PhD in Signal Processing from Tsinghua University.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">👩‍🔬</div>
+      <h3>Dr. Sarah Mitchell</h3>
+      <div class="role">Chief Science Officer</div>
+      <p>Published 40+ papers on voice biomarkers and speech pathology. Former researcher at MIT Lincoln Laboratory.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">👨‍💼</div>
+      <h3>Dr. Marco Rossi</h3>
+      <div class="role">VP of Global Health</div>
+      <p>Former WHO digital health advisor. Expert in deploying health technology across diverse healthcare systems and cultures.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Join the Global Voice Health Movement</h2>
+  <p>Healthcare institutions worldwide are using VoiceHealth V2 to transform preventive care through AI-powered voice screening.</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+    <a href="mailto:contact@voiceHealth-miniprogram-v2.com?subject=VoiceHealth V2 Inquiry" class="btn">Contact Us</a>
+    <a href="https://github.com/VoiceHealth V2/voiceHealth-miniprogram-v2" class="btn-outline">View on GitHub</a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 VoiceHealth V2 OPC Ecosystem. All rights reserved. | <a href="https://mokangmedical.github.io/opc-homepage/">OPC Home</a> | <a href="https://github.com/VoiceHealth V2/voiceHealth-miniprogram-v2">GitHub</a></p>
+</footer>
+
+<div class="eco-nav">
+  <div class="eco-title">OPC Ecosystem</div>
+  <a href="https://mokangmedical.github.io/opc-homepage/" class="eco-link">🏠 OPC Home</a>
+  <a href="https://mokangmedical.github.io/Harmes-Agent/" class="eco-link">🤖 Harmes-Agent</a>
+  <a href="https://mokangmedical.github.io/LabMind--/" class="eco-link">🧪 LabMind</a>
+  <a href="https://mokangmedical.github.io/MediGuard--/" class="eco-link">🏥 MediGuard</a>
+  <a href="https://mokangmedical.github.io/medivisual-artist--/" class="eco-link">🎨 MediVisual Artist</a>
+</div>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.card, .stat-card, .team-card, .value-card, .timeline-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+  observer.observe(el);
+});
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>

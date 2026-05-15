@@ -1,0 +1,79 @@
+<!--pages/face/face.wxml-->
+<view class="container">
+  <!-- 相机/照片 -->
+  <view class="photo-section" wx:if="{{!photoPath}}">
+    <camera class="camera" device-position="{{cameraMode}}">
+      <view class="camera-guide">
+        <view class="guide-face"></view>
+        <text class="guide-text">将面部置于框内</text>
+      </view>
+    </camera>
+    <view class="camera-actions">
+      <view class="action-btn" bindtap="switchCamera">
+        <text>🔄</text>
+        <text class="action-text">翻转</text>
+      </view>
+      <view class="capture-btn" bindtap="takePhoto">
+        <view class="capture-inner"></view>
+      </view>
+      <view class="action-btn" bindtap="choosePhoto">
+        <text>🖼️</text>
+        <text class="action-text">相册</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 照片预览 -->
+  <view class="preview-section" wx:if="{{photoPath && !showResult}}">
+    <image class="preview-image" src="{{photoPath}}" mode="aspectFill"/>
+    <view class="preview-actions">
+      <button class="btn btn-ghost" bindtap="retake">重拍</button>
+      <button class="btn btn-primary" bindtap="analyze" loading="{{isAnalyzing}}">
+        {{isAnalyzing ? '分析中...' : '开始分析'}}
+      </button>
+    </view>
+  </view>
+
+  <!-- 分析结果 -->
+  <view class="result-section" wx:if="{{showResult && result}}">
+    <view class="result-header">
+      <view class="score-circle" style="border-color: {{result.scoreColor}}">
+        <text class="score-value">{{result.overall_score}}</text>
+        <text class="score-label">综合评分</text>
+      </view>
+      <view class="age-info">
+        <text class="age-label">预测年龄</text>
+        <text class="age-value">{{result.predicted_age}}岁</text>
+      </view>
+    </view>
+
+    <view class="dimensions">
+      <view class="dimension-item" wx:for="{{result.dimensions}}" wx:key="name">
+        <text class="dim-name">{{item.name}}</text>
+        <view class="dim-bar">
+          <view class="dim-fill" style="width: {{item.score}}%; background: {{item.color}}"></view>
+        </view>
+        <text class="dim-score">{{item.score}}</text>
+        <text class="dim-detail" wx:if="{{item.detail}}">{{item.detail}}</text>
+      </view>
+    </view>
+
+    <view class="summary-card">
+      <text class="summary-title">分析摘要</text>
+      <text class="summary-text">{{result.summary}}</text>
+    </view>
+
+    <view class="suggestions" wx:if="{{result.suggestions}}">
+      <text class="suggestions-title">改善建议</text>
+      <view class="suggestion-item" wx:for="{{result.suggestions}}" wx:key="index">
+        <text class="suggestion-dot">•</text>
+        <text class="suggestion-text">{{item}}</text>
+      </view>
+    </view>
+
+    <view class="result-actions">
+      <button class="btn btn-ghost" bindtap="retake">重新检测</button>
+      <button class="btn btn-primary" open-type="share">分享结果</button>
+    </view>
+  </view>
+</view>

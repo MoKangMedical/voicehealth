@@ -1,0 +1,1 @@
+module.exports={cloudEnv:'voicehealth-xxxxx',api:{baseUrl:'https://voicehealth-api.example.com',devBaseUrl:'http://localhost:8100',useDev:true},payment:{singlePrice:990,vipMonthlyPrice:2990,freePerDay:1},analysis:{maxDuration:60000,recommendDuration:30,sampleRate:16000,numberOfChannels:1,encodeBitRate:96000,format:'wav'}}

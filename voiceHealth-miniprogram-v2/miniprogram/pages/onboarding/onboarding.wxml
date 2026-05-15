@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="skip-btn" bindtap="skip">跳过</view>
+  
+  <view class="step-content">
+    <view class="step-icon" style="background:{{steps[currentStep].color}}20">
+      <text class="icon-text">{{steps[currentStep].icon}}</text>
+    </view>
+    <text class="step-title">{{steps[currentStep].title}}</text>
+    <text class="step-desc">{{steps[currentStep].desc}}</text>
+  </view>
+  
+  <view class="indicators">
+    <view class="indicator {{index === currentStep ? 'active' : ''}}" 
+          wx:for="{{steps}}" wx:key="index"
+          style="background:{{index === currentStep ? steps[currentStep].color : 'rgba(255,255,255,0.2)'}}">
+    </view>
+  </view>
+  
+  <button class="btn-start" style="background:{{steps[currentStep].color}}" bindtap="nextStep">
+    {{currentStep === steps.length - 1 ? '开始使用' : '下一步'}}
+  </button>
+</view>

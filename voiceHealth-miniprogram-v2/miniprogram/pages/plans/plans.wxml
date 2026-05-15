@@ -1,0 +1,50 @@
+<view class="container">
+  <view class="header">
+    <text class="title">循证健康方案库</text>
+    <text class="subtitle">按官方指南和公共卫生建议整理，供健康管理和改善闭环使用</text>
+  </view>
+
+  <view class="loading-wrap" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text>加载方案库...</text>
+  </view>
+
+  <block wx:if="{{!loading}}">
+    <scroll-view class="tabs" scroll-x>
+      <view class="tab {{activeDomain === item ? 'active' : ''}}" wx:for="{{domains}}" wx:key="item" data-domain="{{item}}" bindtap="switchDomain">
+        <text>{{item === 'all' ? '全部' : item}}</text>
+      </view>
+    </scroll-view>
+
+    <view class="summary-card">
+      <text class="summary-value">{{plans.length}}</text>
+      <text class="summary-label">当前分类方案</text>
+      <text class="summary-text">每条方案包含适用场景、目标、步骤、指标、注意事项和证据来源。</text>
+    </view>
+
+    <view class="plan-card" wx:for="{{plans}}" wx:key="id" data-id="{{item.id}}" bindtap="showPlan">
+      <view class="plan-top">
+        <view>
+          <text class="plan-domain">{{item.domain}}</text>
+          <text class="plan-title">{{item.title}}</text>
+        </view>
+        <text class="plan-level">{{item.evidenceLevel}}</text>
+      </view>
+      <text class="plan-summary">{{item.summary}}</text>
+      <view class="tag-row">
+        <text class="tag" wx:for="{{item.suitableFor}}" wx:for-item="tag" wx:key="index">{{tag}}</text>
+      </view>
+      <view class="target-box">
+        <text class="target-label">目标</text>
+        <text class="target-text">{{item.target}}</text>
+      </view>
+      <view class="metric-row">
+        <text class="metric" wx:for="{{item.metrics}}" wx:for-item="metric" wx:key="index">{{metric}}</text>
+      </view>
+    </view>
+
+    <view class="disclaimer">
+      方案用于健康管理参考，不替代医生诊断或治疗。特殊疾病、孕期、用药或明显不适时，应按专业医嘱执行。
+    </view>
+  </block>
+</view>

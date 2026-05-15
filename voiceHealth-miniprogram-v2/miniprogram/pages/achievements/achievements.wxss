@@ -1,0 +1,20 @@
+.container{min-height:100vh;padding:32rpx}
+.header{text-align:center;margin-bottom:40rpx}
+.title{font-size:40rpx;font-weight:700;display:block;margin-bottom:20rpx}
+.progress{display:flex;flex-direction:column;align-items:center;gap:12rpx}
+.progress-text{font-size:26rpx;color:rgba(255,255,255,0.65)}
+.progress-bar{width:80%;height:12rpx;background:rgba(255,255,255,0.1);border-radius:6rpx;overflow:hidden}
+.progress-fill{height:100%;background:#3b82f6;border-radius:6rpx;transition:width .5s}
+.badges-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16rpx;margin-bottom:40rpx}
+.badge-item{background:rgba(255,255,255,0.04);border-radius:16rpx;padding:20rpx;text-align:center;opacity:0.4}
+.badge-item.unlocked{opacity:1;border:1rpx solid rgba(59,130,246,0.3)}
+.badge-icon-wrap{width:80rpx;height:80rpx;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;margin:0 auto 12rpx}
+.badge-item.unlocked .badge-icon-wrap{background:rgba(59,130,246,0.15)}
+.badge-icon{font-size:36rpx}
+.badge-name{font-size:24rpx;font-weight:600;display:block;margin-bottom:4rpx}
+.badge-desc{font-size:20rpx;color:rgba(255,255,255,0.45)}
+.tips{background:rgba(255,255,255,0.04);border-radius:16rpx;padding:24rpx}
+.tips-title{font-size:26rpx;font-weight:600;display:block;margin-bottom:16rpx}
+.tip-item{display:flex;gap:12rpx;margin-bottom:8rpx}
+.tip-dot{color:#3b82f6}
+.tip-text{font-size:24rpx;color:rgba(255,255,255,0.65)}

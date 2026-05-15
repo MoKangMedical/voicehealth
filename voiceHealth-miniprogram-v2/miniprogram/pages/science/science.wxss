@@ -1,0 +1,67 @@
+/* pages/science/science.wxss */
+.container { padding: 32rpx; min-height: 100vh; }
+.header { text-align: center; margin-bottom: 40rpx; }
+.title { font-size: 40rpx; font-weight: 700; display: block; }
+.subtitle { font-size: 26rpx; color: rgba(255,255,255,0.45); }
+
+.tabs { display: flex; gap: 12rpx; margin-bottom: 32rpx; overflow-x: auto; }
+.tab { padding: 16rpx 24rpx; border-radius: 20rpx; font-size: 24rpx; background: rgba(255,255,255,0.04); white-space: nowrap; }
+.tab.active { background: #3b82f6; color: #fff; }
+
+.theory-card { background: rgba(255,255,255,0.04); border-radius: 20rpx; padding: 32rpx; margin-bottom: 20rpx; }
+.theory-icon { font-size: 48rpx; display: block; margin-bottom: 16rpx; }
+.theory-title { font-size: 30rpx; font-weight: 600; display: block; margin-bottom: 12rpx; }
+.theory-desc { font-size: 26rpx; color: rgba(255,255,255,0.65); line-height: 1.6; }
+.theory-basis { display: block; margin-top: 14rpx; font-size: 22rpx; color: rgba(147,197,253,0.72); line-height: 1.45; }
+
+.disease-summary { background: rgba(59,130,246,0.10); border: 1rpx solid rgba(59,130,246,0.22); border-radius: 20rpx; padding: 32rpx; margin-bottom: 24rpx; text-align: center; }
+.disease-group { margin-bottom: 28rpx; }
+.group-title { display: block; margin-bottom: 14rpx; font-size: 28rpx; font-weight: 700; color: #f8fafc; }
+.disease-card { background: rgba(255,255,255,0.04); border: 1rpx solid rgba(255,255,255,0.06); border-radius: 18rpx; padding: 24rpx; margin-bottom: 14rpx; }
+.disease-name { display: block; font-size: 28rpx; font-weight: 700; color: #fff; margin-bottom: 8rpx; }
+.disease-desc, .disease-markers { display: block; font-size: 24rpx; color: rgba(255,255,255,0.58); line-height: 1.55; }
+.disease-markers { margin-top: 10rpx; color: #93c5fd; }
+
+.paper-card { background: rgba(255,255,255,0.04); border-radius: 20rpx; padding: 32rpx; margin-bottom: 20rpx; }
+.paper-head { display: flex; align-items: center; justify-content: space-between; gap: 12rpx; margin-bottom: 12rpx; }
+.paper-category { font-size: 22rpx; color: #93c5fd; padding: 6rpx 12rpx; border-radius: 999rpx; background: rgba(59,130,246,0.14); }
+.paper-year { font-size: 22rpx; color: rgba(255,255,255,0.42); }
+.paper-title { font-size: 28rpx; font-weight: 600; display: block; margin-bottom: 8rpx; line-height: 1.35; }
+.paper-journal { font-size: 24rpx; color: #3b82f6; display: block; margin-bottom: 16rpx; }
+.paper-note, .paper-limit { display: block; font-size: 24rpx; color: rgba(255,255,255,0.60); line-height: 1.55; margin-bottom: 10rpx; }
+.paper-limit { color: rgba(255,255,255,0.42); }
+.paper-doi { display: flex; align-items: center; gap: 8rpx; background: rgba(0,0,0,0.3); padding: 12rpx 16rpx; border-radius: 8rpx; }
+.doi-label { font-size: 22rpx; color: rgba(255,255,255,0.45); }
+.doi-value { font-size: 22rpx; flex: 1; overflow: hidden; text-overflow: ellipsis; }
+.doi-copy { font-size: 22rpx; color: #3b82f6; padding: 4rpx 12rpx; background: rgba(59,130,246,0.2); border-radius: 8rpx; }
+
+.guide-card, .checkin-card, .compliance-card { background: rgba(255,255,255,0.04); border: 1rpx solid rgba(255,255,255,0.06); border-radius: 20rpx; padding: 28rpx; margin-bottom: 18rpx; }
+.guide-title, .checkin-title, .compliance-title { display: block; font-size: 29rpx; font-weight: 700; color: #fff; margin-bottom: 16rpx; }
+.guide-item { display: flex; align-items: flex-start; gap: 14rpx; margin-bottom: 12rpx; }
+.guide-item:last-child { margin-bottom: 0; }
+.guide-dot { color: #3b82f6; font-size: 28rpx; line-height: 1.35; }
+.guide-text, .checkin-desc, .compliance-desc { flex: 1; font-size: 25rpx; line-height: 1.6; color: rgba(255,255,255,0.62); }
+.checkin-card { background: rgba(59,130,246,0.08); border-color: rgba(59,130,246,0.14); }
+.compliance-card { background: rgba(34,197,94,0.06); border-color: rgba(34,197,94,0.12); }
+
+.tech-flow { padding: 0 16rpx; }
+.tech-step { display: flex; align-items: flex-start; gap: 24rpx; margin-bottom: 32rpx; position: relative; }
+.tech-step::before { content: ''; position: absolute; left: 36rpx; top: 72rpx; bottom: -32rpx; width: 2rpx; background: rgba(59,130,246,0.3); }
+.tech-step:last-child::before { display: none; }
+.step-number { width: 72rpx; height: 72rpx; border-radius: 50%; background: #3b82f6; display: flex; align-items: center; justify-content: center; font-size: 28rpx; font-weight: 700; flex-shrink: 0; }
+.step-content { flex: 1; padding-top: 8rpx; }
+.step-title { font-size: 28rpx; font-weight: 600; display: block; margin-bottom: 8rpx; }
+.step-desc { font-size: 24rpx; color: rgba(255,255,255,0.65); }
+
+.validation-card { display: flex; justify-content: space-around; background: rgba(255,255,255,0.04); border-radius: 20rpx; padding: 40rpx 20rpx; margin-bottom: 24rpx; }
+.metric { text-align: center; }
+.metric-value { font-size: 40rpx; font-weight: 700; color: #22c55e; display: block; }
+.metric-label { font-size: 22rpx; color: rgba(255,255,255,0.45); }
+
+.validation-info { background: rgba(255,255,255,0.04); border-radius: 20rpx; padding: 24rpx; }
+.info-item { display: flex; justify-content: space-between; padding: 16rpx 0; border-bottom: 1rpx solid rgba(255,255,255,0.06); }
+.info-item:last-child { border-bottom: none; }
+.info-label { font-size: 26rpx; color: rgba(255,255,255,0.65); }
+.info-value { font-size: 26rpx; font-weight: 600; }
+
+.disclaimer { font-size: 22rpx; color: rgba(255,255,255,0.25); text-align: center; padding: 40rpx 0; }

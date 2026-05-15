@@ -1,0 +1,46 @@
+<view class="container">
+  <view class="header">
+    <text class="title">家庭成员</text>
+    <text class="subtitle">为家人守护健康</text>
+  </view>
+  
+  <view class="member-list">
+    <view class="member-card {{item.isMain ? 'main' : ''}}" 
+          wx:for="{{members}}" wx:key="id"
+          data-id="{{item.id}}" bindtap="selectMember">
+      <view class="member-avatar">{{item.avatar}}</view>
+      <view class="member-info">
+        <text class="member-name">{{item.name}}</text>
+        <text class="member-relation">{{item.relation}}</text>
+      </view>
+      <view class="member-actions" wx:if="{{!item.isMain}}">
+        <view class="remove-btn" data-id="{{item.id}}" catchtap="removeMember">✕</view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="add-section" wx:if="{{!showAdd}}">
+    <button class="add-btn" bindtap="showAddMember">+ 添加家庭成员</button>
+  </view>
+  
+  <view class="add-form" wx:if="{{showAdd}}">
+    <view class="form-card">
+      <text class="form-title">添加家庭成员</text>
+      <input class="form-input" placeholder="姓名" value="{{newMember.name}}" bindinput="inputName"/>
+      <picker class="form-picker" range="{{relations}}" bindchange="selectRelation">
+        <view class="picker-value">{{newMember.relation || '选择关系'}}</view>
+      </picker>
+      <view class="form-actions">
+        <button class="btn-cancel" bindtap="hideAddMember">取消</button>
+        <button class="btn-confirm" bindtap="addMember">添加</button>
+      </view>
+    </view>
+  </view>
+  
+  <view class="tips">
+    <text class="tips-title">家庭健康守护</text>
+    <view class="tip-item"><text class="tip-dot">•</text><text class="tip-text">为家人定期进行健康检测</text></view>
+    <view class="tip-item"><text class="tip-dot">•</text><text class="tip-text">追踪家人健康趋势变化</text></view>
+    <view class="tip-item"><text class="tip-dot">•</text><text class="tip-text">及时发现健康异常</text></view>
+  </view>
+</view>

@@ -1,0 +1,75 @@
+<!--pages/combined/combined.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="title">综合健康评估</text>
+    <text class="subtitle">整合声纹、面部和视频报告生成综合参考</text>
+  </view>
+
+  <view class="sources">
+    <view class="source-item {{item.active ? 'active' : ''}}" wx:for="{{sources}}" wx:key="type">
+      <text class="source-icon">{{item.icon}}</text>
+      <text class="source-name">{{item.name}}</text>
+      <text class="source-status">{{item.status}}</text>
+    </view>
+  </view>
+
+  <view class="source-actions" wx:if="{{!showResult}}">
+    <button class="mini-btn" bindtap="goVoice">语音检测</button>
+    <button class="mini-btn" bindtap="goFace">面部分析</button>
+    <button class="mini-btn" bindtap="goVideo">视频分析</button>
+  </view>
+
+  <view class="action-section" wx:if="{{!showResult}}">
+    <button class="btn btn-primary btn-large"
+            bindtap="startCombinedAnalysis"
+            loading="{{isAnalyzing || loadingSources}}">
+      {{loadingSources ? '读取报告中...' : (isAnalyzing ? '综合分析中...' : '开始综合评估')}}
+    </button>
+    <text class="action-hint">默认使用最近一次语音、面部和视频报告；缺少某类数据时会基于现有数据生成。</text>
+  </view>
+
+  <view class="result-section" wx:if="{{showResult && combinedResult}}">
+    <view class="overall-score">
+      <view class="score-ring" style="border-color: {{combinedResult.scoreColor}}">
+        <text class="score-number">{{combinedResult.overall_score}}</text>
+        <text class="score-text">综合评分</text>
+      </view>
+      <view class="age-ring">
+        <text class="age-number">{{combinedResult.biological_age}}</text>
+        <text class="age-text">生物年龄</text>
+      </view>
+    </view>
+
+    <view class="dimensions-card">
+      <text class="card-title">六维健康指标</text>
+      <view class="dimensions-grid">
+        <view class="dimension" wx:for="{{combinedResult.dimensions}}" wx:key="name">
+          <text class="dim-icon">{{item.icon}}</text>
+          <text class="dim-name">{{item.name}}</text>
+          <view class="dim-score" style="color: {{item.color}}">{{item.score}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="summary-card">
+      <text class="card-title">综合分析</text>
+      <text class="summary-text">{{combinedResult.summary}}</text>
+    </view>
+
+    <view class="suggestions-card">
+      <text class="card-title">健康建议</text>
+      <view class="suggestion" wx:for="{{combinedResult.suggestions}}" wx:key="index">
+        <text class="suggestion-num">{{index + 1}}</text>
+        <text class="suggestion-text">{{item}}</text>
+      </view>
+    </view>
+
+    <view class="result-actions">
+      <button class="btn btn-ghost" bindtap="goHome">返回首页</button>
+      <button class="btn btn-primary" bindtap="goReport">完整报告</button>
+      <button class="btn btn-share" open-type="share">分享</button>
+    </view>
+  </view>
+
+  <view class="disclaimer">本报告仅供健康参考，不构成医学诊断或治疗建议。</view>
+</view>

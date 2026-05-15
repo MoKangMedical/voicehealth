@@ -1,0 +1,94 @@
+<!--pages/video/video.wxml-->
+<view class="container">
+  <!-- 相机 -->
+  <view class="camera-section" wx:if="{{!videoPath && !showResult}}">
+    <camera class="camera" device-position="{{cameraMode}}">
+      <view class="recording-overlay" wx:if="{{isRecording}}">
+        <view class="recording-dot"></view>
+        <text class="recording-time">{{recordingTimeText}}</text>
+      </view>
+    </camera>
+    
+    <view class="camera-controls">
+      <view class="control-btn" bindtap="switchCamera">🔄</view>
+      <view class="record-btn {{isRecording ? 'recording' : ''}}" bindtap="toggleRecording">
+        <view class="record-inner"></view>
+      </view>
+      <view class="control-btn placeholder"></view>
+    </view>
+
+    <view class="detect-section">
+      <text class="section-title">检测项目</text>
+      <view class="detect-items">
+        <view class="detect-item {{item.enabled ? 'active' : ''}}" 
+              wx:for="{{detectItems}}" wx:key="id"
+              data-id="{{item.id}}" bindtap="toggleItem">
+          <text class="detect-icon">{{item.icon}}</text>
+          <text class="detect-name">{{item.name}}</text>
+          <text class="detect-check">{{item.enabled ? '✓' : ''}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 预览 -->
+  <view class="preview-section" wx:if="{{videoPath && !showResult && !isAnalyzing}}">
+    <video class="preview-video" src="{{videoPath}}" controls/>
+    <view class="preview-actions">
+      <button class="btn btn-ghost" bindtap="retake">重录</button>
+      <button class="btn btn-primary" bindtap="startAnalysis">开始分析</button>
+    </view>
+  </view>
+
+  <!-- 分析中 -->
+  <view class="analyzing-section" wx:if="{{isAnalyzing}}">
+    <view class="analyzing-card">
+      <text class="analyzing-icon">🔬</text>
+      <text class="analyzing-title">视频分析中</text>
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{analyzeProgress}}%"></view>
+      </view>
+      <text class="progress-text">{{analyzeProgress}}%</text>
+    </view>
+  </view>
+
+  <!-- 结果 -->
+  <view class="result-section" wx:if="{{showResult && result}}">
+    <view class="result-header">
+      <view class="score-circle" style="border-color: {{result.scoreColor}}">
+        <text class="score-value">{{result.overall_score}}</text>
+        <text class="score-label">综合评分</text>
+      </view>
+      <view class="age-info">
+        <text class="age-label">预测年龄</text>
+        <text class="age-value">{{result.biological_age}}岁</text>
+      </view>
+    </view>
+
+    <view class="result-cards">
+      <view class="result-card" wx:if="{{result.skin}}">
+        <text class="card-icon">🧴</text>
+        <text class="card-title">皮肤</text>
+        <text class="card-score" style="color: {{result.skin.scoreColor}}">{{result.skin.overall_score}}分</text>
+        <text class="card-summary">{{result.skin.summary}}</text>
+      </view>
+      <view class="result-card" wx:if="{{result.eye}}">
+        <text class="card-icon">👁️</text>
+        <text class="card-title">眼睛</text>
+        <text class="card-score" style="color: {{result.eye.scoreColor}}">{{result.eye.overall_score}}分</text>
+        <text class="card-summary">{{result.eye.summary}}</text>
+      </view>
+      <view class="result-card" wx:if="{{result.hair}}">
+        <text class="card-icon">💇</text>
+        <text class="card-title">头发</text>
+        <text class="card-score" style="color: {{result.hair.scoreColor}}">{{result.hair.overall_score}}分</text>
+        <text class="card-summary">{{result.hair.summary}}</text>
+      </view>
+    </view>
+
+    <view class="result-actions">
+      <button class="btn btn-ghost" bindtap="retake">重新检测</button>
+      <button class="btn btn-primary" open-type="share">分享结果</button>
+    </view>
+  </view>
+</view>

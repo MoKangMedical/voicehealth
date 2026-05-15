@@ -1,0 +1,70 @@
+{
+  "cloud": false,
+  "pages": [
+    "pages/index/index",
+    "pages/onboarding/onboarding",
+    "pages/report/report",
+    "pages/privacy/privacy",
+    "pages/history/history",
+    "pages/profile/profile",
+    "pages/science/science",
+    "pages/face/face",
+    "pages/combined/combined",
+    "pages/video/video",
+    "pages/trends/trends",
+    "pages/orders/orders",
+    "pages/checkin/checkin",
+    "pages/improvement/improvement",
+    "pages/plans/plans",
+    "pages/articles/articles",
+    "pages/achievements/achievements",
+    "pages/family/family"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#0a0a0f",
+    "navigationBarTitleText": "VoiceHealth",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#0a0a0f",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#8888a0",
+    "selectedColor": "#3b82f6",
+    "backgroundColor": "#0a0a0f",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tab-home.png",
+        "selectedIconPath": "images/tab-home-active.png"
+      },
+      {
+        "pagePath": "pages/history/history",
+        "text": "记录",
+        "iconPath": "images/tab-history.png",
+        "selectedIconPath": "images/tab-history-active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "images/tab-profile.png",
+        "selectedIconPath": "images/tab-profile-active.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.record": {
+      "desc": "需要录音权限以生成声音健康参考报告"
+    },
+    "scope.camera": {
+      "desc": "需要相机权限以进行面部和视频健康参考分析"
+    }
+  },
+  "requiredPrivateInfos": [
+    "chooseImage",
+    "chooseMedia"
+  ],
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

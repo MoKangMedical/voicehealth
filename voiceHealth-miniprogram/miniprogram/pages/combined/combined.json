@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "disclaimer": "/components/disclaimer/disclaimer"
+  },
+  "navigationBarTitleText": "综合健康评估"
+}

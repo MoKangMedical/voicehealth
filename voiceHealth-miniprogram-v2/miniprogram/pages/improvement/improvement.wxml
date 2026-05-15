@@ -1,0 +1,131 @@
+<view class="container">
+  <view class="header">
+    <text class="title">改善闭环</text>
+    <text class="subtitle">发现问题、执行方案、记录进度、复测回顾、调整下一轮</text>
+  </view>
+
+  <view class="loading-wrap" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text>加载改善计划...</text>
+  </view>
+
+  <view class="empty-state" wx:if="{{!loading && empty}}">
+    <text class="empty-icon">📈</text>
+    <text class="empty-title">还没有可用的改善闭环</text>
+    <text class="empty-desc">先完成一次健康参考报告，系统会基于评分和风险信号生成行动计划。</text>
+    <button class="btn btn-primary" bindtap="goRecheck">去检测</button>
+    <button class="btn btn-ghost" bindtap="startNewCycle">尝试生成</button>
+  </view>
+
+  <block wx:if="{{!loading && cycle}}">
+    <view class="status-card">
+      <view class="status-top">
+        <view>
+          <text class="status-label">{{cycle.plan.scoreStatus.label}}</text>
+          <text class="status-msg">{{cycle.review.summary.message}}</text>
+        </view>
+        <view class="status-pill {{cycle.status}}">
+          <text>{{cycle.status === 'active' ? '进行中' : cycle.status}}</text>
+        </view>
+      </view>
+
+      <view class="metrics-grid">
+        <view class="metric">
+          <text class="metric-value">{{cycle.progressSummary.baselineScore || '--'}}</text>
+          <text class="metric-label">基线分</text>
+        </view>
+        <view class="metric">
+          <text class="metric-value">{{cycle.progressSummary.latestScore || '--'}}</text>
+          <text class="metric-label">最新分</text>
+        </view>
+        <view class="metric">
+          <text class="metric-value">{{cycle.progressSummary.scoreDelta}}</text>
+          <text class="metric-label">变化</text>
+        </view>
+        <view class="metric">
+          <text class="metric-value">{{cycle.progressSummary.completionRate}}%</text>
+          <text class="metric-label">完成度</text>
+        </view>
+      </view>
+
+      <view class="progress-track">
+        <view class="progress-fill" style="width: {{cycle.progressSummary.completionRate}}%"></view>
+      </view>
+      <text class="date-line">周期：{{cycle.startDate}} 至 {{cycle.targetDate}}，剩余 {{cycle.progressSummary.daysLeft}} 天</text>
+    </view>
+
+    <view class="loop-card">
+      <text class="section-title">闭环进度</text>
+      <view class="loop-steps">
+        <view class="loop-step {{item.done ? 'done' : ''}}" wx:for="{{cycle.review.closedLoop}}" wx:key="step">
+          <text class="loop-dot">{{item.done ? '✓' : ''}}</text>
+          <text class="loop-name">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <text class="section-title">今日行动</text>
+      <checkbox-group bindchange="onActionChange">
+        <label class="action-card {{item.checked ? 'checked' : ''}}" wx:for="{{actions}}" wx:key="id">
+          <checkbox class="action-check" value="{{item.id}}" checked="{{item.checked}}" color="#3b82f6"/>
+          <view class="action-body">
+            <view class="action-head">
+              <text class="action-category">{{item.category}}</text>
+              <text class="action-priority {{item.priority}}">{{item.priority === 'high' ? '优先' : item.priority === 'medium' ? '建议' : '保持'}}</text>
+            </view>
+            <text class="action-title">{{item.title}}</text>
+            <text class="action-why">{{item.why}}</text>
+            <view class="step-line" wx:for="{{item.stepsPreview}}" wx:for-item="step" wx:key="index">
+              <text class="step-dot"></text>
+              <text class="step-text">{{step}}</text>
+            </view>
+            <text class="action-target" wx:if="{{item.target}}">目标：{{item.target}}</text>
+          </view>
+        </label>
+      </checkbox-group>
+    </view>
+
+    <view class="section">
+      <text class="section-title">今日感受</text>
+      <view class="slider-row">
+        <view class="slider-head">
+          <text>心情</text>
+          <text>{{moodScore}}/5</text>
+        </view>
+        <slider min="0" max="5" step="1" value="{{moodScore}}" bindchange="onMoodChange" activeColor="#3b82f6" backgroundColor="rgba(255,255,255,0.12)" />
+      </view>
+      <view class="slider-row">
+        <view class="slider-head">
+          <text>精力</text>
+          <text>{{energyScore}}/5</text>
+        </view>
+        <slider min="0" max="5" step="1" value="{{energyScore}}" bindchange="onEnergyChange" activeColor="#22c55e" backgroundColor="rgba(255,255,255,0.12)" />
+      </view>
+      <textarea class="note-input" value="{{note}}" bindinput="onNoteInput" placeholder="记录今天执行困难、身体感受、饮食运动或复测变化" placeholder-class="placeholder" />
+      <button class="submit-btn" loading="{{saving}}" disabled="{{saving}}" bindtap="saveProgress">保存今日执行</button>
+    </view>
+
+    <view class="section">
+      <text class="section-title">复盘建议</text>
+      <view class="review-item" wx:for="{{cycle.review.recommendations}}" wx:key="index">
+        <text class="review-dot"></text>
+        <text class="review-text">{{item}}</text>
+      </view>
+    </view>
+
+    <view class="quick-actions">
+      <button class="quick-btn" bindtap="goCheckin">生活方式打卡</button>
+      <button class="quick-btn" bindtap="goRecheck">复测</button>
+      <button class="quick-btn" bindtap="goTrends">趋势</button>
+      <button class="quick-btn" bindtap="goReport">原报告</button>
+    </view>
+
+    <button class="complete-btn" wx:if="{{cycle.status === 'active'}}" bindtap="completeCycle">完成本轮闭环</button>
+    <button class="new-btn" wx:if="{{cycle.status !== 'active'}}" bindtap="startNewCycle">开启下一轮</button>
+
+    <view class="disclaimer">
+      改善闭环用于健康管理参考，不替代医生诊断或治疗建议。出现胸痛、明显气促、突然言语异常等情况应及时就医。
+    </view>
+  </block>
+</view>

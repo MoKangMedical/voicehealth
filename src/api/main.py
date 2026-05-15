@@ -34,7 +34,11 @@ async def index():
 
 @app.get("/test", response_class=HTMLResponse)
 async def test_page():
-    return "<h1>VoiceHealth 测试页面</h1>"
+    """完整测试页面"""
+    test_path = Path(__file__).parent.parent.parent / "frontend" / "test.html"
+    if test_path.exists():
+        return HTMLResponse(content=test_path.read_text(encoding="utf-8"))
+    return HTMLResponse(content="<h1>Test page not found</h1>")
 
 if __name__ == "__main__":
     import uvicorn

@@ -1,0 +1,143 @@
+<!--pages/report/report.wxml-->
+<view class="container">
+  <!-- 加载状态 -->
+  <view class="loading-wrap" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">加载报告中...</text>
+  </view>
+
+  <!-- 错误状态 -->
+  <view class="error-wrap" wx:if="{{!loading && error}}">
+    <text class="error-icon">⚠️</text>
+    <text class="error-title">加载失败</text>
+    <text class="error-msg">{{errorMsg}}</text>
+    <view class="error-actions">
+      <button class="btn-retry" bindtap="retryReport">重新加载</button>
+      <button class="btn-home" bindtap="goBack">返回</button>
+    </view>
+  </view>
+
+  <block wx:if="{{!loading && !error && report}}">
+    <!-- 分析类型标识 -->
+    <view class="analysis-type-badge">
+      <text class="type-icon">{{analysisType === 'voice' ? '🎤' : analysisType === 'face' ? '📸' : analysisType === 'video' ? '🎬' : '📊'}}</text>
+      <text class="type-text">{{analysisType === 'voice' ? '语音分析' : analysisType === 'face' ? '面部分析' : analysisType === 'video' ? '视频分析' : '综合分析'}}</text>
+    </view>
+
+    <!-- 综合评分 -->
+    <view class="score-card">
+      <view class="score-ring">
+        <view class="score-ring-bg"></view>
+        <view class="score-inner">
+          <text class="score-number" style="color:{{scoreColor}}">{{report.overallScore}}</text>
+          <text class="score-label">综合评分</text>
+        </view>
+      </view>
+      <view class="score-meta">
+        <text class="score-level" style="color:{{scoreColor}}">
+          {{scoreLevel === 'excellent' ? '优秀' : scoreLevel === 'good' ? '良好' : scoreLevel === 'fair' ? '一般' : '需关注'}}
+        </text>
+        <text class="score-date">{{report.dateStr}} {{report.timeStr}}</text>
+      </view>
+      <!-- 评分说明 -->
+      <view class="score-desc" wx:if="{{report.summary || report.overallDesc}}">
+        <text>{{report.summary || report.overallDesc}}</text>
+      </view>
+    </view>
+
+    <!-- 声学特征 -->
+    <view class="section" wx:if="{{report.acousticFeatures && report.acousticFeatures.length > 0}}">
+      <text class="section-title">🎤 声学特征分析</text>
+      <view class="feature-list">
+        <view class="feature-item" wx:for="{{report.acousticFeatures}}" wx:key="name">
+          <view class="feature-top">
+            <view class="feature-left">
+              <text class="feature-icon">{{item.icon}}</text>
+              <text class="feature-name">{{item.name}}</text>
+            </view>
+            <text class="feature-score" style="color:{{item.score >= 80 ? '#22c55e' : item.score >= 60 ? '#eab308' : '#ef4444'}}">{{item.score}}</text>
+          </view>
+          <view class="feature-bar-bg">
+            <view class="feature-bar" style="width:{{item.score}}%;background:{{item.score >= 80 ? '#22c55e' : item.score >= 60 ? '#eab308' : '#ef4444'}}"></view>
+          </view>
+          <text class="feature-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 面部分析维度 -->
+    <view class="section" wx:if="{{report.dimensions && report.dimensions.length > 0}}">
+      <text class="section-title">📸 分析维度</text>
+      <view class="feature-list">
+        <view class="feature-item" wx:for="{{report.dimensions}}" wx:key="name">
+          <view class="feature-top">
+            <view class="feature-left">
+              <text class="feature-icon">{{item.icon}}</text>
+              <text class="feature-name">{{item.name}}</text>
+            </view>
+            <text class="feature-score" style="color:{{item.score >= 80 ? '#22c55e' : item.score >= 60 ? '#eab308' : '#ef4444'}}">{{item.score}}</text>
+          </view>
+          <view class="feature-bar-bg">
+            <view class="feature-bar" style="width:{{item.score}}%;background:{{item.score >= 80 ? '#22c55e' : item.score >= 60 ? '#eab308' : '#ef4444'}}"></view>
+          </view>
+          <text class="feature-desc" wx:if="{{item.level}}">{{item.level}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 预测年龄 -->
+    <view class="section" wx:if="{{report.predictedAge || report.predicted_age || report.biologicalAge || report.biological_age}}">
+      <text class="section-title">⏳ 生物年龄评估</text>
+      <view class="age-card">
+        <view class="age-main">
+          <text class="age-value">{{report.predictedAge || report.predicted_age || report.biologicalAge || report.biological_age}}</text>
+          <text class="age-unit">岁</text>
+        </view>
+        <text class="age-desc">基于分析数据的生物年龄评估</text>
+      </view>
+    </view>
+
+    <!-- 疾病风险评估 -->
+    <view class="section" wx:if="{{report.riskAssessment && report.riskAssessment.length > 0}}">
+      <text class="section-title">🏥 疾病风险评估</text>
+      <view class="risk-list">
+        <view class="risk-item" wx:for="{{report.riskAssessment}}" wx:key="category">
+          <view class="risk-top">
+            <text class="risk-category">{{item.category}}</text>
+            <view class="risk-badge {{item.level}}">
+              <text>{{item.level === 'low' ? '低风险' : item.level === 'medium' ? '中风险' : '高风险'}}</text>
+            </view>
+          </view>
+          <view class="risk-bar-bg">
+            <view class="risk-bar {{item.level}}" style="width:{{item.score}}%"></view>
+          </view>
+          <text class="risk-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- AI健康建议 -->
+    <view class="section" wx:if="{{report.aiAdvice && report.aiAdvice.length > 0}}">
+      <text class="section-title">💡 AI健康建议</text>
+      <view class="advice-list">
+        <view class="advice-item" wx:for="{{report.aiAdvice}}" wx:key="title">
+          <text class="advice-icon">{{item.icon}}</text>
+          <view class="advice-content">
+            <text class="advice-title">{{item.title}}</text>
+            <text class="advice-text">{{item.content}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="action-bar">
+      <button class="btn-share" open-type="share">分享给好友</button>
+      <button class="btn-history" bindtap="goHistory">查看历史记录</button>
+      <button class="btn-back" bindtap="goBack">返回首页</button>
+    </view>
+
+    <!-- 免责声明 -->
+    <disclaimer compact="{{true}}" />
+  </block>
+</view>

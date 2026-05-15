@@ -1,0 +1,67 @@
+/* pages/profile/profile.wxss */
+.container { padding: 32rpx; min-height: 100vh; }
+
+/* 加载状态 */
+.loading-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 60vh; }
+.loading-spinner { width: 64rpx; height: 64rpx; border: 4rpx solid rgba(59,130,246,0.2); border-top-color: #3b82f6; border-radius: 50%; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-text { font-size: 26rpx; color: rgba(255,255,255,0.45); margin-top: 20rpx; }
+
+/* 用户卡片 */
+.user-card { background: rgba(255,255,255,0.04); border-radius: 24rpx; padding: 40rpx; display: flex; align-items: center; gap: 28rpx; margin-bottom: 24rpx; }
+.avatar-wrap { flex-shrink: 0; }
+.avatar-btn { width: 120rpx; height: 120rpx; border-radius: 50%; overflow: hidden; padding: 0; margin: 0; border: none; background: transparent; line-height: normal; }
+.avatar-btn::after { display: none; }
+.avatar-img { width: 120rpx; height: 120rpx; border-radius: 50%; }
+.avatar-placeholder { width: 120rpx; height: 120rpx; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; }
+.avatar-icon { font-size: 48rpx; }
+.user-info { flex: 1; }
+.nickname-input { font-size: 32rpx; font-weight: 600; color: #e2e2e8; background: transparent; border: none; padding: 0; margin-bottom: 12rpx; }
+.vip-tag { display: inline-block; padding: 8rpx 20rpx; border-radius: 16rpx; font-size: 22rpx; background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5); }
+.vip-tag.active { background: linear-gradient(135deg, #eab308, #f59e0b); color: #000; font-weight: 600; }
+.vip-expire { margin-top: 8rpx; }
+.expire-text { font-size: 22rpx; color: rgba(255,255,255,0.35); }
+
+/* 统计 */
+.stats-card { background: rgba(255,255,255,0.04); border-radius: 20rpx; padding: 32rpx; display: flex; align-items: center; margin-bottom: 24rpx; }
+.stat-item { flex: 1; text-align: center; }
+.stat-value { font-size: 40rpx; font-weight: 800; display: block; margin-bottom: 4rpx; }
+.stat-loading { width: 40rpx; height: 40rpx; margin: 0 auto 4rpx; border: 3rpx solid rgba(255,255,255,0.1); border-top-color: rgba(255,255,255,0.3); border-radius: 50%; animation: spin 0.8s linear infinite; }
+.stat-label { font-size: 22rpx; color: rgba(255,255,255,0.45); }
+.stat-divider { width: 1rpx; height: 60rpx; background: rgba(255,255,255,0.08); }
+
+/* 最近报告 */
+.recent-section { margin-bottom: 24rpx; }
+.section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16rpx; }
+.section-title { font-size: 26rpx; font-weight: 600; color: rgba(255,255,255,0.45); }
+.section-more { display: flex; align-items: center; gap: 4rpx; }
+.section-more text { font-size: 24rpx; color: #3b82f6; }
+.more-arrow { font-size: 28rpx; }
+.recent-list { background: rgba(255,255,255,0.04); border-radius: 20rpx; overflow: hidden; }
+.recent-item { display: flex; align-items: center; padding: 24rpx; border-bottom: 1rpx solid rgba(255,255,255,0.04); }
+.recent-item:last-child { border-bottom: none; }
+.recent-item:active { background: rgba(255,255,255,0.04); }
+.recent-score { display: flex; align-items: baseline; gap: 2rpx; margin-right: 20rpx; }
+.score-num { font-size: 36rpx; font-weight: 800; }
+.score-unit { font-size: 22rpx; color: rgba(255,255,255,0.35); }
+.recent-date { flex: 1; font-size: 26rpx; color: rgba(255,255,255,0.45); }
+.recent-arrow { font-size: 28rpx; color: rgba(255,255,255,0.2); }
+
+/* 菜单 */
+.menu-section { margin-bottom: 32rpx; }
+.menu-list { background: rgba(255,255,255,0.04); border-radius: 20rpx; overflow: hidden; }
+.menu-item { display: flex; align-items: center; justify-content: space-between; padding: 28rpx 24rpx; border-bottom: 1rpx solid rgba(255,255,255,0.04); }
+.menu-item:last-child { border-bottom: none; }
+.menu-item:active { background: rgba(255,255,255,0.04); }
+.menu-left { display: flex; align-items: center; gap: 16rpx; }
+.menu-icon { font-size: 32rpx; }
+.menu-title { font-size: 28rpx; }
+.menu-arrow { font-size: 28rpx; color: rgba(255,255,255,0.2); }
+
+/* 分享 */
+.share-section { margin-bottom: 32rpx; }
+.share-btn { display: flex; align-items: center; justify-content: center; gap: 12rpx; height: 88rpx; background: rgba(59,130,246,0.12); border-radius: 20rpx; font-size: 28rpx; color: #3b82f6; border: 1rpx solid rgba(59,130,246,0.2); font-weight: 500; }
+.share-icon { font-size: 28rpx; }
+
+/* 版本 */
+.version-info { text-align: center; padding: 40rpx 0; font-size: 22rpx; color: rgba(255,255,255,0.2); }

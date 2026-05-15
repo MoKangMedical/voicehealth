@@ -1,0 +1,207 @@
+<view class="container">
+  <view class="loading-wrap" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">加载报告中...</text>
+  </view>
+
+  <view class="error-wrap" wx:if="{{!loading && error}}">
+    <text class="error-icon">⚠️</text>
+    <text class="error-title">加载失败</text>
+    <text class="error-msg">{{errorMsg}}</text>
+    <view class="error-actions">
+      <button class="btn btn-ghost" bindtap="goBack">返回</button>
+      <button class="btn btn-primary" bindtap="retryReport">重试</button>
+    </view>
+  </view>
+
+  <block wx:if="{{!loading && !error && report}}">
+    <view class="report-top">
+      <view class="type-badge">
+        <text class="type-icon">{{typeIcon}}</text>
+        <text>{{typeText}}</text>
+      </view>
+      <text class="report-date">{{report.dateText}}</text>
+    </view>
+
+    <view class="score-card">
+      <view class="score-ring" style="border-color: {{scoreColor}}">
+        <text class="score-number" style="color: {{scoreColor}}">{{report.overallScore}}</text>
+        <text class="score-unit">分</text>
+      </view>
+      <view class="score-copy">
+        <text class="score-level" style="color: {{scoreColor}}">{{scoreLevel}}</text>
+        <text class="score-summary">{{report.summary}}</text>
+      </view>
+    </view>
+
+    <view class="section plan-section" wx:if="{{report.improvementPlan.actions.length > 0}}">
+      <text class="section-title">改善方案</text>
+      <view class="plan-status">
+        <text class="plan-label">{{report.improvementPlan.scoreStatus.label}}</text>
+        <text class="plan-message">{{report.improvementPlan.scoreStatus.message}}</text>
+      </view>
+
+      <view class="goal-list" wx:if="{{report.improvementPlan.goals.length > 0}}">
+        <view class="goal-item" wx:for="{{report.improvementPlan.goals}}" wx:key="id">
+          <text class="goal-title">{{item.title}}</text>
+          <text class="goal-target">{{item.target}}</text>
+        </view>
+      </view>
+
+      <view class="plan-action" wx:for="{{report.improvementPlan.actions}}" wx:key="id">
+        <view class="plan-action-head">
+          <view class="plan-action-title-wrap">
+            <text class="plan-category">{{item.category}}</text>
+            <text class="plan-title">{{item.title}}</text>
+          </view>
+          <text class="plan-priority" style="color: {{item.priorityColor}}; border-color: {{item.priorityColor}}">{{item.priorityText}}</text>
+        </view>
+        <text class="plan-why">{{item.why}}</text>
+        <view class="plan-steps">
+          <view class="plan-step" wx:for="{{item.steps}}" wx:for-item="step" wx:key="index">
+            <text class="step-dot"></text>
+            <text class="step-text">{{step}}</text>
+          </view>
+        </view>
+        <text class="plan-target" wx:if="{{item.target}}">目标：{{item.target}}</text>
+      </view>
+
+      <view class="care-box" wx:if="{{report.improvementPlan.whenToSeekCare.length > 0}}">
+        <text class="care-title">需要及时就医的情况</text>
+        <text class="care-text" wx:for="{{report.improvementPlan.whenToSeekCare}}" wx:key="index">{{item}}</text>
+      </view>
+    </view>
+
+    <view class="section" wx:if="{{report.analysisType === 'voice' && report.acousticFeatures.length > 0}}">
+      <text class="section-title">声学特征</text>
+      <view class="feature-item" wx:for="{{report.acousticFeatures}}" wx:key="name">
+        <view class="feature-row">
+          <text class="feature-name">{{item.name}}</text>
+          <text class="feature-value">{{item.value || item.score}}</text>
+        </view>
+        <view class="bar-track">
+          <view class="bar-fill" style="width: {{item.score}}%; background: {{item.color}}"></view>
+        </view>
+        <text class="feature-desc" wx:if="{{item.desc}}">{{item.desc}}</text>
+      </view>
+    </view>
+
+    <view class="section" wx:if="{{report.analysisType === 'voice' && report.voiceDomains.length > 0}}">
+      <text class="section-title">声音大健康维度</text>
+      <view class="domain-grid">
+        <view class="domain-card" wx:for="{{report.voiceDomains}}" wx:key="name">
+          <view class="domain-head">
+            <text class="domain-name">{{item.name}}</text>
+            <text class="domain-score" style="color: {{item.color}}">{{item.score}}</text>
+          </view>
+          <view class="domain-bar">
+            <view class="domain-fill" style="width: {{item.score}}%; background: {{item.color}}"></view>
+          </view>
+          <text class="domain-level">{{item.level}}</text>
+          <text class="domain-desc" wx:if="{{item.desc}}">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section" wx:if="{{report.analysisType === 'voice' && (report.livenessPercent || report.readingPercent)}}">
+      <text class="section-title">采集质量</text>
+      <view class="quality-grid">
+        <view class="quality-item">
+          <text class="quality-value">{{report.livenessPercent || '--'}}%</text>
+          <text class="quality-label">活体评分</text>
+        </view>
+        <view class="quality-item">
+          <text class="quality-value">{{report.readingPercent || '--'}}%</text>
+          <text class="quality-label">朗读匹配</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section" wx:if="{{report.analysisType === 'voice' && report.voiceQualityItems.length > 0}}">
+      <text class="section-title">声音质量</text>
+      <view class="quality-list">
+        <view class="quality-row" wx:for="{{report.voiceQualityItems}}" wx:key="label">
+          <view class="quality-copy">
+            <text class="quality-name">{{item.label}}</text>
+            <text class="quality-desc">{{item.desc}}</text>
+          </view>
+          <text class="quality-score" style="color: {{item.color}}">{{item.value}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section" wx:if="{{report.riskAssessment.length > 0}}">
+      <text class="section-title">风险提示</text>
+      <view class="risk-item" wx:for="{{report.riskAssessment}}" wx:key="category">
+        <view class="risk-row">
+          <view class="risk-title">
+            <text class="risk-name">{{item.name}}</text>
+            <text class="risk-group" wx:if="{{item.group}}">{{item.group}}</text>
+          </view>
+          <text class="risk-badge" style="color: {{item.color}}; border-color: {{item.color}}">{{item.levelText}}</text>
+        </view>
+        <view class="bar-track">
+          <view class="bar-fill" style="width: {{item.score}}%; background: {{item.color}}"></view>
+        </view>
+        <text class="risk-desc" wx:if="{{item.desc}}">{{item.desc}}</text>
+        <text class="risk-suggestion" wx:if="{{item.suggestion}}">建议：{{item.suggestion}}</text>
+        <text class="risk-markers" wx:if="{{item.markerText}}">声学标志物：{{item.markerText}}</text>
+      </view>
+    </view>
+
+    <view class="section" wx:if="{{report.dimensions.length > 0}}">
+      <text class="section-title">分析维度</text>
+      <view class="feature-item" wx:for="{{report.dimensions}}" wx:key="name">
+        <view class="feature-row">
+          <text class="feature-name">{{item.name}}</text>
+          <text class="feature-value" style="color: {{item.color}}">{{item.score}}</text>
+        </view>
+        <view class="bar-track">
+          <view class="bar-fill" style="width: {{item.score}}%; background: {{item.color}}"></view>
+        </view>
+        <text class="feature-desc" wx:if="{{item.level}}">{{item.level}}</text>
+      </view>
+    </view>
+
+    <view class="section" wx:if="{{report.predictedAge}}">
+      <text class="section-title">生物年龄</text>
+      <view class="age-card">
+        <text class="age-value">{{report.predictedAge}}</text>
+        <text class="age-unit">岁</text>
+      </view>
+    </view>
+
+    <view class="section" wx:if="{{report.videoItems.length > 0}}">
+      <text class="section-title">视频分析</text>
+      <view class="video-card" wx:for="{{report.videoItems}}" wx:key="title">
+        <text class="video-icon">{{item.icon}}</text>
+        <view class="video-info">
+          <text class="video-title">{{item.title}}</text>
+          <text class="video-summary">{{item.summary}}</text>
+        </view>
+        <text class="video-score" style="color: {{item.color}}">{{item.score}}</text>
+      </view>
+    </view>
+
+    <view class="section" wx:if="{{report.aiAdvice.length > 0}}">
+      <text class="section-title">健康建议</text>
+      <view class="advice-item" wx:for="{{report.aiAdvice}}" wx:key="title">
+        <text class="advice-icon">{{item.icon}}</text>
+        <view class="advice-copy">
+          <text class="advice-title">{{item.title}}</text>
+          <text class="advice-text">{{item.content}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="actions">
+      <button class="btn btn-ghost" bindtap="goBack">返回首页</button>
+      <button class="btn btn-primary" bindtap="goHistory">查看记录</button>
+      <button class="btn btn-share" open-type="share">分享</button>
+    </view>
+
+    <view class="disclaimer">
+      本报告仅供健康参考，不构成医学诊断或治疗建议。如有不适，请咨询专业医生。
+    </view>
+  </block>
+</view>

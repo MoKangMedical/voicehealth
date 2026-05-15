@@ -1,0 +1,128 @@
+<!--pages/profile/profile.wxml-->
+<view class="container">
+  <!-- 加载状态 -->
+  <view class="loading-wrap" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">加载中...</text>
+  </view>
+
+  <block wx:if="{{!loading}}">
+    <!-- 用户信息 -->
+    <view class="user-card">
+      <view class="avatar-wrap">
+        <button class="avatar-btn" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+          <image wx:if="{{userInfo && userInfo.avatarUrl}}" src="{{userInfo.avatarUrl}}" class="avatar-img" mode="aspectFill"/>
+          <view wx:else class="avatar-placeholder">
+            <text class="avatar-icon">👤</text>
+          </view>
+        </button>
+      </view>
+      <view class="user-info">
+        <input type="nickname" class="nickname-input" value="{{userInfo.nickName || '点击设置昵称'}}" placeholder="点击设置昵称" bindchange="onNickNameInput" />
+        <view class="vip-tag {{isVip ? 'active' : ''}}" bindtap="goVip">
+          <text>{{isVip ? '👑 VIP会员' : '普通用户 · 点击开通VIP'}}</text>
+        </view>
+        <!-- VIP到期时间 -->
+        <view class="vip-expire" wx:if="{{isVip && vipExpire}}">
+          <text class="expire-text">有效期至: {{vipExpire}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 统计数据 -->
+    <view class="stats-card">
+      <view class="stat-item">
+        <text class="stat-value" wx:if="{{!statsLoading}}">{{totalTests}}</text>
+        <view class="stat-loading" wx:else></view>
+        <text class="stat-label">检测次数</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <text class="stat-value" wx:if="{{!statsLoading}}">{{avgScore || '--'}}</text>
+        <view class="stat-loading" wx:else></view>
+        <text class="stat-label">平均评分</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <text class="stat-value" wx:if="{{!statsLoading}}" style="color:#22c55e">{{bestScore || '--'}}</text>
+        <view class="stat-loading" wx:else></view>
+        <text class="stat-label">最佳评分</text>
+      </view>
+    </view>
+
+    <!-- 最近报告 -->
+    <view class="recent-section" wx:if="{{recentReports.length > 0}}">
+      <view class="section-header">
+        <text class="section-title">最近报告</text>
+        <view class="section-more" bindtap="goAllRecords">
+          <text>查看全部</text>
+          <text class="more-arrow">›</text>
+        </view>
+      </view>
+      <view class="recent-list">
+        <view class="recent-item" wx:for="{{recentReports}}" wx:key="id" data-id="{{item.id}}" bindtap="goReport">
+          <view class="recent-score" style="color:{{item.scoreColor}}">
+            <text class="score-num">{{item.score}}</text>
+            <text class="score-unit">分</text>
+          </view>
+          <text class="recent-date">{{item.date}}</text>
+          <text class="recent-arrow">›</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 功能菜单 -->
+    <view class="menu-section">
+      <text class="section-title">功能服务</text>
+      <view class="menu-list">
+        <view class="menu-item" bindtap="goFamily">
+      <text class="menu-icon">👨‍👩‍👧‍👦</text>
+      <text class="menu-name">家庭成员</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="goTrends">
+      <text class="menu-icon">📈</text>
+      <text class="menu-name">健康趋势</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="goAchievements">
+      <text class="menu-icon">🏆</text>
+      <text class="menu-name">成就徽章</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="goCheckin">
+      <text class="menu-icon">📅</text>
+      <text class="menu-name">每日签到</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="goArticles">
+      <text class="menu-icon">📰</text>
+      <text class="menu-name">健康资讯</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-item" wx:for="{{menuItems}}" wx:key="title"
+              data-url="{{item.url}}" data-type="{{item.type}}" data-title="{{item.title}}"
+              bindtap="onMenuTap">
+          <view class="menu-left">
+            <text class="menu-icon">{{item.icon}}</text>
+            <text class="menu-title">{{item.title}}</text>
+          </view>
+          <text class="menu-arrow">›</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 分享 -->
+    <view class="share-section">
+      <button class="share-btn" open-type="share">
+        <text class="share-icon">🔗</text>
+        <text>推荐给好友</text>
+      </button>
+    </view>
+
+    <!-- 版本信息 -->
+    <view class="version-info">
+      <text>VoiceHealth v1.0.0</text>
+    </view>
+  </block>
+</view>

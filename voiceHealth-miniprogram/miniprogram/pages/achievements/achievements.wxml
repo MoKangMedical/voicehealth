@@ -1,0 +1,41 @@
+<view class="container">
+  <view class="header">
+    <text class="title">成就徽章</text>
+    <view class="progress">
+      <text class="progress-text">已解锁 {{unlockedBadges}}/{{totalBadges}}</text>
+      <view class="progress-bar">
+        <view class="progress-fill" style="width:{{unlockedBadges/totalBadges*100}}%"></view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="badges-grid">
+    <view class="badge-item {{item.unlocked ? 'unlocked' : 'locked'}}" wx:for="{{badges}}" wx:key="id">
+      <view class="badge-icon-wrap">
+        <text class="badge-icon">{{item.unlocked ? item.icon : '🔒'}}</text>
+      </view>
+      <text class="badge-name">{{item.name}}</text>
+      <text class="badge-desc">{{item.desc}}</text>
+    </view>
+  </view>
+  
+  <view class="tips">
+    <text class="tips-title">如何解锁更多成就？</text>
+    <view class="tip-item">
+      <text class="tip-dot">•</text>
+      <text class="tip-text">完成各种健康检测</text>
+    </view>
+    <view class="tip-item">
+      <text class="tip-dot">•</text>
+      <text class="tip-text">坚持每日签到打卡</text>
+    </view>
+    <view class="tip-item">
+      <text class="tip-dot">•</text>
+      <text class="tip-text">阅读健康资讯</text>
+    </view>
+    <view class="tip-item">
+      <text class="tip-dot">•</text>
+      <text class="tip-text">分享检测结果</text>
+    </view>
+  </view>
+</view>

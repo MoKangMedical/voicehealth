@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mokangmedical.github.io/voiceHealth-miniprogram-v2/sitemap.xml

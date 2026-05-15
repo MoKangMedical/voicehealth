@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="header">
+    <text class="title">健康知识库</text>
+    <text class="subtitle">把声音健康参考用明白</text>
+  </view>
+  
+  <scroll-view class="tabs" scroll-x>
+    <view class="tab {{activeTab === index ? 'active' : ''}}" 
+          wx:for="{{tabs}}" wx:key="index"
+          data-index="{{index}}" bindtap="switchTab">
+      {{item}}
+    </view>
+  </scroll-view>
+  
+  <view class="article-list">
+    <view class="article-card" wx:for="{{filteredArticles}}" wx:key="id"
+          data-id="{{item.id}}" bindtap="goArticle">
+      <view class="article-icon">{{item.image}}</view>
+      <view class="article-content">
+        <text class="article-title">{{item.title}}</text>
+        <text class="article-summary">{{item.summary}}</text>
+        <view class="article-meta">
+          <text class="meta-category">{{item.category}}</text>
+          <text class="meta-date">{{item.date}}</text>
+          <text class="meta-views">{{item.readTime}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="disclaimer">
+    <text>* 以上内容仅供科普参考，不构成医学建议</text>
+  </view>
+</view>

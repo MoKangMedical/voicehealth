@@ -1,0 +1,109 @@
+<!--pages/science/science.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="title">平台依据</text>
+    <text class="subtitle">理论基础、参考文献、采集指南与合规边界</text>
+  </view>
+
+  <view class="tabs">
+    <view class="tab {{activeTab === index ? 'active' : ''}}" 
+          wx:for="{{tabs}}" wx:key="index"
+          data-index="{{index}}" bindtap="switchTab">
+      {{item}}
+    </view>
+  </view>
+
+  <view class="content" wx:if="{{activeTab === 0}}">
+    <view class="theory-card" wx:for="{{theories}}" wx:key="title">
+      <text class="theory-icon">{{item.icon}}</text>
+      <text class="theory-title">{{item.title}}</text>
+      <text class="theory-desc">{{item.desc}}</text>
+      <text class="theory-basis" wx:if="{{item.basis}}">{{item.basis}}</text>
+    </view>
+  </view>
+
+  <view class="content" wx:if="{{activeTab === 1}}">
+    <view class="disease-summary">
+      <text class="metric-value">{{diseaseTotal || validation.diseases}}</text>
+      <text class="metric-label">当前支持声音健康参考项</text>
+    </view>
+    <view class="disease-group" wx:for="{{diseaseGroups}}" wx:key="name">
+      <text class="group-title">{{item.name}}</text>
+      <view class="disease-card" wx:for="{{item.list}}" wx:for-item="disease" wx:key="id">
+        <text class="disease-name">{{disease.name}}</text>
+        <text class="disease-desc">{{disease.description}}</text>
+        <text class="disease-markers">声学标志物：{{disease.markerText}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="content" wx:if="{{activeTab === 2}}">
+    <view class="paper-card" wx:for="{{papers}}" wx:key="title">
+      <view class="paper-head">
+        <text class="paper-category">{{item.category}}</text>
+        <text class="paper-year">{{item.year}}</text>
+      </view>
+      <text class="paper-title">{{item.title}}</text>
+      <text class="paper-journal">{{item.source}}</text>
+      <text class="paper-note">依据：{{item.relevance}}</text>
+      <text class="paper-limit">边界：{{item.limitation}}</text>
+      <view class="paper-doi" data-url="{{item.url}}" bindtap="copyReference">
+        <text class="doi-label">来源:</text>
+        <text class="doi-value">{{item.linkText}}</text>
+        <text class="doi-copy">复制</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="content" wx:if="{{activeTab === 3}}">
+    <view class="guide-card" wx:for="{{collectionGuide}}" wx:key="title">
+      <text class="guide-title">{{item.title}}</text>
+      <view class="guide-item" wx:for="{{item.items}}" wx:for-item="guide" wx:key="index">
+        <text class="guide-dot">•</text>
+        <text class="guide-text">{{guide}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="content" wx:if="{{activeTab === 4}}">
+    <view class="checkin-card" wx:for="{{checkinGuide}}" wx:key="title">
+      <text class="checkin-title">{{item.title}}</text>
+      <text class="checkin-desc">{{item.desc}}</text>
+    </view>
+  </view>
+
+  <view class="content" wx:if="{{activeTab === 5}}">
+    <view class="guide-card" wx:for="{{resultGuide}}" wx:key="title">
+      <text class="guide-title">{{item.title}}</text>
+      <view class="guide-item" wx:for="{{item.items}}" wx:for-item="guide" wx:key="index">
+        <text class="guide-dot">•</text>
+        <text class="guide-text">{{guide}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="content" wx:if="{{activeTab === 6}}">
+    <view class="validation-card">
+      <view class="metric">
+        <text class="metric-value">{{validation.accuracy}}</text>
+        <text class="metric-label">结果定位</text>
+      </view>
+      <view class="metric">
+        <text class="metric-value">{{validation.sensitivity}}</text>
+        <text class="metric-label">医学属性</text>
+      </view>
+      <view class="metric">
+        <text class="metric-value">{{validation.specificity}}</text>
+        <text class="metric-label">使用方式</text>
+      </view>
+    </view>
+    <view class="compliance-card" wx:for="{{complianceGuide}}" wx:key="title">
+      <text class="compliance-title">{{item.title}}</text>
+      <text class="compliance-desc">{{item.desc}}</text>
+    </view>
+  </view>
+
+  <view class="disclaimer">
+    * 本页面内容仅供健康管理参考，不构成医学诊断、筛查结论或治疗建议
+  </view>
+</view>

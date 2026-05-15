@@ -1,0 +1,54 @@
+<view class="container">
+  <view class="header">
+    <text class="title">每日签到</text>
+    <text class="subtitle">坚持检测，守护健康</text>
+  </view>
+  
+  <view class="streak-card">
+    <view class="streak-num">{{streak}}</view>
+    <text class="streak-label">连续签到天数</text>
+    <view class="streak-stats">
+      <view class="stat">
+        <text class="stat-value">{{totalDays}}</text>
+        <text class="stat-label">累计天数</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat">
+        <text class="stat-value">{{streak}}</text>
+        <text class="stat-label">当前连续</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="week-card">
+    <text class="week-title">本周签到</text>
+    <view class="week-days">
+      <view class="week-day {{item.isChecked ? 'checked' : ''}} {{item.isToday ? 'today' : ''}}" 
+            wx:for="{{currentWeek}}" wx:key="index">
+        <text class="day-label">{{weekDays[index]}}</text>
+        <text class="day-num">{{item.date}}</text>
+        <text class="day-check">{{item.isChecked ? '✓' : ''}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <button class="checkin-btn {{isCheckedIn ? 'checked' : ''}}" bindtap="checkin">
+    {{isCheckedIn ? '今日已签到 ✓' : '立即签到'}}
+  </button>
+  
+  <view class="rewards-card">
+    <text class="rewards-title">签到奖励</text>
+    <view class="reward-item {{item.unlocked ? 'unlocked' : ''}}" wx:for="{{rewards}}" wx:key="days">
+      <text class="reward-icon">{{item.icon}}</text>
+      <view class="reward-info">
+        <text class="reward-name">{{item.reward}}</text>
+        <text class="reward-req">{{item.days}}天解锁</text>
+      </view>
+      <text class="reward-status">{{item.unlocked ? '✓' : '🔒'}}</text>
+    </view>
+  </view>
+  
+  <view class="disclaimer">
+    <text>* 签到奖励仅供参考，不构成医学建议</text>
+  </view>
+</view>
