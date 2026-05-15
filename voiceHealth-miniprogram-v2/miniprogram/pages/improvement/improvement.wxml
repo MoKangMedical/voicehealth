@@ -124,6 +124,12 @@
     <button class="complete-btn" wx:if="{{cycle.status === 'active'}}" bindtap="completeCycle">完成本轮闭环</button>
     <button class="new-btn" wx:if="{{cycle.status !== 'active'}}" bindtap="startNewCycle">开启下一轮</button>
 
+    <view class="progress-dock">
+      <button class="dock-btn" bindtap="goCheckin">打卡</button>
+      <button class="dock-btn primary" loading="{{saving}}" disabled="{{saving}}" bindtap="saveProgress">保存执行</button>
+      <button class="dock-btn" bindtap="goRecheck">复测</button>
+    </view>
+
     <view class="disclaimer">
       改善闭环用于健康管理参考，不替代医生诊断或治疗建议。出现胸痛、明显气促、突然言语异常等情况应及时就医。
     </view>

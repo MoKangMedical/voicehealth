@@ -49,6 +49,7 @@
 
 .streak-card,
 .week-card,
+.quick-card,
 .form-section,
 .rewards-card {
   background: rgba(255,255,255,0.045);
@@ -56,6 +57,48 @@
   border-radius: 20rpx;
   padding: 26rpx;
   margin-bottom: 22rpx;
+}
+
+.compact-head {
+  margin-bottom: 16rpx;
+}
+
+.preset-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14rpx;
+}
+
+.preset-item {
+  min-height: 126rpx;
+  border-radius: 16rpx;
+  background: rgba(255,255,255,0.055);
+  border: 1rpx solid rgba(255,255,255,0.08);
+  padding: 18rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.preset-item:active {
+  transform: scale(0.98);
+  background: rgba(59,130,246,0.12);
+  border-color: rgba(59,130,246,0.28);
+}
+
+.preset-title {
+  font-size: 27rpx;
+  line-height: 1.25;
+  font-weight: 800;
+  color: #fff;
+}
+
+.preset-desc {
+  margin-top: 8rpx;
+  font-size: 21rpx;
+  line-height: 1.35;
+  color: rgba(255,255,255,0.48);
 }
 
 .streak-card {
@@ -284,11 +327,26 @@
   font-size: 30rpx;
   font-weight: 700;
   border: none;
-  margin: 8rpx 0 24rpx;
+  margin: 0;
 }
 
 .submit-btn.saved {
   background: #2563eb;
+}
+
+.dock-spacer {
+  height: 132rpx;
+}
+
+.save-dock {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 18rpx 32rpx calc(18rpx + env(safe-area-inset-bottom));
+  background: linear-gradient(180deg, rgba(10,10,15,0), rgba(10,10,15,0.94) 28%, #0a0a0f 100%);
+  z-index: 20;
+  box-sizing: border-box;
 }
 
 .reward-item {

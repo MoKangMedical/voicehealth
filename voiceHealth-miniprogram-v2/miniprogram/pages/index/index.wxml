@@ -11,6 +11,42 @@
     </view>
   </view>
 
+  <!-- Mobile Quick Panel -->
+  <view class="mobile-panel">
+    <view class="dashboard-row">
+      <view class="dash-item" bindtap="openLatestReport">
+        <text class="dash-value">{{dashboard.latestScore}}</text>
+        <text class="dash-label">{{dashboard.latestLabel}}</text>
+      </view>
+      <view class="dash-item {{dashboard.hasCheckin ? 'ok' : 'attention'}}" bindtap="goCheckin">
+        <text class="dash-value">{{dashboard.checkinText}}</text>
+        <text class="dash-label">今日记录</text>
+      </view>
+      <view class="dash-item {{dashboard.hasCycle ? 'ok' : ''}}" bindtap="goImprovement">
+        <text class="dash-value">{{dashboard.cycleText}}</text>
+        <text class="dash-label">改善闭环</text>
+      </view>
+    </view>
+    <view class="thumb-actions">
+      <view class="thumb-btn primary {{isRecording ? 'recording' : ''}}" bindtap="toggleRecording">
+        <text class="thumb-icon">{{isRecording ? '⏹' : '🎙️'}}</text>
+        <text class="thumb-text">{{isRecording ? '停止' : '录音'}}</text>
+      </view>
+      <view class="thumb-btn" bindtap="goCheckin">
+        <text class="thumb-icon">📅</text>
+        <text class="thumb-text">打卡</text>
+      </view>
+      <view class="thumb-btn" bindtap="goImprovement">
+        <text class="thumb-icon">🔁</text>
+        <text class="thumb-text">改善</text>
+      </view>
+      <view class="thumb-btn" bindtap="goPlans">
+        <text class="thumb-icon">📌</text>
+        <text class="thumb-text">方案</text>
+      </view>
+    </view>
+  </view>
+
   <!-- Main Card -->
   <view class="main-card">
     <view class="card-title">AI声纹健康参考</view>
@@ -51,7 +87,7 @@
 
     <!-- Free Count -->
     <view class="free-info" wx:if="{{!isVip}}">
-      <text class="text-dim">今日免费次数：{{freeCount}}/{{maxFree}}</text>
+      <text class="text-dim">今日免费次数：{{freeCount}}/{{maxFree}} · {{dashboard.freeText}}</text>
     </view>
     <view class="free-info" wx:else>
       <text class="text-green">会员无限次使用</text>

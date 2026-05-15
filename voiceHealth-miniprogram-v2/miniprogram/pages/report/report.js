@@ -316,6 +316,34 @@ Page({
     wx.switchTab({ url: '/pages/history/history' })
   },
 
+  goCheckin() {
+    wx.navigateTo({ url: '/pages/checkin/checkin' })
+  },
+
+  goRecheck() {
+    wx.switchTab({ url: '/pages/index/index' })
+  },
+
+  async startImprovementFromReport() {
+    if (!this.data.reportId) return
+    try {
+      wx.showLoading({ title: '生成方案...' })
+      await app.request({
+        url: '/api/v1/improvement/cycles',
+        method: 'POST',
+        data: {
+          reportId: this.data.reportId,
+          days: 14
+        }
+      })
+      wx.hideLoading()
+      wx.navigateTo({ url: '/pages/improvement/improvement' })
+    } catch (err) {
+      wx.hideLoading()
+      wx.showToast({ title: err.message || '生成失败', icon: 'none' })
+    }
+  },
+
   onShareAppMessage() {
     return {
       title: `VoiceHealth健康评分 ${this.data.report ? this.data.report.overallScore : '--'}分`,

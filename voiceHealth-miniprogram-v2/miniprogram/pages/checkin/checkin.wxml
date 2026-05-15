@@ -43,6 +43,19 @@
       </view>
     </view>
 
+    <view class="quick-card">
+      <view class="section-head compact-head">
+        <text class="section-name">快捷填写</text>
+        <text class="section-desc">按今天最接近的状态一键填入，再做少量修改</text>
+      </view>
+      <view class="preset-grid">
+        <view class="preset-item" wx:for="{{quickPresets}}" wx:key="key" data-key="{{item.key}}" bindtap="applyQuickPreset">
+          <text class="preset-title">{{item.title}}</text>
+          <text class="preset-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+
     <view class="form-section">
       <view class="section-head">
         <text class="section-name">饮食记录</text>
@@ -162,9 +175,12 @@
       <textarea class="notes" value="{{form.notes}}" data-field="notes" bindinput="onFieldInput" placeholder="可记录今天的特殊情况，例如熬夜、感冒、长时间讲话、训练强度变化" placeholder-class="placeholder" />
     </view>
 
-    <button class="submit-btn {{isCheckedIn ? 'saved' : ''}}" loading="{{saving}}" disabled="{{saving}}" bindtap="submitCheckin">
-      {{isCheckedIn ? '更新今日记录' : '保存今日打卡'}}
-    </button>
+    <view class="dock-spacer"></view>
+    <view class="save-dock">
+      <button class="submit-btn {{isCheckedIn ? 'saved' : ''}}" loading="{{saving}}" disabled="{{saving}}" bindtap="submitCheckin">
+        {{isCheckedIn ? '更新今日记录' : '保存今日打卡'}}
+      </button>
+    </view>
 
     <view class="rewards-card">
       <text class="section-title">打卡里程碑</text>

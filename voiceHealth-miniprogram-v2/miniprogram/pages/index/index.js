@@ -4,6 +4,13 @@ const util = require('../../utils/util.js')
 const config = require('../../config.js')
 const recorderManager = wx.getRecorderManager()
 
+function formatDateForApi(date) {
+  const y = date.getFullYear()
+  const m = `${date.getMonth() + 1}`.padStart(2, '0')
+  const d = `${date.getDate()}`.padStart(2, '0')
+  return `${y}-${m}-${d}`
+}
+
 Page({
   data: {
     isRecording: false,
@@ -18,6 +25,17 @@ Page({
     isVip: false,
     readingText: null,
     showReadingText: false,
+    dashboard: {
+      latestScore: '--',
+      latestLabel: '暂无报告',
+      latestReportId: '',
+      checkinText: '待打卡',
+      cycleText: '未开启',
+      freeText: '今日1次',
+      hasReport: false,
+      hasCheckin: false,
+      hasCycle: false
+    },
     tips: [
       '请在安静环境下录制',
       '请朗读下方显示的文字',
@@ -34,6 +52,7 @@ Page({
       isVip: app.globalData.isVip
     })
     this.fetchReadingText()
+    this.loadMobileDashboard()
   },
 
   onShow() {
@@ -43,6 +62,39 @@ Page({
       freeCount: app.globalData.freeCount,
       isVip: app.globalData.isVip
     })
+    this.loadMobileDashboard()
+  },
+
+  async loadMobileDashboard() {
+    try {
+      const res = await app.request({ url: '/api/v1/health-data/summary' })
+      const latestReports = res.latestReports || []
+      const latest = latestReports[0] || null
+      const lifestyle = res.lifestyle || {}
+      const latestCheckin = lifestyle.latest || null
+      const today = formatDateForApi(new Date())
+      const activeCycle = res.improvement && res.improvement.activeCycle
+      const progress = activeCycle && activeCycle.progressSummary
+      const summary = res.summary || {}
+
+      this.setData({
+        dashboard: {
+          latestScore: latest ? Math.round(latest.score || 0) : '--',
+          latestLabel: latest ? latest.typeName || '最近报告' : '暂无报告',
+          latestReportId: latest ? latest.id || '' : '',
+          checkinText: latestCheckin && latestCheckin.checkinDate === today ? '今日已打卡' : '待打卡',
+          cycleText: activeCycle ? `${progress ? progress.completionRate || 0 : 0}%` : '未开启',
+          freeText: summary.isVip ? '会员可用' : `剩余${summary.freeRemaining || 0}次`,
+          hasReport: !!latest,
+          hasCheckin: !!(latestCheckin && latestCheckin.checkinDate === today),
+          hasCycle: !!activeCycle
+        }
+      })
+    } catch (err) {
+      this.setData({
+        'dashboard.freeText': this.data.isVip ? '会员可用' : `已用${this.data.freeCount}/${this.data.maxFree}`
+      })
+    }
   },
 
   async fetchReadingText() {
@@ -227,6 +279,14 @@ Page({
 
   goTrends() {
     wx.navigateTo({ url: '/pages/trends/trends' })
+  },
+
+  openLatestReport() {
+    if (this.data.dashboard.latestReportId) {
+      wx.navigateTo({ url: `/pages/report/report?id=${this.data.dashboard.latestReportId}` })
+      return
+    }
+    wx.switchTab({ url: '/pages/history/history' })
   },
 
   goOrders() {

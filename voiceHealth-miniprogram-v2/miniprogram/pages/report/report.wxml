@@ -34,6 +34,21 @@
       </view>
     </view>
 
+    <view class="mobile-actions">
+      <view class="mobile-action primary" bindtap="startImprovementFromReport">
+        <text class="mobile-action-icon">🔁</text>
+        <text class="mobile-action-text">开始改善</text>
+      </view>
+      <view class="mobile-action" bindtap="goCheckin">
+        <text class="mobile-action-icon">📅</text>
+        <text class="mobile-action-text">今日打卡</text>
+      </view>
+      <view class="mobile-action" bindtap="goRecheck">
+        <text class="mobile-action-icon">🎙️</text>
+        <text class="mobile-action-text">复测</text>
+      </view>
+    </view>
+
     <view class="section plan-section" wx:if="{{report.improvementPlan.actions.length > 0}}">
       <text class="section-title">改善方案</text>
       <view class="plan-status">
@@ -198,6 +213,12 @@
       <button class="btn btn-ghost" bindtap="goBack">返回首页</button>
       <button class="btn btn-primary" bindtap="goHistory">查看记录</button>
       <button class="btn btn-share" open-type="share">分享</button>
+    </view>
+
+    <view class="report-dock">
+      <button class="dock-btn" bindtap="goCheckin">打卡</button>
+      <button class="dock-btn primary" bindtap="startImprovementFromReport">改善</button>
+      <button class="dock-btn" bindtap="goRecheck">复测</button>
     </view>
 
     <view class="disclaimer">

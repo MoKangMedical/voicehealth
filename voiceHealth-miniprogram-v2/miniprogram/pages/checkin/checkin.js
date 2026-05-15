@@ -59,6 +59,80 @@ Page({
     intensityIndex: 0,
     moodOptions: ['平稳', '轻松', '疲惫', '焦虑', '低落', '兴奋'],
     moodIndex: 0,
+    quickPresets: [
+      {
+        key: 'balanced',
+        title: '正常日',
+        desc: '清淡饮食、步行、睡眠达标',
+        values: {
+          dietTags: ['清淡', '蔬果充足'],
+          waterMl: 1800,
+          exerciseType: '步行',
+          exerciseMinutes: 30,
+          exerciseIntensity: '中等强度',
+          sleepHours: 7.5,
+          stressLevel: 2,
+          mood: '平稳',
+          symptoms: [],
+          alcohol: false,
+          spicyOily: false,
+          lateMeal: false
+        }
+      },
+      {
+        key: 'voice',
+        title: '嗓音疲劳',
+        desc: '补水、少刺激、记录咽喉症状',
+        values: {
+          dietTags: ['清淡'],
+          waterMl: 2000,
+          exerciseType: '休息',
+          exerciseMinutes: 0,
+          exerciseIntensity: '未记录',
+          sleepHours: 7,
+          stressLevel: 3,
+          mood: '疲惫',
+          symptoms: ['咽干', '嗓音嘶哑'],
+          alcohol: false,
+          spicyOily: false,
+          lateMeal: false
+        }
+      },
+      {
+        key: 'stress',
+        title: '熬夜压力',
+        desc: '睡眠不足、压力偏高、需要恢复',
+        values: {
+          dietTags: ['夜宵'],
+          waterMl: 1200,
+          exerciseType: '休息',
+          exerciseMinutes: 0,
+          exerciseIntensity: '未记录',
+          sleepHours: 5.5,
+          stressLevel: 4,
+          mood: '疲惫',
+          symptoms: ['疲劳', '困倦', '压力大'],
+          lateMeal: true
+        }
+      },
+      {
+        key: 'sport',
+        title: '运动日',
+        desc: '有氧或力量训练后快速记录',
+        values: {
+          dietTags: ['高蛋白', '蔬果充足'],
+          waterMl: 2200,
+          exerciseType: '跑步',
+          exerciseMinutes: 40,
+          exerciseIntensity: '中等强度',
+          steps: 8000,
+          sleepHours: 7,
+          stressLevel: 2,
+          mood: '轻松',
+          symptoms: []
+        }
+      }
+    ],
     rewards: [
       { days: 3, reward: '复测习惯', unlocked: false },
       { days: 7, reward: '个人基线', unlocked: false },
@@ -256,6 +330,21 @@ Page({
       symptomOptions: options,
       'form.symptoms': options.filter(item => item.selected).map(item => item.label)
     })
+  },
+
+  applyQuickPreset(e) {
+    const key = e.currentTarget.dataset.key
+    const preset = this.data.quickPresets.find(item => item.key === key)
+    if (!preset) return
+
+    const form = {
+      ...this.data.form,
+      ...preset.values,
+      checkinDate: this.data.selectedDate
+    }
+    this.setData({ form })
+    this.syncSelectorState(form)
+    wx.showToast({ title: '已填入模板', icon: 'success' })
   },
 
   async submitCheckin() {
