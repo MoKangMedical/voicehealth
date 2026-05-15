@@ -1,34 +1,74 @@
 <view class="container">
-  <view class="header">
-    <text class="title">健康知识库</text>
-    <text class="subtitle">把声音健康参考用明白</text>
-  </view>
-  
-  <scroll-view class="tabs" scroll-x>
-    <view class="tab {{activeTab === index ? 'active' : ''}}" 
-          wx:for="{{tabs}}" wx:key="index"
-          data-index="{{index}}" bindtap="switchTab">
-      {{item}}
-    </view>
-  </scroll-view>
-  
-  <view class="article-list">
-    <view class="article-card" wx:for="{{filteredArticles}}" wx:key="id"
-          data-id="{{item.id}}" bindtap="goArticle">
-      <view class="article-icon">{{item.image}}</view>
-      <view class="article-content">
-        <text class="article-title">{{item.title}}</text>
-        <text class="article-summary">{{item.summary}}</text>
-        <view class="article-meta">
-          <text class="meta-category">{{item.category}}</text>
-          <text class="meta-date">{{item.date}}</text>
-          <text class="meta-views">{{item.readTime}}</text>
-        </view>
+  <view class="academy-hero">
+    <text class="hero-kicker">VoiceHealth Academy</text>
+    <text class="title">健康学院</text>
+    <text class="subtitle">按阶段学习声音健康、生活方式和改善闭环</text>
+    <view class="hero-stats">
+      <view class="hero-stat">
+        <text class="hero-stat-value">12课</text>
+        <text class="hero-stat-label">核心课程</text>
+      </view>
+      <view class="hero-stat">
+        <text class="hero-stat-value">3阶段</text>
+        <text class="hero-stat-label">学习路径</text>
+      </view>
+      <view class="hero-stat">
+        <text class="hero-stat-value">4工具</text>
+        <text class="hero-stat-label">边学边用</text>
       </view>
     </view>
   </view>
-  
+
+  <scroll-view class="phase-tabs" scroll-x>
+    <view class="phase-tab {{activePhase === index ? 'active' : ''}}"
+          wx:for="{{phases}}" wx:key="id"
+          data-index="{{index}}" bindtap="switchPhase">
+      <text class="phase-name">{{item.name}}</text>
+      <text class="phase-range">{{item.range}}</text>
+    </view>
+  </scroll-view>
+
+  <view class="phase-card" wx:if="{{activePhaseData}}">
+    <text class="phase-title">{{activePhaseData.title}}</text>
+    <text class="phase-focus">{{activePhaseData.focus}}</text>
+  </view>
+
+  <view class="lesson-list">
+    <view class="lesson-card {{item.completed ? 'completed' : ''}}"
+          wx:for="{{activeLessons}}" wx:key="id"
+          data-id="{{item.id}}" bindtap="openLesson">
+      <view class="lesson-no">{{item.no}}</view>
+      <view class="lesson-main">
+        <view class="lesson-head">
+          <text class="lesson-tag">{{item.tag}}</text>
+          <text class="lesson-duration">{{item.duration}}</text>
+        </view>
+        <text class="lesson-title">{{item.title}}</text>
+        <text class="lesson-subtitle">{{item.subtitle}}</text>
+        <view class="lesson-practice">
+          <text class="practice-label">练习</text>
+          <text class="practice-text">{{item.practice}}</text>
+        </view>
+      </view>
+      <text class="lesson-status">{{item.completed ? '✓' : '›'}}</text>
+    </view>
+  </view>
+
+  <view class="tool-section">
+    <view class="section-head">
+      <text class="section-title">互动工具</text>
+      <text class="section-desc">不止阅读，学习后直接执行</text>
+    </view>
+    <view class="tool-grid">
+      <view class="tool-card" wx:for="{{tools}}" wx:key="title" data-url="{{item.url}}" bindtap="goTool">
+        <text class="tool-icon">{{item.icon}}</text>
+        <text class="tool-title">{{item.title}}</text>
+        <text class="tool-desc">{{item.desc}}</text>
+      </view>
+    </view>
+  </view>
+
   <view class="disclaimer">
-    <text>* 以上内容仅供科普参考，不构成医学建议</text>
+    <text>* 健康学院内容仅供健康管理参考，不构成医学诊断或治疗建议。</text>
   </view>
 </view>

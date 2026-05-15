@@ -145,8 +145,8 @@
       <text class="tool-name">健康打卡</text>
     </view>
     <view class="tool-item" bindtap="goArticles">
-      <text class="tool-icon">📚</text>
-      <text class="tool-name">知识库</text>
+      <text class="tool-icon">🎓</text>
+      <text class="tool-name">健康学院</text>
     </view>
     <view class="tool-item" bindtap="goAchievements">
       <text class="tool-icon">🏅</text>

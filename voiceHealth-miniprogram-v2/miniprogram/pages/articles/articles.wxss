@@ -1,16 +1,315 @@
-.container{min-height:100vh;padding:32rpx}
-.header{text-align:center;margin-bottom:32rpx}
-.title{font-size:40rpx;font-weight:700;display:block}
-.subtitle{font-size:26rpx;color:rgba(255,255,255,0.45)}
-.tabs{display:flex;gap:12rpx;margin-bottom:24rpx;white-space:nowrap}
-.tab{padding:12rpx 24rpx;border-radius:20rpx;font-size:24rpx;background:rgba(255,255,255,0.04);display:inline-block}
-.tab.active{background:#3b82f6;color:#fff}
-.article-card{display:flex;gap:20rpx;background:rgba(255,255,255,0.04);border-radius:16rpx;padding:24rpx;margin-bottom:16rpx}
-.article-icon{font-size:48rpx;width:80rpx;height:80rpx;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.04);border-radius:12rpx;flex-shrink:0}
-.article-content{flex:1;min-width:0}
-.article-title{font-size:28rpx;font-weight:600;display:block;margin-bottom:8rpx;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.article-summary{font-size:24rpx;color:rgba(255,255,255,0.55);display:block;margin-bottom:12rpx;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.article-meta{display:flex;gap:16rpx}
-.meta-category{font-size:20rpx;padding:4rpx 12rpx;background:rgba(59,130,246,0.15);color:#3b82f6;border-radius:8rpx}
-.meta-date,.meta-views{font-size:20rpx;color:rgba(255,255,255,0.35)}
-.disclaimer{text-align:center;font-size:22rpx;color:rgba(255,255,255,0.25);padding:30rpx}
+.container {
+  min-height: 100vh;
+  padding: 28rpx;
+  box-sizing: border-box;
+}
+
+.academy-hero {
+  padding: 34rpx 28rpx 28rpx;
+  border-radius: 24rpx;
+  background: radial-gradient(circle at 20% 0%, rgba(226,182,79,0.18), transparent 42%), linear-gradient(135deg, rgba(24,24,27,0.94), rgba(15,23,42,0.88));
+  border: 1rpx solid rgba(226,182,79,0.24);
+  margin-bottom: 24rpx;
+}
+
+.hero-kicker {
+  display: block;
+  font-size: 22rpx;
+  line-height: 1.2;
+  color: #e2b64f;
+  letter-spacing: 1rpx;
+  margin-bottom: 10rpx;
+}
+
+.title {
+  display: block;
+  font-size: 46rpx;
+  line-height: 1.12;
+  font-weight: 900;
+  color: #fff;
+  font-family: "Noto Serif SC", "Songti SC", "STSong", serif;
+}
+
+.subtitle {
+  display: block;
+  margin-top: 12rpx;
+  font-size: 25rpx;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.62);
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12rpx;
+  margin-top: 26rpx;
+}
+
+.hero-stat {
+  min-height: 94rpx;
+  border-radius: 16rpx;
+  background: rgba(255,255,255,0.055);
+  border: 1rpx solid rgba(255,255,255,0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 14rpx;
+  box-sizing: border-box;
+}
+
+.hero-stat-value {
+  font-size: 30rpx;
+  font-weight: 900;
+  color: #fff;
+}
+
+.hero-stat-label {
+  margin-top: 6rpx;
+  font-size: 21rpx;
+  color: rgba(255,255,255,0.45);
+}
+
+.phase-tabs {
+  white-space: nowrap;
+  margin-bottom: 18rpx;
+}
+
+.phase-tab {
+  min-width: 210rpx;
+  min-height: 84rpx;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 22rpx;
+  margin-right: 14rpx;
+  border-radius: 18rpx;
+  background: rgba(255,255,255,0.045);
+  border: 1rpx solid rgba(255,255,255,0.07);
+  box-sizing: border-box;
+}
+
+.phase-tab.active {
+  background: rgba(226,182,79,0.14);
+  border-color: rgba(226,182,79,0.42);
+}
+
+.phase-name {
+  font-size: 25rpx;
+  font-weight: 800;
+  color: #fff;
+}
+
+.phase-range {
+  margin-top: 6rpx;
+  font-size: 20rpx;
+  color: rgba(255,255,255,0.44);
+}
+
+.phase-card,
+.tool-section {
+  border-radius: 22rpx;
+  padding: 24rpx;
+  margin-bottom: 22rpx;
+  background: rgba(255,255,255,0.045);
+  border: 1rpx solid rgba(255,255,255,0.07);
+}
+
+.phase-title {
+  display: block;
+  font-size: 32rpx;
+  line-height: 1.25;
+  font-weight: 900;
+  color: #fff;
+  font-family: "Noto Serif SC", "Songti SC", "STSong", serif;
+}
+
+.phase-focus {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.55);
+}
+
+.lesson-list {
+  display: grid;
+  gap: 16rpx;
+  margin-bottom: 24rpx;
+}
+
+.lesson-card {
+  min-height: 176rpx;
+  display: flex;
+  gap: 18rpx;
+  padding: 22rpx;
+  border-radius: 22rpx;
+  background: rgba(255,255,255,0.045);
+  border: 1rpx solid rgba(255,255,255,0.07);
+  box-sizing: border-box;
+}
+
+.lesson-card.completed {
+  border-color: rgba(34,197,94,0.32);
+  background: rgba(34,197,94,0.08);
+}
+
+.lesson-card:active,
+.tool-card:active,
+.phase-tab:active {
+  transform: scale(0.985);
+}
+
+.lesson-no {
+  width: 58rpx;
+  height: 58rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e2b64f, #b8860b);
+  color: #08080a;
+  font-size: 26rpx;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.lesson-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.lesson-head {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 8rpx;
+}
+
+.lesson-tag {
+  height: 34rpx;
+  padding: 0 12rpx;
+  border-radius: 999rpx;
+  background: rgba(226,182,79,0.14);
+  color: #f5d98a;
+  font-size: 20rpx;
+  line-height: 34rpx;
+}
+
+.lesson-duration {
+  font-size: 21rpx;
+  color: rgba(255,255,255,0.38);
+}
+
+.lesson-title {
+  display: block;
+  font-size: 29rpx;
+  line-height: 1.3;
+  font-weight: 900;
+  color: #fff;
+  font-family: "Noto Serif SC", "Songti SC", "STSong", serif;
+}
+
+.lesson-subtitle {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 23rpx;
+  line-height: 1.45;
+  color: rgba(255,255,255,0.53);
+}
+
+.lesson-practice {
+  margin-top: 14rpx;
+  display: flex;
+  gap: 10rpx;
+}
+
+.practice-label {
+  height: 34rpx;
+  padding: 0 10rpx;
+  border-radius: 8rpx;
+  background: rgba(34,197,94,0.14);
+  color: #86efac;
+  font-size: 20rpx;
+  line-height: 34rpx;
+  flex-shrink: 0;
+}
+
+.practice-text {
+  flex: 1;
+  min-width: 0;
+  font-size: 22rpx;
+  line-height: 1.45;
+  color: rgba(255,255,255,0.48);
+}
+
+.lesson-status {
+  width: 36rpx;
+  font-size: 32rpx;
+  color: rgba(255,255,255,0.46);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-head {
+  margin-bottom: 18rpx;
+}
+
+.section-title {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 900;
+  color: #fff;
+}
+
+.section-desc {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 23rpx;
+  color: rgba(255,255,255,0.48);
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14rpx;
+}
+
+.tool-card {
+  min-height: 142rpx;
+  padding: 18rpx;
+  border-radius: 18rpx;
+  background: rgba(255,255,255,0.05);
+  border: 1rpx solid rgba(255,255,255,0.08);
+  box-sizing: border-box;
+}
+
+.tool-icon {
+  display: block;
+  font-size: 34rpx;
+  margin-bottom: 10rpx;
+}
+
+.tool-title {
+  display: block;
+  font-size: 26rpx;
+  line-height: 1.25;
+  font-weight: 800;
+  color: #fff;
+}
+
+.tool-desc {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 21rpx;
+  line-height: 1.35;
+  color: rgba(255,255,255,0.45);
+}
+
+.disclaimer {
+  text-align: center;
+  font-size: 22rpx;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.28);
+  padding: 28rpx 20rpx 42rpx;
+}
