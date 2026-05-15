@@ -4,16 +4,37 @@
 .env.production
 __pycache__/
 **/__pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
+.Python
 .DS_Store
 .venv/
 venv/
+env/
 node_modules/
+*.egg-info/
+dist/
+build/
 *.log
+/tmp/
+.vscode/
+.idea/
+*.swp
+*.swo
+Thumbs.db
 
 # Local runtime data
 data/*.db
 data/*.db-*
+data/voxhealth.db*
+
+# Audio (privacy)
+*.wav
+*.mp3
+*.ogg
+*.webm
+!data/examples/
 
 # WeChat DevTools local/private settings
 voiceHealth-miniprogram/project.private.config.json
