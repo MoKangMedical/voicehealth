@@ -1,5 +1,24 @@
 // pages/articles/articles.js
-// VoiceHealth 健康学院：阶段化课程 + 练习 + 工具入口
+// VoiceHealth 健康学院：阶段化课程 + 练习 + 神经TTS音频试听 + 工具入口
+
+const EMPTY_AUDIO_STATE = {
+  lessonId: '',
+  playing: false,
+  loading: false,
+  current: 0,
+  duration: 0,
+  percent: 0,
+  currentText: '00:00',
+  durationText: '00:00',
+  error: ''
+}
+
+function formatAudioTime(seconds) {
+  const safe = Number.isFinite(Number(seconds)) ? Math.max(0, Math.floor(Number(seconds))) : 0
+  const minutes = Math.floor(safe / 60)
+  const rest = safe % 60
+  return `${String(minutes).padStart(2, '0')}:${String(rest).padStart(2, '0')}`
+}
 
 Page({
   data: {
@@ -167,16 +186,18 @@ Page({
       }
     ],
     tools: [
-      { title: '健康打卡', desc: '用模板快速记录今天状态', icon: '📅', url: '/pages/checkin/checkin' },
-      { title: '循证方案', desc: '查看可执行改善方案', icon: '📌', url: '/pages/plans/plans' },
-      { title: '改善闭环', desc: '保存执行并复测回顾', icon: '🔁', url: '/pages/improvement/improvement' },
-      { title: '趋势分析', desc: '观察长期声音变化', icon: '📈', url: '/pages/trends/trends' }
+      { title: '健康打卡', desc: '用模板快速记录今天状态', icon: '记录', url: '/pages/checkin/checkin' },
+      { title: '循证方案', desc: '查看可执行改善方案', icon: '方案', url: '/pages/plans/plans' },
+      { title: '改善闭环', desc: '保存执行并复测回顾', icon: '闭环', url: '/pages/improvement/improvement' },
+      { title: '趋势分析', desc: '观察长期声音变化', icon: '趋势', url: '/pages/trends/trends' }
     ],
     activePhaseData: null,
-    activeLessons: []
+    activeLessons: [],
+    audioState: { ...EMPTY_AUDIO_STATE }
   },
 
   onLoad() {
+    this.initAudioContext()
     const completedLessonIds = wx.getStorageSync('completedLessons') || []
     this.setData({ completedLessonIds }, () => this.applyPhase())
   },
@@ -195,9 +216,136 @@ Page({
     const completed = new Set(this.data.completedLessonIds)
     const activeLessons = phase.lessons.map(item => ({
       ...item,
-      completed: completed.has(item.id)
+      completed: completed.has(item.id),
+      audio: `/audio/courses/${item.id}.mp3`,
+      audioProfile: 'YunyangNeural · 48kbps'
     }))
     this.setData({ activePhaseData: phase, activeLessons })
+
+    if (this.data.audioState.lessonId && !activeLessons.some(item => item.id === this.data.audioState.lessonId)) {
+      this.stopLessonAudio()
+    }
+  },
+
+  initAudioContext() {
+    if (this.audioContext || !wx.createInnerAudioContext) return
+
+    const audio = wx.createInnerAudioContext()
+    audio.obeyMuteSwitch = false
+    this.audioContext = audio
+
+    audio.onCanplay(() => {
+      setTimeout(() => this.updateAudioProgress(), 250)
+    })
+    audio.onPlay(() => {
+      this.setData({
+        'audioState.playing': true,
+        'audioState.loading': false,
+        'audioState.error': ''
+      })
+    })
+    audio.onPause(() => {
+      this.setData({ 'audioState.playing': false, 'audioState.loading': false })
+      this.updateAudioProgress()
+    })
+    audio.onStop(() => {
+      this.setData({ 'audioState.playing': false, 'audioState.loading': false })
+    })
+    audio.onEnded(() => {
+      this.updateAudioProgress()
+      this.setData({
+        'audioState.playing': false,
+        'audioState.loading': false,
+        'audioState.percent': 100
+      })
+    })
+    audio.onWaiting(() => {
+      this.setData({ 'audioState.loading': true })
+    })
+    audio.onTimeUpdate(() => {
+      this.updateAudioProgress()
+    })
+    audio.onError(err => {
+      this.setData({
+        'audioState.playing': false,
+        'audioState.loading': false,
+        'audioState.error': '音频暂时无法播放，请稍后重试'
+      })
+      wx.showToast({ title: '音频加载失败', icon: 'none' })
+      console.warn('course audio error', err)
+    })
+  },
+
+  updateAudioProgress() {
+    if (!this.audioContext || !this.data.audioState.lessonId) return
+    const current = Number(this.audioContext.currentTime) || 0
+    const duration = Number(this.audioContext.duration) || this.data.audioState.duration || 0
+    const percent = duration ? Math.min(100, Math.round((current / duration) * 100)) : 0
+
+    this.setData({
+      'audioState.current': current,
+      'audioState.duration': duration,
+      'audioState.percent': percent,
+      'audioState.currentText': formatAudioTime(current),
+      'audioState.durationText': formatAudioTime(duration)
+    })
+  },
+
+  toggleLessonAudio(e) {
+    const id = e.currentTarget.dataset.id
+    const lesson = this.data.activeLessons.find(item => item.id === id)
+    if (!lesson) return
+    if (!this.audioContext) this.initAudioContext()
+    if (!this.audioContext) {
+      wx.showToast({ title: '当前环境不支持音频播放', icon: 'none' })
+      return
+    }
+
+    const state = this.data.audioState
+    if (state.lessonId === id) {
+      if (state.playing) {
+        this.audioContext.pause()
+      } else {
+        this.setData({ 'audioState.loading': true, 'audioState.error': '' })
+        this.audioContext.play()
+      }
+      return
+    }
+
+    this.audioContext.stop()
+    this.setData({
+      audioState: {
+        ...EMPTY_AUDIO_STATE,
+        lessonId: id,
+        loading: true,
+        durationText: '--:--'
+      }
+    })
+    this.audioContext.src = lesson.audio
+    this.audioContext.title = lesson.title
+    this.audioContext.play()
+  },
+
+  onAudioSeek(e) {
+    const state = this.data.audioState
+    if (!this.audioContext || !state.lessonId || !state.duration) return
+    const percent = Number(e.detail.value) || 0
+    const target = Math.max(0, Math.min(state.duration, (state.duration * percent) / 100))
+    this.audioContext.seek(target)
+    this.setData({
+      'audioState.current': target,
+      'audioState.percent': percent,
+      'audioState.currentText': formatAudioTime(target)
+    })
+  },
+
+  stopLessonAudio() {
+    if (this.audioContext) this.audioContext.stop()
+    this.setData({ audioState: { ...EMPTY_AUDIO_STATE } })
+  },
+
+  noop() {
+    return false
   },
 
   openLesson(e) {
@@ -227,5 +375,12 @@ Page({
 
   onShareAppMessage() {
     return { title: 'VoiceHealth 健康学院', path: '/pages/articles/articles' }
+  },
+
+  onUnload() {
+    if (this.audioContext) {
+      this.audioContext.destroy()
+      this.audioContext = null
+    }
   }
 })

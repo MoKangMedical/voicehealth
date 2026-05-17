@@ -35,6 +35,9 @@ data/voxhealth.db*
 *.ogg
 *.webm
 !data/examples/
+!voiceHealth-miniprogram-v2/miniprogram/audio/
+!voiceHealth-miniprogram-v2/miniprogram/audio/courses/
+!voiceHealth-miniprogram-v2/miniprogram/audio/courses/*.mp3
 
 # WeChat DevTools local/private settings
 voiceHealth-miniprogram/project.private.config.json

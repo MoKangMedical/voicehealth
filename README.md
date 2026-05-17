@@ -201,6 +201,25 @@ GET    /api/v1/evidence          理论基础、参考文献与指南
 
 健康数据 API 对接规范见：`docs/HEALTH_DATA_API.md`
 
+## 健康学院课程音频
+
+小程序 v2 的“健康学院”已接入课程音频播放器，核心课音频采用统一链路生成：
+
+- 150-230 字课程口播稿，不直接朗读长正文
+- `edge_tts` 神经音色 `zh-CN-YunyangNeural`
+- 默认 `rate=-7%`、`pitch=-2Hz`
+- `ffmpeg` 响度标准化：`loudnorm=I=-16:TP=-1.5:LRA=9`
+- 输出 `24000Hz`、单声道、MP3、`48kbps`
+
+常用命令：
+
+```bash
+python scripts/generate_core_audio_neural.py --overwrite
+python scripts/audit_lesson1_benchmark.py --audio-dir voiceHealth-miniprogram-v2/miniprogram/audio/courses --expect-count 12
+```
+
+完整规范见：`docs/COURSE_AUDIO_PIPELINE.md`
+
 ## 数据库模型
 
 ### users (用户表)

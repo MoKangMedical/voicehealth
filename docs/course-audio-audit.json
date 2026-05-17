@@ -1,0 +1,118 @@
+{
+  "audioDir": "voiceHealth-miniprogram-v2/miniprogram/audio/courses",
+  "total": 12,
+  "gradeA": 12,
+  "gradeIssues": 0,
+  "durationMean": 33.762,
+  "results": [
+    {
+      "file": "voiceHealth-miniprogram-v2/miniprogram/audio/courses/vh-01.mp3",
+      "duration": 31.8,
+      "sampleRate": 24000,
+      "channels": 1,
+      "bitRate": 48000,
+      "grade": "A",
+      "issues": []
+    },
+    {
+      "file": "voiceHealth-miniprogram-v2/miniprogram/audio/courses/vh-02.mp3",
+      "duration": 35.232,
+      "sampleRate": 24000,
+      "channels": 1,
+      "bitRate": 48000,
+      "grade": "A",
+      "issues": []
+    },
+    {
+      "file": "voiceHealth-miniprogram-v2/miniprogram/audio/courses/vh-03.mp3",
+      "duration": 34.608,
+      "sampleRate": 24000,
+      "channels": 1,
+      "bitRate": 48000,
+      "grade": "A",
+      "issues": []
+    },
+    {
+      "file": "voiceHealth-miniprogram-v2/miniprogram/audio/courses/vh-04.mp3",
+      "duration": 33.12,
+      "sampleRate": 24000,
+      "channels": 1,
+      "bitRate": 48000,
+      "grade": "A",
+      "issues": []
+    },
+    {
+      "file": "voiceHealth-miniprogram-v2/miniprogram/audio/courses/vh-05.mp3",
+      "duration": 34.752,
+      "sampleRate": 24000,
+      "channels": 1,
+      "bitRate": 48000,
+      "grade": "A",
+      "issues": []
+    },
+    {
+      "file": "voiceHealth-miniprogram-v2/miniprogram/audio/courses/vh-06.mp3",
+      "duration": 34.608,
+      "sampleRate": 24000,
+      "channels": 1,
+      "bitRate": 48000,
+      "grade": "A",
+      "issues": []
+    },
+    {
+      "file": "voiceHealth-miniprogram-v2/miniprogram/audio/courses/vh-07.mp3",
+      "duration": 33.696,
+      "sampleRate": 24000,
+      "channels": 1,
+      "bitRate": 48000,
+      "grade": "A",
+      "issues": []
+    },
+    {
+      "file": "voiceHealth-miniprogram-v2/miniprogram/audio/courses/vh-08.mp3",
+      "duration": 34.2,
+      "sampleRate": 24000,
+      "channels": 1,
+      "bitRate": 48000,
+      "grade": "A",
+      "issues": []
+    },
+    {
+      "file": "voiceHealth-miniprogram-v2/miniprogram/audio/courses/vh-09.mp3",
+      "duration": 32.28,
+      "sampleRate": 24000,
+      "channels": 1,
+      "bitRate": 48000,
+      "grade": "A",
+      "issues": []
+    },
+    {
+      "file": "voiceHealth-miniprogram-v2/miniprogram/audio/courses/vh-10.mp3",
+      "duration": 35.064,
+      "sampleRate": 24000,
+      "channels": 1,
+      "bitRate": 48000,
+      "grade": "A",
+      "issues": []
+    },
+    {
+      "file": "voiceHealth-miniprogram-v2/miniprogram/audio/courses/vh-11.mp3",
+      "duration": 33.864,
+      "sampleRate": 24000,
+      "channels": 1,
+      "bitRate": 48000,
+      "grade": "A",
+      "issues": []
+    },
+    {
+      "file": "voiceHealth-miniprogram-v2/miniprogram/audio/courses/vh-12.mp3",
+      "duration": 31.92,
+      "sampleRate": 24000,
+      "channels": 1,
+      "bitRate": 48000,
+      "grade": "A",
+      "issues": []
+    }
+  ],
+  "issues": []
+}

@@ -49,6 +49,35 @@
           <text class="practice-label">练习</text>
           <text class="practice-text">{{item.practice}}</text>
         </view>
+        <view class="lesson-audio" catchtap="noop">
+          <view class="audio-row">
+            <button class="audio-button {{audioState.lessonId === item.id && audioState.playing ? 'playing' : ''}}"
+                    data-id="{{item.id}}"
+                    catchtap="toggleLessonAudio">
+              {{audioState.lessonId === item.id && audioState.playing ? '暂停' : '播放'}}
+            </button>
+            <view class="audio-copy">
+              <text class="audio-title">课程口播</text>
+              <text class="audio-profile">{{item.audioProfile}}</text>
+            </view>
+            <text wx:if="{{audioState.lessonId === item.id && audioState.loading}}" class="audio-loading">加载中</text>
+          </view>
+          <view wx:if="{{audioState.lessonId === item.id}}" class="audio-progress">
+            <slider class="audio-slider"
+                    value="{{audioState.percent}}"
+                    min="0"
+                    max="100"
+                    block-size="14"
+                    activeColor="#e2b64f"
+                    backgroundColor="rgba(255,255,255,0.16)"
+                    bindchange="onAudioSeek" />
+            <view class="audio-time">
+              <text>{{audioState.currentText}}</text>
+              <text>{{audioState.durationText}}</text>
+            </view>
+            <text wx:if="{{audioState.error}}" class="audio-error">{{audioState.error}}</text>
+          </view>
+        </view>
       </view>
       <text class="lesson-status">{{item.completed ? '✓' : '›'}}</text>
     </view>
