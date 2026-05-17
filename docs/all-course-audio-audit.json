@@ -1,0 +1,17 @@
+{
+  "catalogs": [
+    {
+      "catalog": "data/courses/voicehealth_core_courses.json",
+      "outputDir": "voiceHealth-miniprogram-v2/miniprogram/audio/courses",
+      "courses": 12,
+      "audio": 12,
+      "gradeA": 12,
+      "gradeIssues": 0,
+      "durationMean": 33.762
+    }
+  ],
+  "totalCourses": 12,
+  "totalAudio": 12,
+  "gradeA": 12,
+  "gradeIssues": 0
+}

@@ -38,6 +38,8 @@ data/voxhealth.db*
 !voiceHealth-miniprogram-v2/miniprogram/audio/
 !voiceHealth-miniprogram-v2/miniprogram/audio/courses/
 !voiceHealth-miniprogram-v2/miniprogram/audio/courses/*.mp3
+!voiceHealth-miniprogram-v2/miniprogram/audio/books/
+!voiceHealth-miniprogram-v2/miniprogram/audio/books/*.mp3
 
 # WeChat DevTools local/private settings
 voiceHealth-miniprogram/project.private.config.json

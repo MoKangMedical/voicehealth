@@ -214,6 +214,7 @@ GET    /api/v1/evidence          理论基础、参考文献与指南
 常用命令：
 
 ```bash
+python scripts/generate_all_audio.py
 python scripts/generate_core_audio_neural.py --overwrite
 python scripts/audit_lesson1_benchmark.py --audio-dir voiceHealth-miniprogram-v2/miniprogram/audio/courses --expect-count 12
 ```

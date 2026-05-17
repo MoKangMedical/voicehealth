@@ -63,6 +63,22 @@ python scripts/generate_core_audio_neural.py --ids vh-01,vh-02 --overwrite
 python scripts/generate_core_audio_neural.py --bitrate 64k --overwrite
 ```
 
+## 一键生成全部可用课程
+
+当 `data/courses/` 下存在多个课程 JSON 时，可直接运行：
+
+```bash
+python scripts/generate_all_audio.py
+```
+
+脚本会：
+
+- 扫描所有包含 `courses` 数组的课程 JSON。
+- 核心课默认输出到 `voiceHealth-miniprogram-v2/miniprogram/audio/courses/`。
+- 文件名包含 `book` 的书目课默认输出到 `voiceHealth-miniprogram-v2/miniprogram/audio/books/`。
+- 已存在的 MP3 默认跳过，避免重复合成；需要重做时加 `--overwrite`。
+- 写入汇总审计：`docs/all-course-audio-audit.json`。
+
 ## 用 DeepSeek 增强口播稿
 
 ```bash
