@@ -1,0 +1,225 @@
+{
+  "updatedAt": "2026-05-28",
+  "source": "data/marketing/publish_queue_9d.json",
+  "manifest": "assets/marketing/manifest.json",
+  "items": [
+    {
+      "id": "xhs-001",
+      "day": 1,
+      "channel": "小红书",
+      "format": "图文笔记",
+      "title": "我用30秒声音记录了一周状态变化",
+      "scheduledTime": "D+1 20:30",
+      "caption": "我把声音当成一个日常状态记录入口。固定时间、固定文本、固定环境，比偶尔测一次更有参考价值。VoiceHealth 的报告只用于健康管理参考，真正不舒服还是要及时就医。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "睡眠压力",
+        "生活方式打卡",
+        "AI健康"
+      ],
+      "firstComment": "建议第一周只看趋势，不要盯着单次分数。录音前先确认环境安静、距离一致。",
+      "cta": "想试的人可以从免费体验开始，先建立自己的声音基线。",
+      "assets": {
+        "png": "assets/marketing/xiaohongshu/xhs-001.png"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "dy-001",
+      "day": 2,
+      "channel": "抖音",
+      "format": "30秒短视频",
+      "title": "声音状态三步演示",
+      "scheduledTime": "D+2 12:20",
+      "caption": "30秒朗读后看趋势，不看单次结论。声音、睡眠、饮食、运动一起记录，才更接近真实状态。",
+      "tags": [
+        "声音状态",
+        "AI健康",
+        "健康管理",
+        "抖音健康科普",
+        "生活方式"
+      ],
+      "firstComment": "本工具用于健康管理参考，不替代体检、诊断和医生建议。",
+      "cta": "点击主页体验30秒声音健康参考。",
+      "assets": {
+        "png": "assets/marketing/douyin/dy-001.png",
+        "audio": "assets/marketing/douyin/dy-001.mp3",
+        "video": "assets/marketing/douyin/dy-001.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "avatar-001",
+      "day": 3,
+      "channel": "数字人",
+      "format": "45秒口播",
+      "title": "数字人版产品说明",
+      "scheduledTime": "D+3 18:40",
+      "caption": "AI数字人说明：VoiceHealth 用30秒声音记录帮助观察状态趋势，所有结果仅作健康管理参考。",
+      "tags": [
+        "AI数字人",
+        "声音健康",
+        "健康管理参考",
+        "VoiceHealth",
+        "健康科普"
+      ],
+      "firstComment": "本视频由AI生成，内容不构成医学诊断、治疗或用药建议。",
+      "cta": "现在开始建立你的个人声音基线。",
+      "assets": {
+        "png": "assets/marketing/digital-human/avatar-001.png",
+        "audio": "assets/marketing/digital-human/avatar-001.mp3",
+        "video": "assets/marketing/digital-human/avatar-001.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "xhs-002",
+      "day": 4,
+      "channel": "小红书",
+      "format": "图文笔记",
+      "title": "熬夜后，我的声音状态有什么变化",
+      "scheduledTime": "D+4 20:30",
+      "caption": "熬夜后不要急着给自己下结论，先把声音、睡眠、饮水和压力放在同一张表里看。",
+      "tags": [
+        "熬夜恢复",
+        "声音健康",
+        "睡眠管理",
+        "健康打卡",
+        "AI健康"
+      ],
+      "firstComment": "录音建议放在起床后相对固定的时间，不要刚运动完或刚吃完辛辣刺激食物。",
+      "cta": "保存这条，试试连续7天声音基线记录。",
+      "assets": {
+        "png": "assets/marketing/xiaohongshu/xhs-002.png"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "dy-002",
+      "day": 5,
+      "channel": "抖音",
+      "format": "30秒短视频",
+      "title": "办公室压力大，声音会不会先变化",
+      "scheduledTime": "D+5 12:20",
+      "caption": "办公室人群可以从声音基线开始，记录压力和恢复，而不是等到状态明显崩掉才调整。",
+      "tags": [
+        "职场压力",
+        "声音健康",
+        "健康管理",
+        "AI工具",
+        "自我管理"
+      ],
+      "firstComment": "如果有持续胸闷、呼吸困难、明显不适，请优先线下就医。",
+      "cta": "今天下班前录一次，和睡眠压力打卡一起看。",
+      "assets": {
+        "png": "assets/marketing/douyin/dy-002.png",
+        "audio": "assets/marketing/douyin/dy-002.mp3",
+        "video": "assets/marketing/douyin/dy-002.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "avatar-002",
+      "day": 6,
+      "channel": "数字人",
+      "format": "45秒口播",
+      "title": "健康参考边界说明",
+      "scheduledTime": "D+6 18:40",
+      "caption": "AI数字人合规口播：先讲清边界，再讲产品价值。",
+      "tags": [
+        "AI数字人",
+        "健康科普",
+        "合规说明",
+        "声音健康",
+        "健康管理"
+      ],
+      "firstComment": "本视频由AI数字人生成，所有内容仅供健康管理参考。",
+      "cta": "理性使用报告，把它当成生活方式复盘工具。",
+      "assets": {
+        "png": "assets/marketing/digital-human/avatar-002.png",
+        "audio": "assets/marketing/digital-human/avatar-002.mp3",
+        "video": "assets/marketing/digital-human/avatar-002.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "xhs-003",
+      "day": 7,
+      "channel": "小红书",
+      "format": "复盘笔记",
+      "title": "第一周声音基线复盘：我只看三件事",
+      "scheduledTime": "D+7 20:30",
+      "caption": "第一周复盘模板：同一时间录音、记录睡眠压力饮食运动、只看趋势。",
+      "tags": [
+        "7天打卡",
+        "声音基线",
+        "健康复盘",
+        "生活方式",
+        "AI健康"
+      ],
+      "firstComment": "适合想观察状态的人，不适合作为疾病判断依据。",
+      "cta": "评论区打卡，我把7天复盘模板整理出来。",
+      "assets": {
+        "png": "assets/marketing/xiaohongshu/xhs-003.png"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "dy-003",
+      "day": 8,
+      "channel": "抖音",
+      "format": "30秒短视频",
+      "title": "运动后为什么别马上复测声音",
+      "scheduledTime": "D+8 12:20",
+      "caption": "声音复测也要讲条件控制。运动后等呼吸恢复，再看趋势更靠谱。",
+      "tags": [
+        "运动健康",
+        "声音健康",
+        "健康管理",
+        "复测技巧",
+        "AI健康"
+      ],
+      "firstComment": "如果运动后持续胸痛、气短或头晕，请优先寻求医疗帮助。",
+      "cta": "运动后30分钟再测，结果更适合对比。",
+      "assets": {
+        "png": "assets/marketing/douyin/dy-003.png",
+        "audio": "assets/marketing/douyin/dy-003.mp3",
+        "video": "assets/marketing/douyin/dy-003.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "avatar-003",
+      "day": 9,
+      "channel": "数字人",
+      "format": "45秒口播",
+      "title": "饮水和嗓音稳定",
+      "scheduledTime": "D+9 18:40",
+      "caption": "AI数字人科普：嗓音波动先看饮水、休息、刺激性饮食和睡眠。",
+      "tags": [
+        "嗓音管理",
+        "饮水打卡",
+        "AI数字人",
+        "声音健康",
+        "健康科普"
+      ],
+      "firstComment": "如果出现持续声音嘶哑、吞咽困难或其他明显不适，请及时咨询专业医生。",
+      "cta": "今天记录一次饮水和嗓音状态。",
+      "assets": {
+        "png": "assets/marketing/digital-human/avatar-003.png",
+        "audio": "assets/marketing/digital-human/avatar-003.mp3",
+        "video": "assets/marketing/digital-human/avatar-003.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    }
+  ],
+  "compliance": [
+    "不使用治愈率、有效率、确诊、筛查疾病、替代体检等承诺性表达",
+    "不使用医生、专家、患者见证作为广告推荐",
+    "不制造健康恐惧，不暗示不使用产品会患病或加重疾病",
+    "数字人、合成语音、AI生成视频必须显著标注AI生成或AI数字人",
+    "任何声音、面部、视频数据采集前必须取得用户授权",
+    "所有页面保留健康管理参考和非诊断声明"
+  ]
+}

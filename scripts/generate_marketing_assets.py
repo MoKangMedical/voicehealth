@@ -16,7 +16,7 @@ from course_audio_pipeline import DEFAULT_PITCH, DEFAULT_RATE, DEFAULT_VOICE, LO
 
 
 ASSET_ROOT = Path("assets/marketing")
-GROWTH_ASSETS = Path("data/marketing/growth_assets.json")
+DEFAULT_SOURCE = Path("data/marketing/growth_assets.json")
 XHS_SIZE = (1242, 1660)
 VIDEO_SIZE = (1080, 1920)
 VIDEO_BITRATE = "1800k"
@@ -36,7 +36,7 @@ def require_tools() -> None:
             raise RuntimeError(f"{tool} is required to generate marketing assets") from exc
 
 
-def load_assets(path: Path = GROWTH_ASSETS) -> dict[str, Any]:
+def load_assets(path: Path = DEFAULT_SOURCE) -> dict[str, Any]:
     target = repo_root() / path
     return json.loads(target.read_text(encoding="utf-8"))
 
@@ -153,7 +153,8 @@ def draw_marketing_png(item: dict[str, str], png_path: Path, size: tuple[int, in
     draw_lines(draw, title_lines, 112, title_y, title_font, (255, 255, 255), int(title_font.size * 1.28))
     body_width = 27 if width < 1200 else 30
     max_body_lines = 10 if is_avatar else 8
-    body_lines = wrap_text(item["copy"], body_width)[:max_body_lines]
+    display_copy = item.get("coverCopy", item["copy"])
+    body_lines = wrap_text(display_copy, body_width)[:max_body_lines]
     draw_lines(draw, body_lines, 112, body_y, body_font, (203, 213, 225), int(body_font.size * 1.34))
 
     cta = item.get("cta", "开始体验")
@@ -268,12 +269,23 @@ def probe_summary(path: Path) -> dict[str, Any]:
     }
 
 
-async def generate_assets(overwrite: bool = False) -> dict[str, Any]:
+def source_items(data: dict[str, Any]) -> list[dict[str, Any]]:
+    items = data.get("readyToPublish") or data.get("items")
+    if not isinstance(items, list):
+        raise ValueError("Marketing source must include readyToPublish or items list")
+    return items
+
+
+def compliance_items(data: dict[str, Any]) -> list[str]:
+    return data.get("complianceChecklist") or data.get("compliance") or []
+
+
+async def generate_assets(source: Path = DEFAULT_SOURCE, overwrite: bool = False) -> dict[str, Any]:
     require_tools()
     root = repo_root()
-    data = load_assets()
+    data = load_assets(source)
     generated: list[dict[str, Any]] = []
-    for item in data["readyToPublish"]:
+    for item in source_items(data):
         channel = item["channel"]
         if channel == "小红书":
             target_dir = root / ASSET_ROOT / "xiaohongshu"
@@ -304,7 +316,7 @@ async def generate_assets(overwrite: bool = False) -> dict[str, Any]:
 
     manifest = {
         "updatedAt": data["updatedAt"],
-        "source": str(GROWTH_ASSETS),
+        "source": str(source),
         "profile": {
             "voice": DEFAULT_VOICE,
             "rate": DEFAULT_RATE,
@@ -314,7 +326,7 @@ async def generate_assets(overwrite: bool = False) -> dict[str, Any]:
             "xiaohongshuCover": "1242x1660 png",
         },
         "assets": generated,
-        "compliance": data["complianceChecklist"],
+        "compliance": compliance_items(data),
     }
     manifest_path = root / ASSET_ROOT / "manifest.json"
     manifest_path.parent.mkdir(parents=True, exist_ok=True)
@@ -324,9 +336,14 @@ async def generate_assets(overwrite: bool = False) -> dict[str, Any]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate VoiceHealth social promotion assets.")
+    parser.add_argument(
+        "--source",
+        default=str(DEFAULT_SOURCE),
+        help="JSON source with readyToPublish or items list",
+    )
     parser.add_argument("--overwrite", action="store_true", help="Regenerate audio/video even if files exist")
     args = parser.parse_args()
-    manifest = asyncio.run(generate_assets(overwrite=args.overwrite))
+    manifest = asyncio.run(generate_assets(source=Path(args.source), overwrite=args.overwrite))
     print(json.dumps({k: v for k, v in manifest.items() if k != "assets"}, ensure_ascii=False, indent=2))
     for item in manifest["assets"]:
         print(item["id"], item["channel"], item["type"])

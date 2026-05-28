@@ -62,6 +62,22 @@
 
   <view class="section">
     <view class="section-head">
+      <text class="section-title">9天发布队列</text>
+      <text class="section-desc">手机端快速查看发布节奏、标题和素材ID</text>
+    </view>
+    <view class="launch-card" wx:for="{{launchQueue}}" wx:key="id">
+      <view class="launch-top">
+        <text class="launch-day">{{item.day}}</text>
+        <text class="launch-channel">{{item.channel}} · {{item.time}}</text>
+        <button class="copy-btn" data-id="{{item.id}}" bindtap="copyLaunch">复制</button>
+      </view>
+      <text class="launch-title">{{item.title}}</text>
+      <text class="launch-asset">素材：{{item.asset}}</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-head">
       <text class="section-title">合规底线</text>
       <text class="section-desc">健康内容先可信，再追求转化</text>
     </view>

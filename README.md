@@ -333,8 +333,12 @@ voiceHealth-miniprogram-v2/    # 微信小程序，直连 FastAPI
 - 公开增长页：`docs/growth.html`
 - 商业落地与宣传执行手册：`docs/COMMERCIALIZATION_AND_PROMOTION_PLAYBOOK.md`
 - 30天内容日历：`data/marketing/content_calendar_30d.json`
-- 首批宣传素材：`assets/marketing/`
+- 9天启动发布队列：`data/marketing/publish_queue_9d.json`
+- 可复制发布简报：`data/marketing/publish_briefs/`
+- 发布队列机读清单：`data/marketing/publish_queue_ready.json`
+- 宣传素材：`assets/marketing/`
 - 素材生成脚本：`scripts/generate_marketing_assets.py`
+- 发布简报生成脚本：`scripts/generate_publish_briefs.py`
 - 小程序入口：`pages/growth/growth`
 
 ## 审核要点

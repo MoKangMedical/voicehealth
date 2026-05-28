@@ -119,19 +119,24 @@ VoiceHealth 的商业表达统一为：
 
 - 结构化商业素材：`data/marketing/growth_assets.json`
 - 30天内容日历：`data/marketing/content_calendar_30d.json`
+- 9天启动发布队列：`data/marketing/publish_queue_9d.json`
+- 可复制发布简报：`data/marketing/publish_briefs/`
+- 发布队列机读清单：`data/marketing/publish_queue_ready.json`
 - 小程序商业入口：`voiceHealth-miniprogram-v2/miniprogram/pages/growth/`
 - 公开增长页：`docs/growth.html`
 - 素材生成脚本：`scripts/generate_marketing_assets.py`
-- 首批发布素材：
-  - 小红书封面：`assets/marketing/xiaohongshu/xhs-001.png`
-  - 抖音竖版视频：`assets/marketing/douyin/dy-001.mp4`
-  - 数字人口播视频：`assets/marketing/digital-human/avatar-001.mp4`
+- 发布简报生成脚本：`scripts/generate_publish_briefs.py`
+- 当前发布素材：
+  - 小红书封面：`assets/marketing/xiaohongshu/xhs-001.png` 至 `xhs-003.png`
+  - 抖音竖版视频：`assets/marketing/douyin/dy-001.mp4` 至 `dy-003.mp4`
+  - 数字人口播视频：`assets/marketing/digital-human/avatar-001.mp4` 至 `avatar-003.mp4`
   - 素材规格清单：`assets/marketing/manifest.json`
 
 重新生成素材：
 
 ```bash
-python scripts/generate_marketing_assets.py --overwrite
+python scripts/generate_marketing_assets.py --source data/marketing/publish_queue_9d.json --overwrite
+python scripts/generate_publish_briefs.py
 ```
 
 生成规格：

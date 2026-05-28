@@ -199,6 +199,52 @@
   line-height: 1.58;
 }
 
+.launch-card {
+  padding: 20rpx;
+  border-radius: 18rpx;
+  background: rgba(15,23,42,0.64);
+  border: 1rpx solid rgba(134,239,172,0.14);
+  margin-bottom: 12rpx;
+}
+
+.launch-top {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.launch-day {
+  width: 70rpx;
+  color: #86efac;
+  font-size: 24rpx;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.launch-channel {
+  flex: 1;
+  min-width: 0;
+  color: rgba(255,255,255,0.6);
+  font-size: 22rpx;
+}
+
+.launch-title {
+  display: block;
+  margin-top: 12rpx;
+  color: #fff;
+  font-size: 26rpx;
+  line-height: 1.42;
+  font-weight: 850;
+}
+
+.launch-asset {
+  display: block;
+  margin-top: 8rpx;
+  color: rgba(255,255,255,0.42);
+  font-size: 21rpx;
+  line-height: 1.4;
+}
+
 .check {
   width: 30rpx;
   color: #86efac;
