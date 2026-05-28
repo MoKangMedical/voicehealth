@@ -1,0 +1,84 @@
+{
+  "updatedAt": "2026-05-28",
+  "source": "data/marketing/growth_assets.json",
+  "profile": {
+    "voice": "zh-CN-YunyangNeural",
+    "rate": "-7%",
+    "pitch": "-2Hz",
+    "audio": "24000Hz mono mp3",
+    "video": "1080x1920 h264/aac for Douyin and digital human",
+    "xiaohongshuCover": "1242x1660 png"
+  },
+  "assets": [
+    {
+      "id": "xhs-001",
+      "channel": "小红书",
+      "type": "cover",
+      "png": "assets/marketing/xiaohongshu/xhs-001.png"
+    },
+    {
+      "id": "dy-001",
+      "channel": "抖音",
+      "type": "video",
+      "png": "assets/marketing/douyin/dy-001.png",
+      "audio": "assets/marketing/douyin/dy-001.mp3",
+      "video": "assets/marketing/douyin/dy-001.mp4",
+      "probe": {
+        "video": {
+          "codec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "pixFmt": "yuv420p",
+          "frames": "626"
+        },
+        "audio": {
+          "codec": "aac",
+          "sampleRate": "24000",
+          "channels": 1,
+          "layout": "mono"
+        },
+        "format": {
+          "duration": "25.040000",
+          "size": "1620141",
+          "bitRate": "517616"
+        }
+      }
+    },
+    {
+      "id": "avatar-001",
+      "channel": "数字人",
+      "type": "video",
+      "png": "assets/marketing/digital-human/avatar-001.png",
+      "audio": "assets/marketing/digital-human/avatar-001.mp3",
+      "video": "assets/marketing/digital-human/avatar-001.mp4",
+      "probe": {
+        "video": {
+          "codec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "pixFmt": "yuv420p",
+          "frames": "656"
+        },
+        "audio": {
+          "codec": "aac",
+          "sampleRate": "24000",
+          "channels": 1,
+          "layout": "mono"
+        },
+        "format": {
+          "duration": "26.240000",
+          "size": "1777018",
+          "bitRate": "541773"
+        }
+      }
+    }
+  ],
+  "compliance": [
+    "不使用治愈率、有效率、确诊、筛查疾病、替代体检等承诺性表达",
+    "不使用医生、专家、患者见证作为广告推荐",
+    "不制造健康恐惧，不暗示不使用产品会患病或加重疾病",
+    "数字人、合成语音、AI生成视频必须显著标注AI生成或AI数字人",
+    "任何声音、面部、视频数据采集前必须取得用户授权",
+    "所有页面保留健康管理参考和非诊断声明"
+  ]
+}

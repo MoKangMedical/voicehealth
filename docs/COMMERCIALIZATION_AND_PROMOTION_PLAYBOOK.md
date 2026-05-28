@@ -121,6 +121,25 @@ VoiceHealth 的商业表达统一为：
 - 30天内容日历：`data/marketing/content_calendar_30d.json`
 - 小程序商业入口：`voiceHealth-miniprogram-v2/miniprogram/pages/growth/`
 - 公开增长页：`docs/growth.html`
+- 素材生成脚本：`scripts/generate_marketing_assets.py`
+- 首批发布素材：
+  - 小红书封面：`assets/marketing/xiaohongshu/xhs-001.png`
+  - 抖音竖版视频：`assets/marketing/douyin/dy-001.mp4`
+  - 数字人口播视频：`assets/marketing/digital-human/avatar-001.mp4`
+  - 素材规格清单：`assets/marketing/manifest.json`
+
+重新生成素材：
+
+```bash
+python scripts/generate_marketing_assets.py --overwrite
+```
+
+生成规格：
+
+- 小红书封面：`1242x1660 PNG`
+- 抖音视频：`1080x1920 MP4, H.264/AAC`
+- 数字人视频：`1080x1920 MP4, H.264/AAC`
+- 口播音频：`zh-CN-YunyangNeural, rate=-7%, pitch=-2Hz, 24000Hz mono`
 
 ## 8. 合规依据
 
