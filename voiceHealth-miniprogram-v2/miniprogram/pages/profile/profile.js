@@ -30,6 +30,7 @@ Page({
       { icon: '📌', title: '循证健康方案', url: '/pages/plans/plans', type: 'navigate' },
       { icon: '📅', title: '每日健康打卡', url: '/pages/checkin/checkin', type: 'navigate' },
       { icon: '🎓', title: '健康学院', url: '/pages/articles/articles', type: 'navigate' },
+      { icon: '增长', title: '商业增长中心', url: '/pages/growth/growth', type: 'navigate' },
       { icon: '🏅', title: '成就徽章', url: '/pages/achievements/achievements', type: 'navigate' },
       { icon: '👨‍👩‍👧', title: '家庭成员', url: '/pages/family/family', type: 'navigate' },
       { icon: '🧾', title: '订单记录', url: '/pages/orders/orders', type: 'navigate' },

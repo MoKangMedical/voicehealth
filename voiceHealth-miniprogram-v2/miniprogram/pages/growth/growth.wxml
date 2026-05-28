@@ -1,0 +1,78 @@
+<view class="container">
+  <view class="hero">
+    <text class="hero-label">VoiceHealth Growth</text>
+    <text class="hero-title">商业增长中心</text>
+    <text class="hero-subtitle">把健康管理参考能力转成会员收入、机构合作、内容获客和数字人宣传。</text>
+  </view>
+
+  <view class="metric-grid">
+    <view class="metric-card" wx:for="{{metrics}}" wx:key="label">
+      <text class="metric-value">{{item.value}}</text>
+      <text class="metric-label">{{item.label}}</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-head">
+      <text class="section-title">商业模式</text>
+      <text class="section-desc">先用免费体验获客，再用会员、家庭包和API合作变现</text>
+    </view>
+    <view class="offer-card" wx:for="{{offers}}" wx:key="title">
+      <view class="offer-top">
+        <text class="offer-title">{{item.title}}</text>
+        <text class="offer-price">{{item.price}}</text>
+      </view>
+      <text class="offer-audience">{{item.audience}}</text>
+      <view class="point-row" wx:for="{{item.points}}" wx:for-item="point" wx:key="*this">
+        <text class="point-dot"></text>
+        <text class="point-text">{{point}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-head">
+      <text class="section-title">渠道执行</text>
+      <text class="section-desc">小红书种草、抖音演示、数字人稳定口播</text>
+    </view>
+    <view class="channel-card" wx:for="{{channels}}" wx:key="key">
+      <view class="channel-top">
+        <text class="channel-name">{{item.name}}</text>
+        <button class="copy-btn" data-key="{{item.key}}" bindtap="copyChannel">复制</button>
+      </view>
+      <text class="channel-goal">{{item.goal}}</text>
+      <text class="channel-line">节奏：{{item.cadence}}</text>
+      <text class="channel-line">转化：{{item.cta}}</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-head">
+      <text class="section-title">可直接发布的脚本</text>
+      <text class="section-desc">复制后即可交给运营、剪辑或数字人平台</text>
+    </view>
+    <view class="script-card" wx:for="{{scripts}}" wx:key="id">
+      <view class="script-top">
+        <text class="script-title">{{item.title}}</text>
+        <button class="copy-btn" data-id="{{item.id}}" bindtap="copyScript">复制</button>
+      </view>
+      <text class="script-body">{{item.body}}</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-head">
+      <text class="section-title">合规底线</text>
+      <text class="section-desc">健康内容先可信，再追求转化</text>
+    </view>
+    <view class="compliance-card">
+      <view class="compliance-row" wx:for="{{compliance}}" wx:key="*this">
+        <text class="check">✓</text>
+        <text>{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <button class="contact-btn" bindtap="contactBusiness">复制商务联系方式</button>
+  <button class="share-btn" open-type="share">分享增长方案</button>
+</view>
