@@ -2,13 +2,14 @@
 // VoiceHealth 商业落地、渠道推广与数字人宣传中心
 
 const config = require('../../config.js')
+const launchQueue = require('../../data/growthLaunchQueue.js')
 
 Page({
   data: {
     metrics: [
       { value: '90天', label: '落地周期' },
       { value: '3类', label: '收入模型' },
-      { value: '9条', label: '启动素材' },
+      { value: '30条', label: '发布素材' },
       { value: '合规', label: '健康参考定位' }
     ],
     offers: [
@@ -71,17 +72,7 @@ Page({
         body: '大家好，我是VoiceHealth数字健康助手。本视频由AI数字人生成。VoiceHealth通过30秒声音记录，帮助你观察睡眠、压力、嗓音和恢复状态的趋势。结果只用于健康管理参考，不构成医学诊断；如果出现明显不适，请及时咨询专业医生。'
       }
     ],
-    launchQueue: [
-      { id: 'xhs-001', day: 'D+1', channel: '小红书', time: '20:30', title: '我用30秒声音记录了一周状态变化', asset: 'xhs-001.png' },
-      { id: 'dy-001', day: 'D+2', channel: '抖音', time: '12:20', title: '声音状态三步演示', asset: 'dy-001.mp4' },
-      { id: 'avatar-001', day: 'D+3', channel: '数字人', time: '18:40', title: '数字人版产品说明', asset: 'avatar-001.mp4' },
-      { id: 'xhs-002', day: 'D+4', channel: '小红书', time: '20:30', title: '熬夜后，我的声音状态有什么变化', asset: 'xhs-002.png' },
-      { id: 'dy-002', day: 'D+5', channel: '抖音', time: '12:20', title: '办公室压力大，声音会不会先变化', asset: 'dy-002.mp4' },
-      { id: 'avatar-002', day: 'D+6', channel: '数字人', time: '18:40', title: '健康参考边界说明', asset: 'avatar-002.mp4' },
-      { id: 'xhs-003', day: 'D+7', channel: '小红书', time: '20:30', title: '第一周声音基线复盘：我只看三件事', asset: 'xhs-003.png' },
-      { id: 'dy-003', day: 'D+8', channel: '抖音', time: '12:20', title: '运动后为什么别马上复测声音', asset: 'dy-003.mp4' },
-      { id: 'avatar-003', day: 'D+9', channel: '数字人', time: '18:40', title: '饮水和嗓音稳定', asset: 'avatar-003.mp4' }
-    ],
+    launchQueue,
     compliance: [
       '不写治愈率、有效率、确诊、筛查疾病等医疗化承诺',
       '不用医生、专家、患者见证作为广告推荐',
@@ -116,7 +107,8 @@ Page({
     const id = e.currentTarget.dataset.id
     const item = this.data.launchQueue.find(queueItem => queueItem.id === id)
     if (!item) return
-    const text = `${item.day} ${item.channel} ${item.time}\n标题：${item.title}\n素材：${item.asset}\n发布前确认：健康管理参考、非诊断声明、AI生成标注`
+    const tags = (item.tags || []).map(tag => `#${tag}`).join(' ')
+    const text = `${item.day} ${item.channel} ${item.time}\n标题：${item.title}\n正文：${item.caption}\n标签：${tags}\n首评：${item.firstComment}\n转化：${item.cta}\n素材：${item.asset}\n发布前确认：健康管理参考、非诊断声明、AI生成标注`
     wx.setClipboardData({
       data: text,
       success: () => wx.showToast({ title: '已复制发布项', icon: 'success' })

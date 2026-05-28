@@ -120,23 +120,30 @@ VoiceHealth 的商业表达统一为：
 - 结构化商业素材：`data/marketing/growth_assets.json`
 - 30天内容日历：`data/marketing/content_calendar_30d.json`
 - 9天启动发布队列：`data/marketing/publish_queue_9d.json`
-- 可复制发布简报：`data/marketing/publish_briefs/`
-- 发布队列机读清单：`data/marketing/publish_queue_ready.json`
+- 30天完整发布队列：`data/marketing/publish_queue_30d.json`
+- 30天可复制发布简报：`data/marketing/publish_briefs_30d/`
+- 30天发布队列机读清单：`data/marketing/publish_queue_30d_ready.json`
+- 30天运营排期表：`data/marketing/publish_queue_30d_ready.csv`
+- 小程序30天发布队列：`voiceHealth-miniprogram-v2/miniprogram/data/growthLaunchQueue.js`
 - 小程序商业入口：`voiceHealth-miniprogram-v2/miniprogram/pages/growth/`
 - 公开增长页：`docs/growth.html`
+- 30天队列构建脚本：`scripts/build_publish_queue.py`
 - 素材生成脚本：`scripts/generate_marketing_assets.py`
 - 发布简报生成脚本：`scripts/generate_publish_briefs.py`
+- 小程序队列导出脚本：`scripts/export_miniprogram_growth_queue.py`
 - 当前发布素材：
-  - 小红书封面：`assets/marketing/xiaohongshu/xhs-001.png` 至 `xhs-003.png`
-  - 抖音竖版视频：`assets/marketing/douyin/dy-001.mp4` 至 `dy-003.mp4`
-  - 数字人口播视频：`assets/marketing/digital-human/avatar-001.mp4` 至 `avatar-003.mp4`
+  - 小红书封面：`assets/marketing/xiaohongshu/xhs-001.png` 至 `xhs-010.png`
+  - 抖音竖版视频：`assets/marketing/douyin/dy-001.mp4` 至 `dy-010.mp4`
+  - 数字人口播视频：`assets/marketing/digital-human/avatar-001.mp4` 至 `avatar-010.mp4`
   - 素材规格清单：`assets/marketing/manifest.json`
 
 重新生成素材：
 
 ```bash
-python scripts/generate_marketing_assets.py --source data/marketing/publish_queue_9d.json --overwrite
-python scripts/generate_publish_briefs.py
+python scripts/build_publish_queue.py
+python scripts/generate_marketing_assets.py --source data/marketing/publish_queue_30d.json --overwrite
+python scripts/generate_publish_briefs.py --source data/marketing/publish_queue_30d.json --output-dir data/marketing/publish_briefs_30d --ready-json data/marketing/publish_queue_30d_ready.json --csv data/marketing/publish_queue_30d_ready.csv
+python scripts/export_miniprogram_growth_queue.py
 ```
 
 生成规格：

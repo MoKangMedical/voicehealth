@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 from pathlib import Path
 from typing import Any
@@ -16,6 +17,7 @@ DEFAULT_SOURCE = Path("data/marketing/publish_queue_9d.json")
 DEFAULT_MANIFEST = ASSET_ROOT / "manifest.json"
 DEFAULT_OUTPUT_DIR = Path("data/marketing/publish_briefs")
 DEFAULT_READY_JSON = Path("data/marketing/publish_queue_ready.json")
+DEFAULT_CSV = Path("data/marketing/publish_queue_ready.csv")
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -119,6 +121,7 @@ def build_ready_item(item: dict[str, Any], assets: dict[str, str]) -> dict[str, 
         "format": item["format"],
         "title": item["title"],
         "scheduledTime": publish_time(item["day"], item["channel"]),
+        "copy": item["copy"],
         "caption": item.get("caption", item["copy"]),
         "tags": item.get("tags", []),
         "firstComment": item.get("firstComment", "内容仅用于健康管理参考，不构成医学诊断或治疗建议。"),
@@ -128,7 +131,48 @@ def build_ready_item(item: dict[str, Any], assets: dict[str, str]) -> dict[str, 
     }
 
 
-def generate(source: Path, manifest_path: Path, output_dir: Path, ready_json: Path) -> dict[str, Any]:
+def write_csv(path: Path, items: list[dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fields = [
+        "day",
+        "scheduledTime",
+        "channel",
+        "format",
+        "title",
+        "caption",
+        "tags",
+        "firstComment",
+        "cta",
+        "png",
+        "audio",
+        "video",
+        "status",
+    ]
+    with path.open("w", newline="", encoding="utf-8-sig") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
+        writer.writeheader()
+        for item in items:
+            assets = item.get("assets", {})
+            writer.writerow(
+                {
+                    "day": item["day"],
+                    "scheduledTime": item["scheduledTime"],
+                    "channel": item["channel"],
+                    "format": item["format"],
+                    "title": item["title"],
+                    "caption": item["caption"],
+                    "tags": " ".join(f"#{tag}" for tag in item.get("tags", [])),
+                    "firstComment": item["firstComment"],
+                    "cta": item["cta"],
+                    "png": assets.get("png", ""),
+                    "audio": assets.get("audio", ""),
+                    "video": assets.get("video", ""),
+                    "status": item["status"],
+                }
+            )
+
+
+def generate(source: Path, manifest_path: Path, output_dir: Path, ready_json: Path, csv_path: Path | None) -> dict[str, Any]:
     root = repo_root()
     data = load_json(source)
     manifest = load_manifest(manifest_path)
@@ -136,8 +180,9 @@ def generate(source: Path, manifest_path: Path, output_dir: Path, ready_json: Pa
     out_dir.mkdir(parents=True, exist_ok=True)
 
     ready_items = []
+    title = data.get("campaign", "VoiceHealth 发布简报")
     index_lines = [
-        "# VoiceHealth 9天发布简报",
+        f"# {title}",
         "",
         "所有内容仅用于健康管理参考，不构成医学诊断或治疗建议。发布前仍需人工复核平台规则、账号身份和素材展示。",
         "",
@@ -158,6 +203,8 @@ def generate(source: Path, manifest_path: Path, output_dir: Path, ready_json: Pa
         "compliance": data.get("compliance", []),
     }
     (root / ready_json).write_text(json.dumps(ready_payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if csv_path:
+        write_csv(root / csv_path, ready_items)
     return ready_payload
 
 
@@ -167,6 +214,7 @@ def main() -> None:
     parser.add_argument("--manifest", default=str(DEFAULT_MANIFEST))
     parser.add_argument("--output-dir", default=str(DEFAULT_OUTPUT_DIR))
     parser.add_argument("--ready-json", default=str(DEFAULT_READY_JSON))
+    parser.add_argument("--csv", default=str(DEFAULT_CSV))
     args = parser.parse_args()
 
     payload = generate(
@@ -174,8 +222,15 @@ def main() -> None:
         manifest_path=Path(args.manifest),
         output_dir=Path(args.output_dir),
         ready_json=Path(args.ready_json),
+        csv_path=Path(args.csv) if args.csv else None,
     )
-    print(json.dumps({"items": len(payload["items"]), "readyJson": args.ready_json}, ensure_ascii=False, indent=2))
+    print(
+        json.dumps(
+            {"items": len(payload["items"]), "readyJson": args.ready_json, "csv": args.csv},
+            ensure_ascii=False,
+            indent=2,
+        )
+    )
 
 
 if __name__ == "__main__":

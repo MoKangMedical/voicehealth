@@ -1,6 +1,6 @@
 {
   "updatedAt": "2026-05-28",
-  "source": "data/marketing/publish_queue_9d.json",
+  "source": "data/marketing/publish_queue_30d.json",
   "profile": {
     "voice": "zh-CN-YunyangNeural",
     "rate": "-7%",
@@ -29,7 +29,7 @@
           "width": 1080,
           "height": 1920,
           "pixFmt": "yuv420p",
-          "frames": "626"
+          "frames": "624"
         },
         "audio": {
           "codec": "aac",
@@ -38,9 +38,9 @@
           "layout": "mono"
         },
         "format": {
-          "duration": "25.040000",
-          "size": "1269058",
-          "bitRate": "405449"
+          "duration": "24.960000",
+          "size": "1267906",
+          "bitRate": "406380"
         }
       }
     },
@@ -57,7 +57,7 @@
           "width": 1080,
           "height": 1920,
           "pixFmt": "yuv420p",
-          "frames": "656"
+          "frames": "658"
         },
         "audio": {
           "codec": "aac",
@@ -66,9 +66,9 @@
           "layout": "mono"
         },
         "format": {
-          "duration": "26.240000",
-          "size": "1508318",
-          "bitRate": "459853"
+          "duration": "26.320000",
+          "size": "1497897",
+          "bitRate": "455287"
         }
       }
     },
@@ -91,7 +91,7 @@
           "width": 1080,
           "height": 1920,
           "pixFmt": "yuv420p",
-          "frames": "672"
+          "frames": "668"
         },
         "audio": {
           "codec": "aac",
@@ -100,9 +100,9 @@
           "layout": "mono"
         },
         "format": {
-          "duration": "26.880000",
-          "size": "1502976",
-          "bitRate": "447314"
+          "duration": "26.720000",
+          "size": "1479143",
+          "bitRate": "442857"
         }
       }
     },
@@ -119,7 +119,7 @@
           "width": 1080,
           "height": 1920,
           "pixFmt": "yuv420p",
-          "frames": "707"
+          "frames": "708"
         },
         "audio": {
           "codec": "aac",
@@ -128,9 +128,9 @@
           "layout": "mono"
         },
         "format": {
-          "duration": "28.280000",
-          "size": "1598747",
-          "bitRate": "452262"
+          "duration": "28.320000",
+          "size": "1599692",
+          "bitRate": "451890"
         }
       }
     },
@@ -153,7 +153,7 @@
           "width": 1080,
           "height": 1920,
           "pixFmt": "yuv420p",
-          "frames": "632"
+          "frames": "626"
         },
         "audio": {
           "codec": "aac",
@@ -162,9 +162,9 @@
           "layout": "mono"
         },
         "format": {
-          "duration": "25.280000",
-          "size": "1346134",
-          "bitRate": "425991"
+          "duration": "25.040000",
+          "size": "1336372",
+          "bitRate": "426955"
         }
       }
     },
@@ -181,7 +181,7 @@
           "width": 1080,
           "height": 1920,
           "pixFmt": "yuv420p",
-          "frames": "602"
+          "frames": "600"
         },
         "audio": {
           "codec": "aac",
@@ -190,9 +190,443 @@
           "layout": "mono"
         },
         "format": {
-          "duration": "24.080000",
-          "size": "1390655",
-          "bitRate": "462011"
+          "duration": "24.000000",
+          "size": "1388895",
+          "bitRate": "462965"
+        }
+      }
+    },
+    {
+      "id": "xhs-004",
+      "channel": "小红书",
+      "type": "cover",
+      "png": "assets/marketing/xiaohongshu/xhs-004.png"
+    },
+    {
+      "id": "dy-004",
+      "channel": "抖音",
+      "type": "video",
+      "png": "assets/marketing/douyin/dy-004.png",
+      "audio": "assets/marketing/douyin/dy-004.mp3",
+      "video": "assets/marketing/douyin/dy-004.mp4",
+      "probe": {
+        "video": {
+          "codec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "pixFmt": "yuv420p",
+          "frames": "684"
+        },
+        "audio": {
+          "codec": "aac",
+          "sampleRate": "24000",
+          "channels": 1,
+          "layout": "mono"
+        },
+        "format": {
+          "duration": "27.360000",
+          "size": "1302453",
+          "bitRate": "380834"
+        }
+      }
+    },
+    {
+      "id": "avatar-004",
+      "channel": "数字人",
+      "type": "video",
+      "png": "assets/marketing/digital-human/avatar-004.png",
+      "audio": "assets/marketing/digital-human/avatar-004.mp3",
+      "video": "assets/marketing/digital-human/avatar-004.mp4",
+      "probe": {
+        "video": {
+          "codec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "pixFmt": "yuv420p",
+          "frames": "734"
+        },
+        "audio": {
+          "codec": "aac",
+          "sampleRate": "24000",
+          "channels": 1,
+          "layout": "mono"
+        },
+        "format": {
+          "duration": "29.360000",
+          "size": "1431857",
+          "bitRate": "390151"
+        }
+      }
+    },
+    {
+      "id": "xhs-005",
+      "channel": "小红书",
+      "type": "cover",
+      "png": "assets/marketing/xiaohongshu/xhs-005.png"
+    },
+    {
+      "id": "dy-005",
+      "channel": "抖音",
+      "type": "video",
+      "png": "assets/marketing/douyin/dy-005.png",
+      "audio": "assets/marketing/douyin/dy-005.mp3",
+      "video": "assets/marketing/douyin/dy-005.mp4",
+      "probe": {
+        "video": {
+          "codec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "pixFmt": "yuv420p",
+          "frames": "674"
+        },
+        "audio": {
+          "codec": "aac",
+          "sampleRate": "24000",
+          "channels": 1,
+          "layout": "mono"
+        },
+        "format": {
+          "duration": "26.960000",
+          "size": "1275920",
+          "bitRate": "378611"
+        }
+      }
+    },
+    {
+      "id": "avatar-005",
+      "channel": "数字人",
+      "type": "video",
+      "png": "assets/marketing/digital-human/avatar-005.png",
+      "audio": "assets/marketing/digital-human/avatar-005.mp3",
+      "video": "assets/marketing/digital-human/avatar-005.mp4",
+      "probe": {
+        "video": {
+          "codec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "pixFmt": "yuv420p",
+          "frames": "728"
+        },
+        "audio": {
+          "codec": "aac",
+          "sampleRate": "24000",
+          "channels": 1,
+          "layout": "mono"
+        },
+        "format": {
+          "duration": "29.120000",
+          "size": "1390160",
+          "bitRate": "381912"
+        }
+      }
+    },
+    {
+      "id": "xhs-006",
+      "channel": "小红书",
+      "type": "cover",
+      "png": "assets/marketing/xiaohongshu/xhs-006.png"
+    },
+    {
+      "id": "dy-006",
+      "channel": "抖音",
+      "type": "video",
+      "png": "assets/marketing/douyin/dy-006.png",
+      "audio": "assets/marketing/douyin/dy-006.mp3",
+      "video": "assets/marketing/douyin/dy-006.mp4",
+      "probe": {
+        "video": {
+          "codec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "pixFmt": "yuv420p",
+          "frames": "686"
+        },
+        "audio": {
+          "codec": "aac",
+          "sampleRate": "24000",
+          "channels": 1,
+          "layout": "mono"
+        },
+        "format": {
+          "duration": "27.440000",
+          "size": "1307655",
+          "bitRate": "381240"
+        }
+      }
+    },
+    {
+      "id": "avatar-006",
+      "channel": "数字人",
+      "type": "video",
+      "png": "assets/marketing/digital-human/avatar-006.png",
+      "audio": "assets/marketing/digital-human/avatar-006.mp3",
+      "video": "assets/marketing/digital-human/avatar-006.mp4",
+      "probe": {
+        "video": {
+          "codec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "pixFmt": "yuv420p",
+          "frames": "718"
+        },
+        "audio": {
+          "codec": "aac",
+          "sampleRate": "24000",
+          "channels": 1,
+          "layout": "mono"
+        },
+        "format": {
+          "duration": "28.720000",
+          "size": "1430729",
+          "bitRate": "398531"
+        }
+      }
+    },
+    {
+      "id": "xhs-007",
+      "channel": "小红书",
+      "type": "cover",
+      "png": "assets/marketing/xiaohongshu/xhs-007.png"
+    },
+    {
+      "id": "dy-007",
+      "channel": "抖音",
+      "type": "video",
+      "png": "assets/marketing/douyin/dy-007.png",
+      "audio": "assets/marketing/douyin/dy-007.mp3",
+      "video": "assets/marketing/douyin/dy-007.mp4",
+      "probe": {
+        "video": {
+          "codec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "pixFmt": "yuv420p",
+          "frames": "670"
+        },
+        "audio": {
+          "codec": "aac",
+          "sampleRate": "24000",
+          "channels": 1,
+          "layout": "mono"
+        },
+        "format": {
+          "duration": "26.800000",
+          "size": "1273031",
+          "bitRate": "380009"
+        }
+      }
+    },
+    {
+      "id": "avatar-007",
+      "channel": "数字人",
+      "type": "video",
+      "png": "assets/marketing/digital-human/avatar-007.png",
+      "audio": "assets/marketing/digital-human/avatar-007.mp3",
+      "video": "assets/marketing/digital-human/avatar-007.mp4",
+      "probe": {
+        "video": {
+          "codec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "pixFmt": "yuv420p",
+          "frames": "742"
+        },
+        "audio": {
+          "codec": "aac",
+          "sampleRate": "24000",
+          "channels": 1,
+          "layout": "mono"
+        },
+        "format": {
+          "duration": "29.680000",
+          "size": "1434501",
+          "bitRate": "386657"
+        }
+      }
+    },
+    {
+      "id": "xhs-008",
+      "channel": "小红书",
+      "type": "cover",
+      "png": "assets/marketing/xiaohongshu/xhs-008.png"
+    },
+    {
+      "id": "dy-008",
+      "channel": "抖音",
+      "type": "video",
+      "png": "assets/marketing/douyin/dy-008.png",
+      "audio": "assets/marketing/douyin/dy-008.mp3",
+      "video": "assets/marketing/douyin/dy-008.mp4",
+      "probe": {
+        "video": {
+          "codec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "pixFmt": "yuv420p",
+          "frames": "682"
+        },
+        "audio": {
+          "codec": "aac",
+          "sampleRate": "24000",
+          "channels": 1,
+          "layout": "mono"
+        },
+        "format": {
+          "duration": "27.280000",
+          "size": "1280083",
+          "bitRate": "375390"
+        }
+      }
+    },
+    {
+      "id": "avatar-008",
+      "channel": "数字人",
+      "type": "video",
+      "png": "assets/marketing/digital-human/avatar-008.png",
+      "audio": "assets/marketing/digital-human/avatar-008.mp3",
+      "video": "assets/marketing/digital-human/avatar-008.mp4",
+      "probe": {
+        "video": {
+          "codec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "pixFmt": "yuv420p",
+          "frames": "732"
+        },
+        "audio": {
+          "codec": "aac",
+          "sampleRate": "24000",
+          "channels": 1,
+          "layout": "mono"
+        },
+        "format": {
+          "duration": "29.280000",
+          "size": "1454644",
+          "bitRate": "397443"
+        }
+      }
+    },
+    {
+      "id": "xhs-009",
+      "channel": "小红书",
+      "type": "cover",
+      "png": "assets/marketing/xiaohongshu/xhs-009.png"
+    },
+    {
+      "id": "dy-009",
+      "channel": "抖音",
+      "type": "video",
+      "png": "assets/marketing/douyin/dy-009.png",
+      "audio": "assets/marketing/douyin/dy-009.mp3",
+      "video": "assets/marketing/douyin/dy-009.mp4",
+      "probe": {
+        "video": {
+          "codec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "pixFmt": "yuv420p",
+          "frames": "684"
+        },
+        "audio": {
+          "codec": "aac",
+          "sampleRate": "24000",
+          "channels": 1,
+          "layout": "mono"
+        },
+        "format": {
+          "duration": "27.360000",
+          "size": "1286950",
+          "bitRate": "376301"
+        }
+      }
+    },
+    {
+      "id": "avatar-009",
+      "channel": "数字人",
+      "type": "video",
+      "png": "assets/marketing/digital-human/avatar-009.png",
+      "audio": "assets/marketing/digital-human/avatar-009.mp3",
+      "video": "assets/marketing/digital-human/avatar-009.mp4",
+      "probe": {
+        "video": {
+          "codec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "pixFmt": "yuv420p",
+          "frames": "726"
+        },
+        "audio": {
+          "codec": "aac",
+          "sampleRate": "24000",
+          "channels": 1,
+          "layout": "mono"
+        },
+        "format": {
+          "duration": "29.040000",
+          "size": "1484211",
+          "bitRate": "408873"
+        }
+      }
+    },
+    {
+      "id": "xhs-010",
+      "channel": "小红书",
+      "type": "cover",
+      "png": "assets/marketing/xiaohongshu/xhs-010.png"
+    },
+    {
+      "id": "dy-010",
+      "channel": "抖音",
+      "type": "video",
+      "png": "assets/marketing/douyin/dy-010.png",
+      "audio": "assets/marketing/douyin/dy-010.mp3",
+      "video": "assets/marketing/douyin/dy-010.mp4",
+      "probe": {
+        "video": {
+          "codec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "pixFmt": "yuv420p",
+          "frames": "672"
+        },
+        "audio": {
+          "codec": "aac",
+          "sampleRate": "24000",
+          "channels": 1,
+          "layout": "mono"
+        },
+        "format": {
+          "duration": "26.880000",
+          "size": "1289383",
+          "bitRate": "383744"
+        }
+      }
+    },
+    {
+      "id": "avatar-010",
+      "channel": "数字人",
+      "type": "video",
+      "png": "assets/marketing/digital-human/avatar-010.png",
+      "audio": "assets/marketing/digital-human/avatar-010.mp3",
+      "video": "assets/marketing/digital-human/avatar-010.mp4",
+      "probe": {
+        "video": {
+          "codec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "pixFmt": "yuv420p",
+          "frames": "750"
+        },
+        "audio": {
+          "codec": "aac",
+          "sampleRate": "24000",
+          "channels": 1,
+          "layout": "mono"
+        },
+        "format": {
+          "duration": "30.000000",
+          "size": "1514268",
+          "bitRate": "403804"
         }
       }
     }

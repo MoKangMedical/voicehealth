@@ -1,0 +1,720 @@
+{
+  "updatedAt": "2026-05-28",
+  "source": "data/marketing/publish_queue_30d.json",
+  "manifest": "assets/marketing/manifest.json",
+  "items": [
+    {
+      "id": "xhs-001",
+      "day": 1,
+      "channel": "小红书",
+      "format": "图文笔记",
+      "title": "我用30秒声音记录了一周状态变化",
+      "scheduledTime": "D+1 20:30",
+      "copy": "这不是诊断，也不替代体检。我只是每天在同一时间朗读30秒，记录声音能量、停顿、语速和音质趋势。最有用的不是某一次分数，而是它和睡眠、压力、饮食、运动记录放在一起看。连续7天后，更容易发现自己状态被什么影响。",
+      "caption": "我把声音当成一个日常状态记录入口。固定时间、固定文本、固定环境，比偶尔测一次更有参考价值。VoiceHealth 的报告只用于健康管理参考，真正不舒服还是要及时就医。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "睡眠压力",
+        "生活方式打卡",
+        "AI健康"
+      ],
+      "firstComment": "建议第一周只看趋势，不要盯着单次分数。录音前先确认环境安静、距离一致。",
+      "cta": "想试的人可以从免费体验开始，先建立自己的声音基线。",
+      "assets": {
+        "png": "assets/marketing/xiaohongshu/xhs-001.png"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "dy-001",
+      "day": 2,
+      "channel": "抖音",
+      "format": "30秒短视频",
+      "title": "声音状态三步演示",
+      "scheduledTime": "D+2 12:20",
+      "copy": "开场：今天状态好不好，声音也会留下线索。步骤一：安静环境朗读30秒。步骤二：系统分析语速、停顿、能量和音质。步骤三：结合睡眠、压力、饮食和运动，看健康参考趋势。结尾：这不是诊断，是帮你更早做生活方式调整。",
+      "caption": "30秒朗读后看趋势，不看单次结论。声音、睡眠、饮食、运动一起记录，才更接近真实状态。",
+      "tags": [
+        "声音状态",
+        "AI健康",
+        "健康管理",
+        "抖音健康科普",
+        "生活方式"
+      ],
+      "firstComment": "本工具用于健康管理参考，不替代体检、诊断和医生建议。",
+      "cta": "点击主页体验30秒声音健康参考。",
+      "assets": {
+        "png": "assets/marketing/douyin/dy-001.png",
+        "audio": "assets/marketing/douyin/dy-001.mp3",
+        "video": "assets/marketing/douyin/dy-001.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "avatar-001",
+      "day": 3,
+      "channel": "数字人",
+      "format": "45秒口播",
+      "title": "数字人版产品说明",
+      "scheduledTime": "D+3 18:40",
+      "copy": "大家好，我是 VoiceHealth AI 数字健康助手。本视频由 AI 数字人生成。VoiceHealth 通过30秒声音记录，帮助你观察睡眠、压力、嗓音和恢复状态的趋势。报告只用于健康管理参考，不构成医学诊断。如果出现明显不适，请及时咨询专业医生。",
+      "caption": "AI数字人说明：VoiceHealth 用30秒声音记录帮助观察状态趋势，所有结果仅作健康管理参考。",
+      "tags": [
+        "AI数字人",
+        "声音健康",
+        "健康管理参考",
+        "VoiceHealth",
+        "健康科普"
+      ],
+      "firstComment": "本视频由AI生成，内容不构成医学诊断、治疗或用药建议。",
+      "cta": "现在开始建立你的个人声音基线。",
+      "assets": {
+        "png": "assets/marketing/digital-human/avatar-001.png",
+        "audio": "assets/marketing/digital-human/avatar-001.mp3",
+        "video": "assets/marketing/digital-human/avatar-001.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "xhs-002",
+      "day": 4,
+      "channel": "小红书",
+      "format": "图文笔记",
+      "title": "熬夜后，我的声音状态有什么变化",
+      "scheduledTime": "D+4 20:30",
+      "copy": "熬夜后的变化不一定只体现在困。第二天早上录同一段30秒文本时，我会重点看声音能量、停顿和嗓音紧张感有没有波动。单次变化不能说明疾病，但能提醒我回头看睡眠时长、咖啡因、饮水和当天压力。把这些放在一起，才像一个真实的健康日记。",
+      "caption": "熬夜后不要急着给自己下结论，先把声音、睡眠、饮水和压力放在同一张表里看。",
+      "tags": [
+        "熬夜恢复",
+        "声音健康",
+        "睡眠管理",
+        "健康打卡",
+        "AI健康"
+      ],
+      "firstComment": "录音建议放在起床后相对固定的时间，不要刚运动完或刚吃完辛辣刺激食物。",
+      "cta": "保存这条，试试连续7天声音基线记录。",
+      "assets": {
+        "png": "assets/marketing/xiaohongshu/xhs-002.png"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "dy-002",
+      "day": 5,
+      "channel": "抖音",
+      "format": "30秒短视频",
+      "title": "办公室压力大，声音会不会先变化",
+      "scheduledTime": "D+5 12:20",
+      "copy": "开场：压力大的时候，身体不一定马上报警，但声音节律可能先变。场景一：会议多、说话多，停顿变长。场景二：睡眠少，声音能量下降。场景三：焦虑紧张，语速和呼吸更不稳。VoiceHealth 做的是趋势参考，帮你把压力、睡眠和声音放在一起复盘。",
+      "caption": "办公室人群可以从声音基线开始，记录压力和恢复，而不是等到状态明显崩掉才调整。",
+      "tags": [
+        "职场压力",
+        "声音健康",
+        "健康管理",
+        "AI工具",
+        "自我管理"
+      ],
+      "firstComment": "如果有持续胸闷、呼吸困难、明显不适，请优先线下就医。",
+      "cta": "今天下班前录一次，和睡眠压力打卡一起看。",
+      "assets": {
+        "png": "assets/marketing/douyin/dy-002.png",
+        "audio": "assets/marketing/douyin/dy-002.mp3",
+        "video": "assets/marketing/douyin/dy-002.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "avatar-002",
+      "day": 6,
+      "channel": "数字人",
+      "format": "45秒口播",
+      "title": "健康参考边界说明",
+      "scheduledTime": "D+6 18:40",
+      "copy": "这里必须说明边界：VoiceHealth 不是诊断工具，也不替代医生、体检和治疗。它更适合做健康管理参考，比如观察声音能量、停顿、语速、嗓音状态和恢复趋势。真正有价值的是连续记录，并结合睡眠、饮食、运动和压力打卡。如果出现明显不适，请及时就医。",
+      "caption": "AI数字人合规口播：先讲清边界，再讲产品价值。",
+      "tags": [
+        "AI数字人",
+        "健康科普",
+        "合规说明",
+        "声音健康",
+        "健康管理"
+      ],
+      "firstComment": "本视频由AI数字人生成，所有内容仅供健康管理参考。",
+      "cta": "理性使用报告，把它当成生活方式复盘工具。",
+      "assets": {
+        "png": "assets/marketing/digital-human/avatar-002.png",
+        "audio": "assets/marketing/digital-human/avatar-002.mp3",
+        "video": "assets/marketing/digital-human/avatar-002.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "xhs-003",
+      "day": 7,
+      "channel": "小红书",
+      "format": "复盘笔记",
+      "title": "第一周声音基线复盘：我只看三件事",
+      "scheduledTime": "D+7 20:30",
+      "copy": "连续记录一周后，我不会盯着某一次分数，而是看三件事：第一，早晚状态差异；第二，睡眠不足后有没有明显波动；第三，运动、饮水和压力记录能不能解释这些变化。声音健康参考的意义不是制造焦虑，而是帮自己更早发现生活方式的影响。",
+      "caption": "第一周复盘模板：同一时间录音、记录睡眠压力饮食运动、只看趋势。",
+      "tags": [
+        "7天打卡",
+        "声音基线",
+        "健康复盘",
+        "生活方式",
+        "AI健康"
+      ],
+      "firstComment": "适合想观察状态的人，不适合作为疾病判断依据。",
+      "cta": "评论区打卡，我把7天复盘模板整理出来。",
+      "assets": {
+        "png": "assets/marketing/xiaohongshu/xhs-003.png"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "dy-003",
+      "day": 8,
+      "channel": "抖音",
+      "format": "30秒短视频",
+      "title": "运动后为什么别马上复测声音",
+      "scheduledTime": "D+8 12:20",
+      "copy": "开场：刚运动完，不建议马上做声音复测。原因一：呼吸还没有恢复平稳。原因二：心率和疲劳会影响朗读节奏。原因三：出汗、口干也会影响音质。更稳妥的做法是运动后休息30分钟，喝水，等呼吸平稳，再用同一段文本记录。",
+      "caption": "声音复测也要讲条件控制。运动后等呼吸恢复，再看趋势更靠谱。",
+      "tags": [
+        "运动健康",
+        "声音健康",
+        "健康管理",
+        "复测技巧",
+        "AI健康"
+      ],
+      "firstComment": "如果运动后持续胸痛、气短或头晕，请优先寻求医疗帮助。",
+      "cta": "运动后30分钟再测，结果更适合对比。",
+      "assets": {
+        "png": "assets/marketing/douyin/dy-003.png",
+        "audio": "assets/marketing/douyin/dy-003.mp3",
+        "video": "assets/marketing/douyin/dy-003.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "avatar-003",
+      "day": 9,
+      "channel": "数字人",
+      "format": "45秒口播",
+      "title": "饮水和嗓音稳定",
+      "scheduledTime": "D+9 18:40",
+      "copy": "很多人录音时发现嗓音发紧，第一反应是担心自己出了问题。但在健康管理里，我们先看更基础的因素：今天喝水够不够，是否连续说话太久，是否吃了辛辣刺激食物，睡眠是否不足。VoiceHealth 的价值是帮你把这些因素和声音趋势放在一起看。",
+      "caption": "AI数字人科普：嗓音波动先看饮水、休息、刺激性饮食和睡眠。",
+      "tags": [
+        "嗓音管理",
+        "饮水打卡",
+        "AI数字人",
+        "声音健康",
+        "健康科普"
+      ],
+      "firstComment": "如果出现持续声音嘶哑、吞咽困难或其他明显不适，请及时咨询专业医生。",
+      "cta": "今天记录一次饮水和嗓音状态。",
+      "assets": {
+        "png": "assets/marketing/digital-human/avatar-003.png",
+        "audio": "assets/marketing/digital-human/avatar-003.mp3",
+        "video": "assets/marketing/digital-human/avatar-003.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "xhs-004",
+      "day": 10,
+      "channel": "小红书",
+      "format": "知识卡片",
+      "title": "报告里的音高、能量、停顿怎么读",
+      "scheduledTime": "D+10 20:30",
+      "copy": "报告里的音高、能量、停顿怎么读。看懂指标，才不会被单次分数带偏。我的做法是固定时间、固定文本、固定环境录30秒，再把声音趋势和睡眠、饮食、运动、压力打卡放在一起复盘。这不是诊断，也不替代体检；更像一个帮助自己发现生活方式影响的健康日记。",
+      "caption": "看懂指标，才不会被单次分数带偏。我会把它当成健康管理参考，而不是疾病判断。连续记录比偶尔测一次更有价值。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "AI健康"
+      ],
+      "firstComment": "建议连续记录趋势，不要把单次分数当成健康结论。明显不适请及时就医。",
+      "cta": "收藏后复测对照",
+      "assets": {
+        "png": "assets/marketing/xiaohongshu/xhs-004.png"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "dy-004",
+      "day": 11,
+      "channel": "抖音",
+      "format": "产品演示",
+      "title": "健康学院音频课程怎么听",
+      "scheduledTime": "D+11 12:20",
+      "copy": "开场：每节30多秒，适合通勤碎片学习。镜头一：打开 VoiceHealth，按提示朗读30秒。镜头二：查看语速、停顿、能量和音质趋势。镜头三：结合睡眠、饮食、运动和压力打卡复盘。结尾：这不是诊断，是帮助你更早做生活方式调整的健康管理参考。",
+      "caption": "健康学院音频课程怎么听：先记录，再复盘。结果只用于健康管理参考，不替代医生和体检。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "健康学院",
+        "AI健康"
+      ],
+      "firstComment": "建议连续记录趋势，不要把单次分数当成健康结论。明显不适请及时就医。",
+      "cta": "打开健康学院",
+      "assets": {
+        "png": "assets/marketing/douyin/dy-004.png",
+        "audio": "assets/marketing/douyin/dy-004.mp3",
+        "video": "assets/marketing/douyin/dy-004.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "avatar-004",
+      "day": 12,
+      "channel": "数字人",
+      "format": "口播",
+      "title": "如何避免录音误差",
+      "scheduledTime": "D+12 18:40",
+      "copy": "大家好，我是 VoiceHealth AI 数字健康助手。本视频由 AI 数字人生成。今天讲的是：如何避免录音误差。同一环境、同一距离、同一文本更可信。VoiceHealth 更适合做趋势观察和生活方式复盘，不用于医学诊断、治疗或急症判断。如果出现明显不适，请及时咨询专业医生。",
+      "caption": "AI数字人科普：如何避免录音误差。内容仅用于健康管理参考。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "AI数字人"
+      ],
+      "firstComment": "建议连续记录趋势，不要把单次分数当成健康结论。明显不适请及时就医。",
+      "cta": "按标准录一次",
+      "assets": {
+        "png": "assets/marketing/digital-human/avatar-004.png",
+        "audio": "assets/marketing/digital-human/avatar-004.mp3",
+        "video": "assets/marketing/digital-human/avatar-004.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "xhs-005",
+      "day": 13,
+      "channel": "小红书",
+      "format": "体验笔记",
+      "title": "用声音记录压力高的一天",
+      "scheduledTime": "D+13 20:30",
+      "copy": "用声音记录压力高的一天。把主观压力和声音趋势放在一起看。我的做法是固定时间、固定文本、固定环境录30秒，再把声音趋势和睡眠、饮食、运动、压力打卡放在一起复盘。这不是诊断，也不替代体检；更像一个帮助自己发现生活方式影响的健康日记。",
+      "caption": "把主观压力和声音趋势放在一起看。我会把它当成健康管理参考，而不是疾病判断。连续记录比偶尔测一次更有价值。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "压力管理",
+        "AI健康"
+      ],
+      "firstComment": "建议连续记录趋势，不要把单次分数当成健康结论。明显不适请及时就医。",
+      "cta": "填写压力打卡",
+      "assets": {
+        "png": "assets/marketing/xiaohongshu/xhs-005.png"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "dy-005",
+      "day": 14,
+      "channel": "抖音",
+      "format": "短视频",
+      "title": "家庭成员如何一起记录",
+      "scheduledTime": "D+14 12:20",
+      "copy": "开场：家庭健康包适合长期趋势管理。镜头一：打开 VoiceHealth，按提示朗读30秒。镜头二：查看语速、停顿、能量和音质趋势。镜头三：结合睡眠、饮食、运动和压力打卡复盘。结尾：这不是诊断，是帮助你更早做生活方式调整的健康管理参考。",
+      "caption": "家庭成员如何一起记录：先记录，再复盘。结果只用于健康管理参考，不替代医生和体检。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "家庭健康",
+        "AI健康"
+      ],
+      "firstComment": "建议连续记录趋势，不要把单次分数当成健康结论。明显不适请及时就医。",
+      "cta": "建立家庭档案",
+      "assets": {
+        "png": "assets/marketing/douyin/dy-005.png",
+        "audio": "assets/marketing/douyin/dy-005.mp3",
+        "video": "assets/marketing/douyin/dy-005.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "avatar-005",
+      "day": 15,
+      "channel": "数字人",
+      "format": "口播",
+      "title": "改善闭环是什么",
+      "scheduledTime": "D+15 18:40",
+      "copy": "大家好，我是 VoiceHealth AI 数字健康助手。本视频由 AI 数字人生成。今天讲的是：改善闭环是什么。报告不是终点，行动和复测才是闭环。VoiceHealth 更适合做趋势观察和生活方式复盘，不用于医学诊断、治疗或急症判断。如果出现明显不适，请及时咨询专业医生。",
+      "caption": "AI数字人科普：改善闭环是什么。内容仅用于健康管理参考。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "AI数字人"
+      ],
+      "firstComment": "建议连续记录趋势，不要把单次分数当成健康结论。明显不适请及时就医。",
+      "cta": "生成一周计划",
+      "assets": {
+        "png": "assets/marketing/digital-human/avatar-005.png",
+        "audio": "assets/marketing/digital-human/avatar-005.mp3",
+        "video": "assets/marketing/digital-human/avatar-005.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "xhs-006",
+      "day": 16,
+      "channel": "小红书",
+      "format": "图文笔记",
+      "title": "声音健康参考适合哪些人",
+      "scheduledTime": "D+16 20:30",
+      "copy": "声音健康参考适合哪些人。想观察压力、睡眠、嗓音和恢复状态的人。我的做法是固定时间、固定文本、固定环境录30秒，再把声音趋势和睡眠、饮食、运动、压力打卡放在一起复盘。这不是诊断，也不替代体检；更像一个帮助自己发现生活方式影响的健康日记。",
+      "caption": "想观察压力、睡眠、嗓音和恢复状态的人。我会把它当成健康管理参考，而不是疾病判断。连续记录比偶尔测一次更有价值。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "睡眠管理",
+        "压力管理",
+        "嗓音管理"
+      ],
+      "firstComment": "如果持续声音嘶哑、吞咽困难或明显不适，请及时咨询专业医生。",
+      "cta": "先免费体验",
+      "assets": {
+        "png": "assets/marketing/xiaohongshu/xhs-006.png"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "dy-006",
+      "day": 17,
+      "channel": "抖音",
+      "format": "短视频",
+      "title": "一分钟看懂改善计划",
+      "scheduledTime": "D+17 12:20",
+      "copy": "开场：分数低时先做什么，稳定时怎么保持。镜头一：打开 VoiceHealth，按提示朗读30秒。镜头二：查看语速、停顿、能量和音质趋势。镜头三：结合睡眠、饮食、运动和压力打卡复盘。结尾：这不是诊断，是帮助你更早做生活方式调整的健康管理参考。",
+      "caption": "一分钟看懂改善计划：先记录，再复盘。结果只用于健康管理参考，不替代医生和体检。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "AI健康"
+      ],
+      "firstComment": "建议连续记录趋势，不要把单次分数当成健康结论。明显不适请及时就医。",
+      "cta": "保存行动计划",
+      "assets": {
+        "png": "assets/marketing/douyin/dy-006.png",
+        "audio": "assets/marketing/douyin/dy-006.mp3",
+        "video": "assets/marketing/douyin/dy-006.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "avatar-006",
+      "day": 18,
+      "channel": "数字人",
+      "format": "口播",
+      "title": "数字人合规声明模板",
+      "scheduledTime": "D+18 18:40",
+      "copy": "大家好，我是 VoiceHealth AI 数字健康助手。本视频由 AI 数字人生成。今天讲的是：数字人合规声明模板。AI生成内容必须显著标注。VoiceHealth 更适合做趋势观察和生活方式复盘，不用于医学诊断、治疗或急症判断。如果出现明显不适，请及时咨询专业医生。",
+      "caption": "AI数字人科普：数字人合规声明模板。内容仅用于健康管理参考。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "AI数字人"
+      ],
+      "firstComment": "本内容只做健康管理参考，不构成医学诊断、治疗或用药建议。",
+      "cta": "查看完整说明",
+      "assets": {
+        "png": "assets/marketing/digital-human/avatar-006.png",
+        "audio": "assets/marketing/digital-human/avatar-006.mp3",
+        "video": "assets/marketing/digital-human/avatar-006.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "xhs-007",
+      "day": 19,
+      "channel": "小红书",
+      "format": "知识卡片",
+      "title": "嗓音疲劳时先做这三件事",
+      "scheduledTime": "D+19 20:30",
+      "copy": "嗓音疲劳时先做这三件事。补水、减少刺激、安排发声休息。我的做法是固定时间、固定文本、固定环境录30秒，再把声音趋势和睡眠、饮食、运动、压力打卡放在一起复盘。这不是诊断，也不替代体检；更像一个帮助自己发现生活方式影响的健康日记。",
+      "caption": "补水、减少刺激、安排发声休息。我会把它当成健康管理参考，而不是疾病判断。连续记录比偶尔测一次更有价值。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "嗓音管理",
+        "AI健康"
+      ],
+      "firstComment": "如果持续声音嘶哑、吞咽困难或明显不适，请及时咨询专业医生。",
+      "cta": "记录嗓音状态",
+      "assets": {
+        "png": "assets/marketing/xiaohongshu/xhs-007.png"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "dy-007",
+      "day": 20,
+      "channel": "抖音",
+      "format": "短视频",
+      "title": "为什么不能说确诊和治愈",
+      "scheduledTime": "D+20 12:20",
+      "copy": "开场：健康管理工具要先守住边界。镜头一：打开 VoiceHealth，按提示朗读30秒。镜头二：查看语速、停顿、能量和音质趋势。镜头三：结合睡眠、饮食、运动和压力打卡复盘。结尾：这不是诊断，是帮助你更早做生活方式调整的健康管理参考。",
+      "caption": "为什么不能说确诊和治愈：先记录，再复盘。结果只用于健康管理参考，不替代医生和体检。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "AI健康"
+      ],
+      "firstComment": "本内容只做健康管理参考，不构成医学诊断、治疗或用药建议。",
+      "cta": "理性看报告",
+      "assets": {
+        "png": "assets/marketing/douyin/dy-007.png",
+        "audio": "assets/marketing/douyin/dy-007.mp3",
+        "video": "assets/marketing/douyin/dy-007.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "avatar-007",
+      "day": 21,
+      "channel": "数字人",
+      "format": "口播",
+      "title": "API合作场景",
+      "scheduledTime": "D+21 18:40",
+      "copy": "大家好，我是 VoiceHealth AI 数字健康助手。本视频由 AI 数字人生成。今天讲的是：API合作场景。健康数据可授权对接体检、保险和管理平台。VoiceHealth 更适合做趋势观察和生活方式复盘，不用于医学诊断、治疗或急症判断。如果出现明显不适，请及时咨询专业医生。",
+      "caption": "AI数字人科普：API合作场景。内容仅用于健康管理参考。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "商业合作",
+        "AI数字人"
+      ],
+      "firstComment": "商务试点需完成合规审查、数据授权、隐私告知和场景边界确认。",
+      "cta": "联系商务试点",
+      "assets": {
+        "png": "assets/marketing/digital-human/avatar-007.png",
+        "audio": "assets/marketing/digital-human/avatar-007.mp3",
+        "video": "assets/marketing/digital-human/avatar-007.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "xhs-008",
+      "day": 22,
+      "channel": "小红书",
+      "format": "复盘笔记",
+      "title": "连续三周声音趋势变化",
+      "scheduledTime": "D+22 20:30",
+      "copy": "连续三周声音趋势变化。变化背后往往是睡眠和压力习惯。我的做法是固定时间、固定文本、固定环境录30秒，再把声音趋势和睡眠、饮食、运动、压力打卡放在一起复盘。这不是诊断，也不替代体检；更像一个帮助自己发现生活方式影响的健康日记。",
+      "caption": "变化背后往往是睡眠和压力习惯。我会把它当成健康管理参考，而不是疾病判断。连续记录比偶尔测一次更有价值。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "睡眠管理",
+        "压力管理",
+        "AI健康"
+      ],
+      "firstComment": "建议连续记录趋势，不要把单次分数当成健康结论。明显不适请及时就医。",
+      "cta": "加入复测挑战",
+      "assets": {
+        "png": "assets/marketing/xiaohongshu/xhs-008.png"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "dy-008",
+      "day": 23,
+      "channel": "抖音",
+      "format": "产品演示",
+      "title": "打卡和报告怎么联动",
+      "scheduledTime": "D+23 12:20",
+      "copy": "开场：饮食运动睡眠记录能解释声音波动。镜头一：打开 VoiceHealth，按提示朗读30秒。镜头二：查看语速、停顿、能量和音质趋势。镜头三：结合睡眠、饮食、运动和压力打卡复盘。结尾：这不是诊断，是帮助你更早做生活方式调整的健康管理参考。",
+      "caption": "打卡和报告怎么联动：先记录，再复盘。结果只用于健康管理参考，不替代医生和体检。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "睡眠管理",
+        "运动健康",
+        "AI健康"
+      ],
+      "firstComment": "运动后如果持续胸痛、气短、头晕或明显不适，请优先寻求医疗帮助。",
+      "cta": "打开每日打卡",
+      "assets": {
+        "png": "assets/marketing/douyin/dy-008.png",
+        "audio": "assets/marketing/douyin/dy-008.mp3",
+        "video": "assets/marketing/douyin/dy-008.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "avatar-008",
+      "day": 24,
+      "channel": "数字人",
+      "format": "口播",
+      "title": "会员权益说明",
+      "scheduledTime": "D+24 18:40",
+      "copy": "大家好，我是 VoiceHealth AI 数字健康助手。本视频由 AI 数字人生成。今天讲的是：会员权益说明。不限次数、趋势分析、课程和改善闭环。VoiceHealth 更适合做趋势观察和生活方式复盘，不用于医学诊断、治疗或急症判断。如果出现明显不适，请及时咨询专业医生。",
+      "caption": "AI数字人科普：会员权益说明。内容仅用于健康管理参考。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "健康学院",
+        "AI数字人"
+      ],
+      "firstComment": "建议连续记录趋势，不要把单次分数当成健康结论。明显不适请及时就医。",
+      "cta": "开通个人会员",
+      "assets": {
+        "png": "assets/marketing/digital-human/avatar-008.png",
+        "audio": "assets/marketing/digital-human/avatar-008.mp3",
+        "video": "assets/marketing/digital-human/avatar-008.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "xhs-009",
+      "day": 25,
+      "channel": "小红书",
+      "format": "图文笔记",
+      "title": "给父母做健康趋势记录",
+      "scheduledTime": "D+25 20:30",
+      "copy": "给父母做健康趋势记录。家庭记录更适合看长期变化。我的做法是固定时间、固定文本、固定环境录30秒，再把声音趋势和睡眠、饮食、运动、压力打卡放在一起复盘。这不是诊断，也不替代体检；更像一个帮助自己发现生活方式影响的健康日记。",
+      "caption": "家庭记录更适合看长期变化。我会把它当成健康管理参考，而不是疾病判断。连续记录比偶尔测一次更有价值。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "家庭健康",
+        "AI健康"
+      ],
+      "firstComment": "建议连续记录趋势，不要把单次分数当成健康结论。明显不适请及时就医。",
+      "cta": "创建家庭成员",
+      "assets": {
+        "png": "assets/marketing/xiaohongshu/xhs-009.png"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "dy-009",
+      "day": 26,
+      "channel": "抖音",
+      "format": "短视频",
+      "title": "B端机构试点怎么做",
+      "scheduledTime": "D+26 12:20",
+      "copy": "开场：90天试点验证体验、复测和转化。镜头一：打开 VoiceHealth，按提示朗读30秒。镜头二：查看语速、停顿、能量和音质趋势。镜头三：结合睡眠、饮食、运动和压力打卡复盘。结尾：这不是诊断，是帮助你更早做生活方式调整的健康管理参考。",
+      "caption": "B端机构试点怎么做：先记录，再复盘。结果只用于健康管理参考，不替代医生和体检。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "商业合作",
+        "AI健康"
+      ],
+      "firstComment": "商务试点需完成合规审查、数据授权、隐私告知和场景边界确认。",
+      "cta": "复制商务联系方式",
+      "assets": {
+        "png": "assets/marketing/douyin/dy-009.png",
+        "audio": "assets/marketing/douyin/dy-009.mp3",
+        "video": "assets/marketing/douyin/dy-009.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "avatar-009",
+      "day": 27,
+      "channel": "数字人",
+      "format": "口播",
+      "title": "一周健康学院课程推荐",
+      "scheduledTime": "D+27 18:40",
+      "copy": "大家好，我是 VoiceHealth AI 数字健康助手。本视频由 AI 数字人生成。今天讲的是：一周健康学院课程推荐。先学采集质量，再建立个人基线。VoiceHealth 更适合做趋势观察和生活方式复盘，不用于医学诊断、治疗或急症判断。如果出现明显不适，请及时咨询专业医生。",
+      "caption": "AI数字人科普：一周健康学院课程推荐。内容仅用于健康管理参考。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "健康学院",
+        "AI数字人"
+      ],
+      "firstComment": "建议连续记录趋势，不要把单次分数当成健康结论。明显不适请及时就医。",
+      "cta": "听核心课程",
+      "assets": {
+        "png": "assets/marketing/digital-human/avatar-009.png",
+        "audio": "assets/marketing/digital-human/avatar-009.mp3",
+        "video": "assets/marketing/digital-human/avatar-009.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "xhs-010",
+      "day": 28,
+      "channel": "小红书",
+      "format": "知识卡片",
+      "title": "声音报告常见误读",
+      "scheduledTime": "D+28 20:30",
+      "copy": "声音报告常见误读。不要把运动后短期波动当成健康下降。我的做法是固定时间、固定文本、固定环境录30秒，再把声音趋势和睡眠、饮食、运动、压力打卡放在一起复盘。这不是诊断，也不替代体检；更像一个帮助自己发现生活方式影响的健康日记。",
+      "caption": "不要把运动后短期波动当成健康下降。我会把它当成健康管理参考，而不是疾病判断。连续记录比偶尔测一次更有价值。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "运动健康",
+        "AI健康"
+      ],
+      "firstComment": "运动后如果持续胸痛、气短、头晕或明显不适，请优先寻求医疗帮助。",
+      "cta": "复测前看采集指南",
+      "assets": {
+        "png": "assets/marketing/xiaohongshu/xhs-010.png"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "dy-010",
+      "day": 29,
+      "channel": "抖音",
+      "format": "短视频",
+      "title": "30天复盘：从体验到会员",
+      "scheduledTime": "D+29 12:20",
+      "copy": "开场：持续记录的人更容易看懂趋势。镜头一：打开 VoiceHealth，按提示朗读30秒。镜头二：查看语速、停顿、能量和音质趋势。镜头三：结合睡眠、饮食、运动和压力打卡复盘。结尾：这不是诊断，是帮助你更早做生活方式调整的健康管理参考。",
+      "caption": "30天复盘：从体验到会员：先记录，再复盘。结果只用于健康管理参考，不替代医生和体检。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "AI健康"
+      ],
+      "firstComment": "建议连续记录趋势，不要把单次分数当成健康结论。明显不适请及时就医。",
+      "cta": "领取会员权益",
+      "assets": {
+        "png": "assets/marketing/douyin/dy-010.png",
+        "audio": "assets/marketing/douyin/dy-010.mp3",
+        "video": "assets/marketing/douyin/dy-010.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    },
+    {
+      "id": "avatar-010",
+      "day": 30,
+      "channel": "数字人",
+      "format": "口播",
+      "title": "商业合作邀请",
+      "scheduledTime": "D+30 18:40",
+      "copy": "大家好，我是 VoiceHealth AI 数字健康助手。本视频由 AI 数字人生成。今天讲的是：商业合作邀请。面向体检、健康管理、保险和企业福利开放试点。VoiceHealth 更适合做趋势观察和生活方式复盘，不用于医学诊断、治疗或急症判断。如果出现明显不适，请及时咨询专业医生。",
+      "caption": "AI数字人科普：商业合作邀请。内容仅用于健康管理参考。",
+      "tags": [
+        "声音健康",
+        "健康管理",
+        "商业合作",
+        "AI数字人"
+      ],
+      "firstComment": "商务试点需完成合规审查、数据授权、隐私告知和场景边界确认。",
+      "cta": "联系 VoiceHealth 商务",
+      "assets": {
+        "png": "assets/marketing/digital-human/avatar-010.png",
+        "audio": "assets/marketing/digital-human/avatar-010.mp3",
+        "video": "assets/marketing/digital-human/avatar-010.mp4"
+      },
+      "status": "ready_for_manual_publish"
+    }
+  ],
+  "compliance": [
+    "不使用治愈率、有效率、确诊、筛查疾病、替代体检等承诺性表达",
+    "不使用医生、专家、患者见证作为广告推荐",
+    "不制造健康恐惧，不暗示不使用产品会患病或加重疾病",
+    "数字人、合成语音、AI生成视频必须显著标注AI生成或AI数字人",
+    "任何声音、面部、视频数据采集前必须取得用户授权",
+    "所有页面保留健康管理参考和非诊断声明"
+  ]
+}

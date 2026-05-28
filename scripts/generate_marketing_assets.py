@@ -48,11 +48,16 @@ def slug(value: str) -> str:
 
 def wrap_text(text: str, width: int) -> list[str]:
     text = re.sub(r"\s+", " ", text.strip())
+    no_line_start = "，。！？；：、,.!?;:)"
     lines: list[str] = []
     current = ""
     visual = 0
     for char in text:
         char_width = 1 if ord(char) < 128 else 2
+        if char in no_line_start and current:
+            current += char
+            visual += char_width
+            continue
         if visual + char_width > width and current:
             lines.append(current)
             current = char
