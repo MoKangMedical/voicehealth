@@ -18,8 +18,8 @@ cd /Users/apple/Desktop/OPC/voiceHealth
 3. 本地模拟器配置：
 
 - `voiceHealth-miniprogram-v2/miniprogram/config.js`
-- `api.useDev = true`
 - `api.devBaseUrl = 'http://127.0.0.1:8100'`
+- 小程序 `develop` 开发版会自动使用 `devBaseUrl`
 - 开发者工具里可关闭“校验合法域名、web-view、TLS 版本以及 HTTPS 证书”
 
 4. 真机调试时，把 `api.devBaseUrl` 改成电脑局域网 IP，例如：
@@ -54,22 +54,41 @@ https://voicehealth.ai
 - uploadFile 合法域名：`https://voicehealth.ai`
 - downloadFile 合法域名：按实际需要填写
 
-6. 发布前修改：
+6. 当前 `config.js` 已按小程序环境自动切换：
 
-```js
-// voiceHealth-miniprogram-v2/miniprogram/config.js
-api: {
-  baseUrl: 'https://voicehealth.ai',
-  devBaseUrl: 'http://127.0.0.1:8100',
-  useDev: false
-}
+- `develop` 开发版：使用 `devBaseUrl`
+- `trial` 体验版：使用 `baseUrl`
+- `release` 正式版：使用 `baseUrl`
+
+发布前不要再手动把 `api.useDev` 改成 `true`，否则线上包会误连本地接口。
+
+也就是说，体验版和正式版会自动使用生产 HTTPS API。
+
+7. 发布前执行上线检查：
+
+```bash
+cd /Users/apple/Desktop/OPC/voiceHealth
+python3 scripts/check_wechat_launch_ready.py --api-base https://voicehealth.ai
 ```
 
-7. 在微信开发者工具中重新编译，确认控制台没有请求失败错误后，再点击“上传”。
+如果要把线上域名未就绪作为硬性阻断：
+
+```bash
+python3 scripts/check_wechat_launch_ready.py --api-base https://voicehealth.ai --strict-live
+```
+
+8. 在微信开发者工具中重新编译，确认控制台没有请求失败错误后，再点击“上传”。
+
+完整发布清单见：
+
+```text
+docs/WECHAT_MINIPROGRAM_LAUNCH.md
+```
 
 ## 当前本机状态
 
 - 小程序项目已导入微信开发者工具。
 - 本地 API 已验证：`http://127.0.0.1:8100/api/v1/health`
 - 首页、记录页、我的页已经在模拟器验证能访问后端。
-- 当前使用测试号 AppID，上传发布前必须替换为真实 AppID。
+- `project.config.json` 当前已填写真实格式 AppID：`wxcadcf8da37a25c0e`。
+- 真正上线前仍需在微信公众平台确认该 AppID 的账号主体、服务类目、隐私协议、合法域名和审核发布状态。
