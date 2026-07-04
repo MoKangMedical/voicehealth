@@ -7,7 +7,7 @@
   <view class="section">
     <text class="section-title">一、信息收集</text>
     <text class="section-content">在您授权后，我们为提供健康参考服务收集必要信息：</text>
-    <view class="list-item"><text class="dot">•</text><text>声纹数据：用于声学特征分析</text></view>
+    <view class="list-item"><text class="dot">•</text><text>录音/声纹数据：用于声学特征分析和声音健康参考报告</text></view>
     <view class="list-item"><text class="dot">•</text><text>面部图像：用于面部状态评估</text></view>
     <view class="list-item"><text class="dot">•</text><text>视频数据：用于皮肤/眼睛/头发分析</text></view>
     <view class="list-item"><text class="dot">•</text><text>用户信息：昵称、头像、会员与报告记录</text></view>
