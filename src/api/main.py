@@ -17,6 +17,15 @@ from src.api.routes import router
 from src.core.disease_detector import DISEASE_REGISTRY, DiseaseDetector
 from src.core.feature_extractor import FeatureExtractor
 
+
+def get_cors_origins():
+    """Return configured browser CORS origins; default keeps local demos working."""
+    raw = os.getenv("CORS_ORIGINS", "*").strip()
+    if not raw or raw == "*":
+        return ["*"]
+    return [origin.strip() for origin in raw.split(",") if origin.strip()]
+
+
 app = FastAPI(
     title="VoiceHealth",
     description="Voice Biomarker AI Platform - 30s Voice, Health Reference Platform",
@@ -25,7 +34,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=get_cors_origins(),
     allow_methods=["*"],
     allow_headers=["*"],
     expose_headers=["X-User-Id"],
