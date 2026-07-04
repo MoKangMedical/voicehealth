@@ -1,7 +1,25 @@
 // config.js
 // VoiceHealth 配置文件
 
+function getMiniProgramEnvVersion() {
+  try {
+    if (typeof wx !== 'undefined' && wx.getAccountInfoSync) {
+      const accountInfo = wx.getAccountInfoSync()
+      return (accountInfo && accountInfo.miniProgram && accountInfo.miniProgram.envVersion) || 'develop'
+    }
+  } catch (e) {}
+  return 'develop'
+}
+
+const envVersion = getMiniProgramEnvVersion()
+const useDevApi = envVersion === 'develop'
+
 module.exports = {
+  runtime: {
+    // develop 使用本地/局域网 API；trial/release 必须使用 HTTPS 生产域名。
+    envVersion
+  },
+
   // 云环境ID。直连 FastAPI 时可留空；需要云开发能力时再填写真实环境ID。
   cloudEnv: '',
   
@@ -11,8 +29,8 @@ module.exports = {
     baseUrl: 'https://voicehealth.ai',
     // 开发环境API地址。真机调试时请改为电脑局域网IP，例如 http://192.168.1.8:8100。
     devBaseUrl: 'http://127.0.0.1:8100',
-    // 是否使用开发环境（本地测试时设为true）
-    useDev: true
+    // 自动按小程序版本切换：开发版走 devBaseUrl，体验版和正式版走 baseUrl。
+    useDev: useDevApi
   },
 
   auth: {
