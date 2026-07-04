@@ -110,14 +110,22 @@ chmod +x start.sh
 
 1. 打开微信开发者工具
 2. 导入项目：`voiceHealth-miniprogram-v2`
-3. 本地开发可使用测试号 AppID；上传发布前必须替换成真实 AppID
-4. 修改 `voiceHealth-miniprogram-v2/miniprogram/config.js`
-   - 本地开发：`api.useDev = true`，模拟器可用 `http://127.0.0.1:8100`
+3. `project.config.json` 需使用微信公众平台真实 AppID
+4. 检查 `voiceHealth-miniprogram-v2/miniprogram/config.js`
+   - 开发版 `develop` 会自动使用 `api.devBaseUrl`
+   - 体验版 `trial` 和正式版 `release` 会自动使用 `api.baseUrl`
+   - 本地模拟器可用 `http://127.0.0.1:8100`
    - 真机调试：把 `api.devBaseUrl` 改为电脑局域网地址，例如 `http://192.168.1.8:8100`
-   - 线上发布：把 `api.baseUrl` 改为 HTTPS 后端域名，并加入小程序 request/uploadFile 合法域名
+   - 线上发布：`api.baseUrl` 必须是 HTTPS 后端域名，并加入小程序 request/uploadFile 合法域名
 5. 后端可选配置 `WECHAT_APP_ID` / `WECHAT_APP_SECRET`。未配置时，小程序会使用本地开发身份完成注册和调试。
 
-详细配置清单见：`WECHAT_MINIPROGRAM_SETUP.md`
+发布前检查：
+
+```bash
+python3 scripts/check_wechat_launch_ready.py --api-base https://voicehealth.ai
+```
+
+详细配置清单见：`WECHAT_MINIPROGRAM_SETUP.md` 和 `docs/WECHAT_MINIPROGRAM_LAUNCH.md`
 
 ### 3. 直接运行闭环
 
@@ -345,6 +353,8 @@ voiceHealth-miniprogram-v2/    # 微信小程序，直连 FastAPI
 - 发布简报生成脚本：`scripts/generate_publish_briefs.py`
 - 小程序队列导出脚本：`scripts/export_miniprogram_growth_queue.py`
 - 小程序入口：`pages/growth/growth`
+- 微信小程序上线清单：`docs/WECHAT_MINIPROGRAM_LAUNCH.md`
+- 微信上线检查脚本：`scripts/check_wechat_launch_ready.py`
 
 ## 审核要点
 
